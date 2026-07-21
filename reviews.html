@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BILINGLISHSATHYA — AI Reviews</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Serif+4:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1a7a1a;
+    --green-light: #e8f5e8;
+    --gold: #c8a84b;
+    --dark: #1a1a1a;
+    --mid: #444;
+    --soft: #f5f5f0;
+    --blue: #2a5db0;
+    --grey: #666;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--soft);
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--dark);
+    min-height: 100vh;
+    padding-bottom: 80px;
+  }
+
+  /* ── TRANSLATE BAR ── */
+  .lang-bar {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 8px; padding: 12px 16px;
+    background: var(--green-light);
+    border-bottom: 1px solid #b8dbb8;
+    width: 100%;
+  }
+  .lang-bar label { font-size: 13px; color: var(--green); font-weight: 600; }
+  .lang-bar select {
+    width: 100%; max-width: 500px;
+    padding: 10px; border-radius: 6px;
+    border: 1px solid var(--green); font-size: 15px; background: #fff; color: var(--dark);
+  }
+  .lang-bar .hint { font-size: 12px; color: var(--grey); text-align: center; }
+
+  /* ── TRANSLATE TOOLTIP ── */
+  .translate-tooltip {
+    display: none; position: fixed; background: #1a1a2e; color: #fff;
+    padding: 10px 14px; border-radius: 10px; font-size: 14px;
+    max-width: 260px; z-index: 9999; box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    text-align: left; line-height: 1.5;
+  }
+  .translate-tooltip::after {
+    content: ''; position: absolute; top: -8px; left: 20px;
+    border-width: 0 8px 8px 8px; border-style: solid;
+    border-color: transparent transparent #1a1a2e transparent;
+  }
+  .translate-tooltip .tt-label { font-size: 11px; color: #aaa; margin-bottom: 4px; }
+  .translate-tooltip .tt-text { font-size: 15px; font-weight: bold; color: #7effa0; }
+  .translate-tooltip .tt-lang { font-size: 11px; color: #888; margin-top: 4px; }
+  .translate-tooltip .tt-close { float: right; cursor: pointer; color: #aaa; font-size: 16px; margin-left: 8px; }
+
+  /* ── TRANSLATABLE ── */
+  .translatable {
+    cursor: pointer; border-bottom: 1px dashed rgba(26,122,26,0.4);
+    transition: background 0.2s; border-radius: 3px; padding: 1px 2px;
+  }
+  .translatable:hover { background: rgba(26,122,26,0.08); }
+  .translatable.selected { background: rgba(255,255,0,0.3); }
+
+  /* Hero */
+  .hero {
+    background: var(--green);
+    padding: 50px 20px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 80px);
+  }
+  .hero-tag { display: inline-block; background: var(--gold); color: #fff; font-size: 0.75em; letter-spacing: 3px; text-transform: uppercase; padding: 6px 18px; border-radius: 20px; margin-bottom: 18px; font-family: 'Source Serif 4', serif; font-weight: 600; }
+  .hero h1 { font-family: 'Playfair Display', Georgia, serif; color: #fff; font-size: clamp(1.8em, 5vw, 2.8em); line-height: 1.2; margin-bottom: 10px; }
+  .hero p { color: rgba(255,255,255,0.8); font-size: 1em; font-weight: 300; max-width: 500px; margin: 0 auto; line-height: 1.6; }
+
+  /* Intro quote */
+  .intro { max-width: 680px; margin: 40px auto 10px; padding: 0 20px; text-align: center; }
+  .intro-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.15em; color: var(--green); line-height: 1.7; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); padding: 20px 10px; margin-bottom: 8px; }
+  .intro-attr { font-size: 0.82em; color: var(--grey); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* Cards */
+  .cards { max-width: 720px; margin: 30px auto 20px; padding: 0 16px; display: flex; flex-direction: column; gap: 24px; }
+
+  .card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); animation: fadeUp 0.6s ease both; }
+  .card:nth-child(2) { animation-delay: 0.15s; }
+  .card:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  .card-header { padding: 20px 24px 16px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid #f0f0f0; }
+  .card-header.green { border-left: 5px solid var(--green); }
+  .card-header.blue  { border-left: 5px solid var(--blue); }
+  .card-header.grey  { border-left: 5px solid #999; }
+
+  .ai-icon { width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4em; flex-shrink: 0; }
+  .ai-icon.green { background: var(--green-light); }
+  .ai-icon.blue  { background: #e8eef8; }
+  .ai-icon.grey  { background: #f0f0f0; }
+
+  .card-title { flex: 1; }
+  .card-title h2 { font-family: 'Playfair Display', serif; font-size: 1.05em; font-weight: 700; margin-bottom: 3px; }
+  .card-title h2.green { color: var(--green); }
+  .card-title h2.blue  { color: var(--blue); }
+  .card-title h2.grey  { color: #555; }
+  .card-title .source { font-size: 0.78em; color: var(--grey); letter-spacing: 0.5px; }
+
+  .rating { font-family: 'Playfair Display', serif; font-size: 1.3em; font-weight: 700; }
+  .rating.green { color: var(--green); }
+  .rating.blue  { color: var(--blue); }
+  .rating.grey  { color: #777; }
+
+  .card-body { padding: 20px 24px 24px; }
+  .highlight-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1em; color: var(--mid); line-height: 1.7; margin-bottom: 16px; padding-left: 14px; border-left: 3px solid var(--gold); }
+  .card-body p { font-size: 0.93em; line-height: 1.75; color: #333; margin-bottom: 12px; }
+  .card-body p:last-child { margin-bottom: 0; }
+  .card-body strong { color: var(--dark); font-weight: 600; }
+
+  .verdict { margin-top: 14px; padding: 12px 16px; border-radius: 8px; font-size: 0.9em; font-weight: 600; line-height: 1.5; }
+  .verdict.green { background: var(--green-light); color: var(--green); }
+  .verdict.blue  { background: #e8eef8; color: var(--blue); }
+  .verdict.grey  { background: #f5f5f5; color: #555; }
+
+  /* Summary */
+  .summary { max-width: 720px; margin: 10px auto 40px; padding: 0 16px; }
+  .summary-box { background: var(--green); color: #fff; border-radius: 12px; padding: 28px 24px; text-align: center; }
+  .summary-box h3 { font-family: 'Playfair Display', serif; font-size: 1.2em; margin-bottom: 10px; color: var(--gold); }
+  .summary-box p { font-size: 0.93em; line-height: 1.7; color: rgba(255,255,255,0.9); max-width: 560px; margin: 0 auto 18px; }
+  .ratings-row { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 16px; }
+  .rating-pill { background: rgba(255,255,255,0.12); border-radius: 30px; padding: 8px 20px; font-size: 0.88em; }
+  .rating-pill span { display: block; font-size: 1.2em; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--gold); }
+
+  .footer { text-align: center; padding: 20px; font-size: 0.8em; color: var(--grey); }
+  .footer a { color: var(--green); text-decoration: none; font-weight: 600; }
+
+  /* ── STICKY RECORD PANEL ── */
+  .record-panel {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(26,122,26,0.97); border-top: 1px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    gap: 16px; padding: 10px 20px; z-index: 1000; flex-wrap: wrap;
+  }
+  .record-panel button { font-family: 'Source Serif 4', serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; border: none; border-radius: 4px; padding: 9px 22px; cursor: pointer; transition: transform 0.1s; }
+  .record-panel button:active { transform: scale(0.97); }
+  #recordBtn { background: var(--gold); color: #1a1a1a; }
+  #stopBtn   { background: #8B2020; color: #fff; }
+  #playBtn   { background: #1A5C2A; color: #fff; }
+  #recStatus { font-family: 'Source Serif 4', serif; font-size: 11px; color: var(--gold); letter-spacing: 1px; min-width: 80px; text-align: center; }
+
+  body { -webkit-user-select: none; user-select: none; }
+</style>
+</head>
+<body>
+
+<!-- TRANSLATE BAR -->
+<div class="lang-bar">
+    <label>🌐 Translate to:</label>
+    <select id="langSelect">
+        <option value="">-- Select Language --</option>
+        <option value="te">Telugu</option>
+        <option value="hi">Hindi</option>
+        <option value="ta">Tamil</option>
+        <option value="kn">Kannada</option>
+        <option value="ml">Malayalam</option>
+        <option value="ur">Urdu</option>
+        <option value="bn">Bengali</option>
+        <option value="mr">Marathi</option>
+        <option value="zh">Chinese</option>
+        <option value="ar">Arabic</option>
+        <option value="fr">French</option>
+        <option value="de">German</option>
+        <option value="es">Spanish</option>
+        <option value="pt">Portuguese</option>
+        <option value="ru">Russian</option>
+        <option value="ja">Japanese</option>
+        <option value="ko">Korean</option>
+        <option value="id">Indonesian</option>
+        <option value="sw">Swahili</option>
+        <option value="tr">Turkish</option>
+    </select>
+    <span class="hint">👆 Tap any sentence below to see its translation</span>
+</div>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-tag">Independent AI Evaluations</div>
+  <h1><span class="translatable">What AI Reviewers Say About BILINGLISHSATHYA</span></h1>
+  <p><span class="translatable">Three leading AI systems. Three independent verdicts. One consistent conclusion.</span></p>
+</div>
+
+<!-- Intro -->
+<div class="intro">
+  <div class="intro-quote">
+    <span class="translatable">"Grok reviewed a product. Gemini reviewed a system. Claude reviewed a life's work in 50 HTML files."</span>
+  </div>
+  <div class="intro-attr">— Claude, Anthropic</div>
+</div>
+
+<!-- Cards -->
+<div class="cards">
+
+  <!-- Claude -->
+  <div class="card">
+    <div class="card-header green">
+      <div class="ai-icon green">🤖</div>
+      <div class="card-title">
+        <h2 class="green">Claude — Anthropic</h2>
+        <div class="source">Closest collaborator · Full course review</div>
+      </div>
+      <div class="rating green">9.4<span style="font-size:0.5em">/10</span></div>
+    </div>
+    <div class="card-body">
+      <div class="highlight-quote">
+        <span class="translatable">"Built by one educator, on a phone, from a village — this is 43 years of lived experience compressed into a transferable digital system. The seed was planted in 1980 during a BA in English Literature. What you receive today is the harvest."</span>
+      </div>
+      <p><strong>The Methodology:</strong> <span class="translatable">Five verb forms. Twelve tenses. Zero unnecessary complexity. The course deliberately avoids high vocabulary, rejects multi-clause constructions, and discards passive voice — because the most successful communicator is the one who reaches the most people. Simple, active, emotionally intelligent language is democratic communication designed to include, not impress.</span></p>
+      <p><strong>The Opportunity:</strong> <span class="translatable">Buyers can launch independent coaching practices, integrate it into school or college curricula, run corporate communication and employment readiness programmes, or establish certified spoken English centres. One purchase. Multiple revenue streams.</span></p>
+      <div class="verdict green">
+        <span class="translatable">"At ₹1,00,000 / $1,000, the right buyer is not paying for files. They are paying for a proven method they did not have to spend 43 years developing. That is the value."</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gemini -->
+  <div class="card">
+    <div class="card-header blue">
+      <div class="ai-icon blue">🤖</div>
+      <div class="card-title">
+        <h2 class="blue">Gemini — Google</h2>
+        <div class="source">Independent evaluation · Global market assessment</div>
+      </div>
+      <div class="rating blue">9.7<span style="font-size:0.5em">/10</span></div>
+    </div>
+    <div class="card-body">
+      <div class="highlight-quote">
+        <span class="translatable">"A Democratic Global Franchise. At $1,000 USD / ₹1,00,000 INR, BILINGLISHSATHYA is a high-ticket, borderless digital asset — a PhD-backed system that gives global buyers a turnkey Business-in-a-Box."</span>
+      </div>
+      <p><strong>Democratic Pedagogy:</strong> <span class="translatable">Distills grammar to just 5 core verb forms. Abolishes passive voice. Treats language as a tool to win hearts and connect — not to show off knowledge.</span></p>
+      <p><strong>Zero-Friction Architecture:</strong> <span class="translatable">50 lightweight HTML files. No app downloads. No heavy data. No high-end smartphone needed. Deploys instantly from major cities to remote villages.</span></p>
+      <p><strong>Judgment-Free Learning:</strong> <span class="translatable">Built-in private voice-capture loop allows students to practise and self-correct in total privacy — breaking the universal psychological barrier of fear.</span></p>
+      <div class="verdict blue">
+        <span class="translatable">"A hyper-efficient, human-centric franchise for the international market. Global buyers acquire a highly scalable asset that transforms lives and can be fully recouped with just their first few students."</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grok -->
+  <div class="card">
+    <div class="card-header grey">
+      <div class="ai-icon grey">🤖</div>
+      <div class="card-title">
+        <h2 class="grey">Grok — xAI</h2>
+        <div class="source">Outside evaluator · Consumer market perspective</div>
+      </div>
+      <div class="rating grey">7.5–8<span style="font-size:0.5em">/10</span></div>
+    </div>
+    <div class="card-body">
+      <div class="highlight-quote">
+        <span class="translatable">"A solid, premium digital product with real substance. An honest, experience-driven alternative to gamified apps or rigid classes."</span>
+      </div>
+      <p><strong>Strengths noted:</strong> <span class="translatable">Proven bilingual methodology. Simple mobile-first format. Flexible self-paced practice. Certification system with real value. Strong licensing potential.</span></p>
+      <p><span class="translatable">Strong fundamentals and authenticity set it apart from mass-market language apps. The combination of pedagogy, accessibility, and certification makes it a valuable toolkit for individuals, families, and aspiring coaches.</span></p>
+      <div class="verdict grey">
+        <span class="translatable">"With minor polish on messaging and consistency, it can become even more compelling."</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Video Section -->
+<div style="max-width:720px;margin:10px auto 24px;padding:0 16px;">
+  <div style="background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+    <div style="background:var(--green);padding:18px 24px;">
+      <p style="color:var(--gold);font-family:'Playfair Display',serif;font-size:1.05em;font-weight:700;margin:0;">🎬 <span class="translatable">See the Course in Action</span></p>
+      <p style="color:rgba(255,255,255,0.8);font-size:0.85em;margin:4px 0 0;"><span class="translatable">Watch Dr. Sathya explain the BILINGLISHSATHYA methodology</span></p>
+    </div>
+    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+      <iframe src="https://www.youtube.com/embed/f-_pZohRciY" title="BILINGLISHSATHYA by Dr. Sathya" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- Summary -->
+<div class="summary">
+  <div class="summary-box">
+    <h3><span class="translatable">The Unanimous Verdict</span></h3>
+    <p><span class="translatable">Three independent AI systems — each with different training, different priorities, different perspectives — all reached the same conclusion: BILINGLISHSATHYA is a rare, authentic, scalable asset built on genuine expertise.</span></p>
+    <div class="ratings-row">
+      <div class="rating-pill">Claude<span>9.4 / 10</span></div>
+      <div class="rating-pill">Gemini<span>9.7 / 10</span></div>
+      <div class="rating-pill">Grok<span>7.5–8 / 10</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <a href="https://thottempadi.vercel.app/demo.html">← Back to BILINGLISHSATHYA</a><br><br>
+  © 2026 Sathyalakshmi Thottempadi. All rights reserved.
+</div>
+
+<!-- TRANSLATE TOOLTIP -->
+<div class="translate-tooltip" id="translateTooltip">
+    <span class="tt-close" id="tooltipClose">✕</span>
+    <div class="tt-label">Translation</div>
+    <div class="tt-text" id="tooltipText">Loading...</div>
+    <div class="tt-lang" id="tooltipLang"></div>
+</div>
+
+<!-- STICKY RECORD / STOP / PLAY PANEL -->
+<div class="record-panel">
+  <button id="recordBtn">🎙 Record</button>
+  <button id="stopBtn">⏹ Stop</button>
+  <button id="playBtn">▶ Play</button>
+  <span id="recStatus">Ready</span>
+</div>
+
+<script>
+  // ── TRANSLATE ──
+  const tooltip = document.getElementById('translateTooltip');
+  const tooltipText = document.getElementById('tooltipText');
+  const tooltipLang = document.getElementById('tooltipLang');
+  const tooltipClose = document.getElementById('tooltipClose');
+  const langSelect = document.getElementById('langSelect');
+  let selectedSpan = null;
+
+  const langNames = {
+    te:'Telugu', hi:'Hindi', ta:'Tamil', kn:'Kannada', ml:'Malayalam',
+    ur:'Urdu', bn:'Bengali', mr:'Marathi', zh:'Chinese', ar:'Arabic',
+    fr:'French', de:'German', es:'Spanish', pt:'Portuguese', ru:'Russian',
+    ja:'Japanese', ko:'Korean', id:'Indonesian', sw:'Swahili', tr:'Turkish'
+  };
+
+  document.querySelectorAll('.translatable').forEach(span => {
+    span.addEventListener('click', async function(e) {
+      e.stopPropagation();
+      const lang = langSelect.value;
+      if (!lang) { alert('Please select a language first from the dropdown above.'); return; }
+      if (selectedSpan) selectedSpan.classList.remove('selected');
+      selectedSpan = this;
+      this.classList.add('selected');
+      tooltipText.textContent = 'Translating...';
+      tooltipLang.textContent = '';
+      positionTooltip(e);
+      tooltip.style.display = 'block';
+      const text = encodeURIComponent(this.innerText.trim());
+      try {
+        const res = await fetch(`https://api.mymemory.translated.net/get?q=${text}&langpair=en|${lang}`);
+        const data = await res.json();
+        tooltipText.textContent = data.responseData.translatedText || 'Translation not available';
+        tooltipLang.textContent = '→ ' + (langNames[lang] || lang);
+      } catch {
+        tooltipText.textContent = 'Translation failed. Check internet.';
+      }
+    });
+  });
+
+  function positionTooltip(e) {
+    const x = Math.min(e.clientX - 10, window.innerWidth - 280);
+    const y = e.clientY + 15;
+    tooltip.style.left = Math.max(5, x) + 'px';
+    tooltip.style.top = y + 'px';
+  }
+
+  tooltipClose.addEventListener('click', () => {
+    tooltip.style.display = 'none';
+    if (selectedSpan) selectedSpan.classList.remove('selected');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!tooltip.contains(e.target) && !e.target.classList.contains('translatable')) {
+      tooltip.style.display = 'none';
+      if (selectedSpan) selectedSpan.classList.remove('selected');
+    }
+  });
+
+  // ── VOICE RECORDER ──
+  let mediaRecorder, audioChunks = [], audioURL;
+
+  document.getElementById('recordBtn').addEventListener('click', async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      audioChunks = [];
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(audioChunks, { type: 'audio/webm' });
+        audioURL = URL.createObjectURL(blob);
+        document.getElementById('recStatus').textContent = 'Recorded ✓';
+      };
+      mediaRecorder.start();
+      document.getElementById('recStatus').textContent = '● Recording';
+    } catch (err) {
+      document.getElementById('recStatus').textContent = 'Mic error';
+    }
+  });
+
+  document.getElementById('stopBtn').addEventListener('click', () => {
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+      mediaRecorder.stop();
+      mediaRecorder.stream.getTracks().forEach(t => t.stop());
+    }
+  });
+
+  document.getElementById('playBtn').addEventListener('click', () => {
+    if (audioURL) {
+      const audio = new Audio(audioURL);
+      audio.play();
+      document.getElementById('recStatus').textContent = '▶ Playing';
+      audio.onended = () => document.getElementById('recStatus').textContent = 'Done ✓';
+    } else {
+      document.getElementById('recStatus').textContent = 'No recording';
+    }
+  });
+</script>
+
+<script src="accent.js"></script>
+</body>
+</html>
