@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BILINGLISHSATHYA — Course License & Distribution Agreement</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Josefin+Sans:wght@300;400;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9922A;
+  --gold-light: #E8B84B;
+  --ink: #0E0B06;
+  --cream: #FEFBF3;
+  --muted: #8B7355;
+  --border: rgba(201,146,42,0.3);
+  --blue: #4A90D9;
+  --blue-light: #6BAEE8;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  background: var(--ink);
+  color: var(--cream);
+  overflow-x: hidden;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+/* ── TRANSLATE BAR ── */
+.lang-bar {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 8px; padding: 12px 16px;
+  background: rgba(201,146,42,0.10);
+  border-bottom: 1px solid var(--border);
+  position: relative; z-index: 10; width: 100%;
+}
+.lang-bar label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px; letter-spacing: 2px; color: var(--gold-light);
+  text-transform: uppercase;
+}
+.lang-bar select {
+  width: 100%; max-width: 500px;
+  padding: 10px; border-radius: 4px;
+  border: 1px solid var(--border); font-size: 15px;
+  background: #2C2210; color: var(--cream);
+  font-family: 'Josefin Sans', sans-serif;
+}
+.lang-bar .hint { font-size: 12px; color: var(--muted); text-align: center; }
+
+/* ── TRANSLATE TOOLTIP ── */
+.translate-tooltip {
+  display: none; position: fixed; background: #1a1a2e; color: #fff;
+  padding: 10px 14px; border-radius: 10px; font-size: 14px;
+  max-width: 260px; z-index: 9999; box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  text-align: left; line-height: 1.5;
+}
+.translate-tooltip::after {
+  content: ''; position: absolute; top: -8px; left: 20px;
+  border-width: 0 8px 8px 8px; border-style: solid;
+  border-color: transparent transparent #1a1a2e transparent;
+}
+.translate-tooltip .tt-label { font-size: 11px; color: #aaa; margin-bottom: 4px; }
+.translate-tooltip .tt-text { font-size: 15px; font-weight: bold; color: #7effa0; }
+.translate-tooltip .tt-lang { font-size: 11px; color: #888; margin-top: 4px; }
+.translate-tooltip .tt-close { float: right; cursor: pointer; color: #aaa; font-size: 16px; margin-left: 8px; }
+
+/* ── TRANSLATABLE ── */
+.translatable {
+  cursor: pointer; border-bottom: 1px dashed rgba(201,146,42,0.4);
+  transition: background 0.2s; border-radius: 3px; padding: 1px 2px;
+}
+.translatable:hover { background: rgba(201,146,42,0.12); }
+.translatable.selected { background: rgba(255,255,0,0.2); }
+
+/* ── CONTACT BAR ── */
+.contact-bar { display: flex; align-items: center; justify-content: center; gap: 26px; padding: 13px 28px; background: linear-gradient(90deg, rgba(201,146,42,0.18), rgba(201,146,42,0.08), rgba(201,146,42,0.18)); border-bottom: 1px solid var(--border); position: relative; z-index: 10; flex-wrap: wrap; }
+.contact-item { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.contact-icon { font-size: 13px; color: var(--gold-light); }
+.contact-item span { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 1px; color: var(--cream); transition: color 0.2s; }
+.contact-item:hover span { color: var(--gold-light); }
+.contact-sep { width: 1px; height: 18px; background: var(--border); }
+
+/* ── CONFIDENTIAL BAR ── */
+.conf-bar { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 12px 28px; background: rgba(201,146,42,0.1); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+.conf-bar span { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+.conf-bar::before, .conf-bar::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* ── COVER ── */
+.cover { text-align: center; padding: 70px 28px 60px; background: radial-gradient(ellipse 80% 50% at 50% 30%, rgba(201,146,42,0.07) 0%, transparent 70%); border-bottom: 1px solid var(--border); position: relative; z-index: 1; }
+.cover-main-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 5vw, 48px); font-weight: 700; color: var(--cream); line-height: 1.15; margin-bottom: 10px; }
+.cover-sub { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 2.5vw, 22px); font-style: italic; color: var(--blue-light); margin-bottom: 6px; }
+.cover-trust { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
+.cover-ref { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 1px; border: 1px solid var(--border); display: inline-block; padding: 8px 24px; }
+
+/* ── OPENING QUOTE ── */
+.opening-quote { max-width: 820px; margin: 0 auto; padding: 40px 28px; position: relative; z-index: 1; }
+.pull-quote { background: linear-gradient(135deg, rgba(201,146,42,0.1), rgba(201,146,42,0.03)); border-left: 3px solid var(--gold); padding: 24px 32px; position: relative; }
+.pull-quote::before { content: '\201C'; font-family: 'Cormorant Garamond', serif; font-size: 70px; color: var(--gold); position: absolute; top: -8px; left: 10px; opacity: 0.25; line-height: 1; }
+.pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 2vw, 20px); font-style: italic; color: var(--cream); line-height: 1.7; }
+.about-text { margin-top: 24px; font-size: 14px; color: rgba(254,251,243,0.72); line-height: 1.85; font-weight: 300; }
+
+/* ── PAGE BODY ── */
+.page { max-width: 820px; margin: 0 auto; padding: 0 28px 100px; position: relative; z-index: 1; }
+
+/* ── SECTION ── */
+.section { margin-bottom: 48px; padding-top: 40px; border-top: 1px solid rgba(201,146,42,0.15); }
+.section-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 3vw, 32px); font-weight: 600; color: var(--cream); margin-bottom: 20px; line-height: 1.2; }
+.sub-title { font-family: 'Josefin Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--blue-light); letter-spacing: 1px; text-transform: uppercase; margin: 22px 0 10px; }
+.body-text { font-size: 14px; color: rgba(254,251,243,0.75); line-height: 1.85; margin-bottom: 14px; font-weight: 300; }
+.body-text strong { color: var(--cream); font-weight: 600; }
+
+.bullet-list { list-style: none; margin: 10px 0 18px; }
+.bullet-list li { display: flex; gap: 12px; margin-bottom: 10px; font-size: 14px; color: rgba(254,251,243,0.72); line-height: 1.75; font-weight: 300; }
+.bullet-list li::before { content: '◆'; color: var(--gold); font-size: 7px; flex-shrink: 0; margin-top: 6px; }
+
+/* ── PARTIES TABLE ── */
+.parties-table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; }
+.parties-table td { padding: 14px 16px; border: 1px solid rgba(201,146,42,0.2); vertical-align: top; font-size: 13px; line-height: 1.7; }
+.parties-table td:first-child { background: rgba(74,144,217,0.15); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1px; color: var(--blue-light); width: 18%; text-transform: uppercase; font-weight: 500; }
+.parties-table td:last-child { color: rgba(254,251,243,0.82); background: rgba(201,146,42,0.04); }
+.parties-table td strong { color: var(--cream); font-weight: 600; }
+
+/* ── DEAL OPTIONS ── */
+.options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0 10px; }
+@media(max-width: 560px) { .options-grid { grid-template-columns: 1fr; } }
+.option-card { border: 1px solid var(--border); padding: 0; overflow: hidden; position: relative; }
+.option-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.option-a::before { background: var(--gold); }
+.option-b::before { background: var(--blue); }
+.option-header { padding: 16px 18px 12px; border-bottom: 1px solid rgba(201,146,42,0.15); }
+.option-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 4px; }
+.option-a .option-label { color: var(--gold); }
+.option-b .option-label { color: var(--blue-light); }
+.option-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--cream); line-height: 1.2; }
+.option-body { padding: 14px 18px; }
+.option-row { display: flex; justify-content: space-between; gap: 8px; padding: 7px 0; border-bottom: 1px solid rgba(201,146,42,0.08); font-size: 12px; }
+.option-row:last-child { border-bottom: none; }
+.option-row .key { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.5px; flex-shrink: 0; }
+.option-row .val { color: rgba(254,251,243,0.82); text-align: right; line-height: 1.5; }
+.option-row .val strong { color: var(--cream); }
+.option-note { margin-top: 14px; font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--muted); line-height: 1.6; }
+
+/* ── DATA TABLE ── */
+.data-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; }
+.data-table tr:nth-child(odd) td { background: rgba(201,146,42,0.04); }
+.data-table tr:hover td { background: rgba(201,146,42,0.09); transition: background 0.2s; }
+.data-table td { padding: 12px 15px; border-bottom: 1px solid rgba(201,146,42,0.1); font-size: 13px; vertical-align: top; }
+.data-table td:first-child { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.5px; width: 36%; padding-top: 14px; }
+.data-table td:last-child { color: rgba(254,251,243,0.78); line-height: 1.65; }
+
+/* ── LEGACY BLOCK ── */
+.legacy-block { background: linear-gradient(135deg, rgba(201,146,42,0.12), rgba(201,146,42,0.04)); border-left: 3px solid var(--gold-light); padding: 22px 28px; margin: 16px 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(15px, 2vw, 18px); font-style: italic; color: var(--cream); line-height: 1.75; }
+
+/* ── SUMMARY TABLE ── */
+.summary-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13px; }
+.summary-table th { padding: 12px 15px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 2px solid var(--border); }
+.summary-table th:first-child { color: var(--muted); text-align: left; width: 28%; }
+.summary-table th:nth-child(2) { color: var(--gold); text-align: center; }
+.summary-table th:nth-child(3) { color: var(--blue-light); text-align: center; }
+.summary-table td { padding: 11px 15px; border-bottom: 1px solid rgba(201,146,42,0.1); vertical-align: top; line-height: 1.6; }
+.summary-table td:first-child { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.3px; }
+.summary-table td:nth-child(2) { color: rgba(254,251,243,0.8); text-align: center; background: rgba(201,146,42,0.04); }
+.summary-table td:nth-child(3) { color: rgba(254,251,243,0.8); text-align: center; background: rgba(74,144,217,0.04); }
+.summary-table tr:hover td { background: rgba(201,146,42,0.08); }
+
+/* ── CONFIRMATION BLOCK ── */
+.confirm-block { border: 1px solid var(--border); padding: 36px 32px; margin: 20px 0; text-align: center; background: rgba(201,146,42,0.04); }
+.confirm-options { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin: 20px 0; }
+.confirm-opt { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 2.5vw, 20px); font-weight: 700; padding: 12px 24px; border: 2px solid; line-height: 1.3; }
+.confirm-opt.a { color: var(--gold-light); border-color: var(--gold); }
+.confirm-opt.b { color: var(--blue-light); border-color: var(--blue); }
+.confirm-or { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 2px; }
+.initials-row { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-top: 20px; }
+.initials-item { font-size: 13px; color: var(--muted); }
+.initials-line { display: inline-block; width: 140px; border-bottom: 1px solid var(--muted); margin-left: 8px; vertical-align: middle; }
+
+/* ── SIGNATURE BLOCK ── */
+.sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
+@media(max-width: 560px) { .sig-grid { grid-template-columns: 1fr; } }
+.sig-card { border: 1px solid var(--border); padding: 24px 20px; }
+.sig-party { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.sig-trust { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--blue-light); margin-bottom: 18px; }
+.sig-name { font-size: 13px; font-weight: 600; color: var(--cream); margin-bottom: 20px; }
+.sig-line { border-bottom: 1px solid var(--muted); margin-bottom: 10px; height: 32px; }
+.sig-field { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+.sig-field span { display: inline-block; width: 160px; border-bottom: 1px solid rgba(139,115,85,0.4); margin-left: 6px; }
+
+/* ── WITNESSES ── */
+.witness-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
+@media(max-width: 560px) { .witness-grid { grid-template-columns: 1fr; } }
+.witness-card { border: 1px solid rgba(201,146,42,0.15); padding: 20px; }
+.witness-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 14px; }
+.witness-field { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.witness-field span { display: inline-block; width: 100%; border-bottom: 1px solid rgba(139,115,85,0.4); margin-top: 4px; height: 20px; }
+
+.divider { height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 40px 0; }
+
+/* ── STICKY RECORD PANEL ── */
+.record-panel { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(14,11,6,0.97); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 16px; padding: 10px 20px; z-index: 1000; flex-wrap: wrap; }
+.record-panel button { font-family: 'Josefin Sans', sans-serif; font-size: 13px; letter-spacing: 1px; font-weight: 600; border: none; border-radius: 4px; padding: 9px 22px; cursor: pointer; transition: opacity 0.2s, transform 0.1s; }
+.record-panel button:active { transform: scale(0.97); }
+#recordBtn { background: var(--gold); color: var(--ink); }
+#stopBtn   { background: #8B2020; color: #fff; }
+#playBtn   { background: #1A5C2A; color: #fff; }
+#recStatus { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold-light); letter-spacing: 1px; min-width: 80px; text-align: center; }
+
+/* ── FOOTER ── */
+footer { border-top: 1px solid var(--border); padding: 28px; padding-bottom: 100px; text-align: center; position: relative; z-index: 1; }
+footer p { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; color: var(--muted); line-height: 2; }
+footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--blue-light); margin-top: 6px; }
+
+/* ══════════════════════════════════════════════════════
+   LEGAL DOCUMENT BODY — PLAIN BLACK ON WHITE
+   Promotional styling (gold/dark theme) is reserved for
+   .cover, .opening-quote, and footer .footer-note only.
+   Everything inside .page (Sections 1–16) overrides to
+   plain black-on-white for the actual contract text.
+   ══════════════════════════════════════════════════════ */
+.page {
+  background: #FFFFFF;
+  color: #111111;
+  padding-top: 40px;
+}
+.page .section { border-top: 1px solid #cccccc; }
+.page .section-num { color: #555555; }
+.page .section-title { color: #000000; }
+.page .sub-title { color: #000000; border-bottom: 1px solid #999999; padding-bottom: 4px; }
+.page .body-text { color: #222222; }
+.page .body-text strong { color: #000000; }
+.page .bullet-list li { color: #222222; }
+.page .bullet-list li::before { color: #000000; }
+
+.page .parties-table td { border: 1px solid #999999; }
+.page .parties-table td:first-child { background: #eeeeee; color: #000000; }
+.page .parties-table td:last-child { background: #ffffff; color: #111111; }
+.page .parties-table td strong { color: #000000; }
+
+.page .option-card { border: 1px solid #999999; }
+.page .option-card::before { background: #000000 !important; }
+.page .option-header { border-bottom: 1px solid #999999; }
+.page .option-label { color: #000000 !important; }
+.page .option-name { color: #000000; }
+.page .option-row { border-bottom: 1px solid #dddddd; }
+.page .option-row .key { color: #555555; }
+.page .option-row .val { color: #111111; }
+.page .option-row .val strong { color: #000000; }
+.page .option-note { color: #555555; }
+.page .option-card[style*="border: 2px solid"] { border: 2px solid #000000 !important; box-shadow: none !important; }
+.page .sub-title[style*="color"] { color: #000000 !important; }
+
+.page .data-table tr:nth-child(odd) td { background: #f5f5f5; }
+.page .data-table tr:hover td { background: #eeeeee; }
+.page .data-table td { border-bottom: 1px solid #cccccc; }
+.page .data-table td:first-child { color: #000000; }
+.page .data-table td:last-child { color: #222222; }
+
+.page .legacy-block { background: #f5f5f5; border-left: 3px solid #000000; color: #111111; }
+
+.page .summary-table th { border-bottom: 2px solid #000000; }
+.page .summary-table th:first-child { color: #555555; }
+.page .summary-table th:nth-child(2) { color: #000000; }
+.page .summary-table th:nth-child(3) { color: #000000; }
+.page .summary-table td { border-bottom: 1px solid #cccccc; }
+.page .summary-table td:first-child { color: #555555; }
+.page .summary-table td:nth-child(2) { color: #111111; background: #f5f5f5; }
+.page .summary-table td:nth-child(3) { color: #111111; background: #eeeeee; }
+.page .summary-table tr:hover td { background: #e5e5e5; }
+
+.page .confirm-block { border: 1px solid #999999; background: #f9f9f9; }
+.page .confirm-opt.a { color: #000000; border-color: #000000; }
+.page .confirm-opt.b { color: #000000; border-color: #000000; }
+.page .confirm-or { color: #555555; }
+.page .initials-item { color: #333333; }
+.page .initials-line { border-bottom: 1px solid #333333; }
+
+.page .sig-card { border: 1px solid #999999; }
+.page .sig-party { color: #000000; }
+.page .sig-trust { color: #333333; }
+.page .sig-name { color: #000000; }
+.page .sig-line { border-bottom: 1px solid #333333; }
+.page .sig-field { color: #555555; }
+.page .sig-field span { border-bottom: 1px solid #999999; }
+
+.page .witness-card { border: 1px solid #999999; }
+.page .witness-num { color: #555555; }
+.page .witness-field { color: #555555; }
+.page .witness-field span { border-bottom: 1px solid #999999; }
+
+.page .divider { background: #000000; height: 1px; }
+</style>
+</head>
+<body>
+
+<!-- TRANSLATE BAR -->
+<div class="lang-bar">
+    <label>🌐 Translate to:</label>
+    <select id="langSelect">
+        <option value="">-- Select Language --</option>
+        <option value="af">Afrikaans</option>
+        <option value="sq">Albanian</option>
+        <option value="am">Amharic</option>
+        <option value="ar">Arabic</option>
+        <option value="hy">Armenian</option>
+        <option value="as">Assamese</option>
+        <option value="ay">Aymara</option>
+        <option value="az">Azerbaijani</option>
+        <option value="bm">Bambara</option>
+        <option value="eu">Basque</option>
+        <option value="be">Belarusian</option>
+        <option value="bn">Bengali</option>
+        <option value="bs">Bosnian</option>
+        <option value="bg">Bulgarian</option>
+        <option value="my">Burmese</option>
+        <option value="ca">Catalan</option>
+        <option value="ceb">Cebuano</option>
+        <option value="ny">Chichewa</option>
+        <option value="zh-CN">Chinese (Simplified)</option>
+        <option value="zh-TW">Chinese (Traditional)</option>
+        <option value="co">Corsican</option>
+        <option value="hr">Croatian</option>
+        <option value="cs">Czech</option>
+        <option value="da">Danish</option>
+        <option value="dv">Dhivehi</option>
+        <option value="doi">Dogri</option>
+        <option value="nl">Dutch</option>
+        <option value="eo">Esperanto</option>
+        <option value="et">Estonian</option>
+        <option value="ee">Ewe</option>
+        <option value="tl">Filipino</option>
+        <option value="fi">Finnish</option>
+        <option value="fr">French</option>
+        <option value="fy">Frisian</option>
+        <option value="gl">Galician</option>
+        <option value="ka">Georgian</option>
+        <option value="de">German</option>
+        <option value="el">Greek</option>
+        <option value="gn">Guarani</option>
+        <option value="gu">Gujarati</option>
+        <option value="ht">Haitian Creole</option>
+        <option value="ha">Hausa</option>
+        <option value="haw">Hawaiian</option>
+        <option value="iw">Hebrew</option>
+        <option value="hi">Hindi</option>
+        <option value="hmn">Hmong</option>
+        <option value="hu">Hungarian</option>
+        <option value="is">Icelandic</option>
+        <option value="ig">Igbo</option>
+        <option value="id">Indonesian</option>
+        <option value="ga">Irish</option>
+        <option value="it">Italian</option>
+        <option value="ja">Japanese</option>
+        <option value="jw">Javanese</option>
+        <option value="kn">Kannada</option>
+        <option value="kk">Kazakh</option>
+        <option value="km">Khmer</option>
+        <option value="rw">Kinyarwanda</option>
+        <option value="gom">Konkani</option>
+        <option value="ko">Korean</option>
+        <option value="kri">Krio</option>
+        <option value="ku">Kurdish (Kurmanji)</option>
+        <option value="ckb">Kurdish (Sorani)</option>
+        <option value="ky">Kyrgyz</option>
+        <option value="lo">Lao</option>
+        <option value="la">Latin</option>
+        <option value="lv">Latvian</option>
+        <option value="ln">Lingala</option>
+        <option value="lt">Lithuanian</option>
+        <option value="lg">Luganda</option>
+        <option value="lb">Luxembourgish</option>
+        <option value="mk">Macedonian</option>
+        <option value="mai">Maithili</option>
+        <option value="mg">Malagasy</option>
+        <option value="ms">Malay</option>
+        <option value="ml">Malayalam</option>
+        <option value="mt">Maltese</option>
+        <option value="mi">Maori</option>
+        <option value="mr">Marathi</option>
+        <option value="mni-Mtei">Meiteilon (Manipuri)</option>
+        <option value="lus">Mizo</option>
+        <option value="ne">Nepali</option>
+        <option value="no">Norwegian</option>
+        <option value="or">Odia (Oriya)</option>
+        <option value="om">Oromo</option>
+        <option value="ps">Pashto</option>
+        <option value="fa">Persian</option>
+        <option value="pl">Polish</option>
+        <option value="pt">Portuguese</option>
+        <option value="pa">Punjabi</option>
+        <option value="qu">Quechua</option>
+        <option value="ro">Romanian</option>
+        <option value="ru">Russian</option>
+        <option value="sm">Samoan</option>
+        <option value="sa">Sanskrit</option>
+        <option value="gd">Scots Gaelic</option>
+        <option value="sr">Serbian</option>
+        <option value="st">Sesotho</option>
+        <option value="sn">Shona</option>
+        <option value="sd">Sindhi</option>
+        <option value="si">Sinhala</option>
+        <option value="sk">Slovak</option>
+        <option value="sl">Slovenian</option>
+        <option value="so">Somali</option>
+        <option value="es">Spanish</option>
+        <option value="su">Sundanese</option>
+        <option value="sw">Swahili</option>
+        <option value="sv">Swedish</option>
+        <option value="tg">Tajik</option>
+        <option value="ta">Tamil</option>
+        <option value="tt">Tatar</option>
+        <option value="te">Telugu</option>
+        <option value="th">Thai</option>
+        <option value="ti">Tigrinya</option>
+        <option value="ts">Tsonga</option>
+        <option value="tr">Turkish</option>
+        <option value="tk">Turkmen</option>
+        <option value="ak">Twi</option>
+        <option value="uk">Ukrainian</option>
+        <option value="ur">Urdu</option>
+        <option value="ug">Uyghur</option>
+        <option value="uz">Uzbek</option>
+        <option value="vi">Vietnamese</option>
+        <option value="cy">Welsh</option>
+        <option value="xh">Xhosa</option>
+        <option value="yi">Yiddish</option>
+        <option value="yo">Yoruba</option>
+        <option value="zu">Zulu</option>
+    </select>
+    <span class="hint">👆 Tap any sentence below to see its translation, or use the button below to translate the whole document at once</span>
+    <button id="translateAllBtn" style="margin-top:8px; padding:10px 20px; border-radius:20px; border:1px solid var(--border); background: var(--gold); color: var(--ink); font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:13px; cursor:pointer;">🌐 Translate Entire Document</button>
+    <span class="hint" id="translateAllStatus" style="display:none;"></span>
+</div>
+
+<!-- CONTACT BAR -->
+<div class="contact-bar">
+  <a class="contact-item" href="tel:+917989534732"><span class="contact-icon">📞</span><span>+91 79895 34732</span></a>
+  <div class="contact-sep"></div>
+  <a class="contact-item" href="mailto:englishsathya@gmail.com"><span class="contact-icon">✉</span><span>englishsathya@gmail.com</span></a>
+  <div class="contact-sep"></div>
+  <a class="contact-item" href="https://bilinglishsathya.github.io/website" target="_blank" rel="noopener"><span class="contact-icon">🌐</span><span>Website</span></a>
+  <div class="contact-sep"></div>
+  <a class="contact-item" href="https://thottempadi.vercel.app/demo.html" target="_blank" rel="noopener"><span class="contact-icon">▶</span><span>Course Demo</span></a>
+  <div class="contact-sep"></div>
+  <a class="contact-item" href="https://www.youtube.com/@englishsathya1" target="_blank" rel="noopener"><span class="contact-icon">▶</span><span>YouTube</span></a>
+  <div class="contact-sep"></div>
+  <a class="contact-item" href="https://www.linkedin.com/in/sathyalakshmi-thottempudi-17046b14a" target="_blank" rel="noopener"><span class="contact-icon">in</span><span>LinkedIn</span></a>
+</div>
+
+<div class="conf-bar">
+  <span>Strictly Private &amp; Confidential — For Authorised Parties Only</span>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <p class="cover-main-title">Course License and Distribution Agreement</p>
+  <p class="cover-sub">BILINGLISHSATHYA Spoken English Course</p>
+  <p class="cover-trust">BILINGLISHSATHYA Foundation Trust</p>
+  <div class="cover-ref">Agreement Reference No. &nbsp; BILIN-________-2026</div>
+</div>
+
+<!-- ABOUT -->
+<div class="opening-quote">
+  <div class="pull-quote">
+    <p><span class="translatable">In the 15th century, Caxton's press made English the language of every reader and writer. In the 20th century, the computer brought English into every home. In the 21st century, English is the language of the Internet, AI and Robotics. English is no longer just a language — it is the key to every future. Spoken English is the gateway to success.</span></p>
+  </div>
+  <p class="about-text"><span class="translatable">BILINGLISHSATHYA is a 50-day structured Spoken English course created by Dr. Sathyalakshmi Thottempadi, PhD in Teaching Methodology, with 42 years of classroom experience at Bright Academy of English, Nellore, since 1984.</span> <span class="translatable">The course employs a proprietary drill methodology that is the exclusive Trade Secret of the Licensor and the BILINGLISHSATHYA Foundation Trust.</span></p>
+</div>
+
+<div class="page">
+
+  <!-- 1. PREAMBLE -->
+  <div class="section">
+    <p class="section-num">Section 1</p>
+    <h2 class="section-title">Preamble — Parties to the Agreement</h2>
+    <p class="body-text"><span class="translatable">This Course License and Distribution Agreement is entered into on this day, by and between the Licensor and the Licensee as described below.</span></p>
+    <table class="parties-table">
+      <tr>
+        <td>LICENSOR</td>
+        <td>
+          <strong>BILINGLISHSATHYA Foundation Trust</strong><br>
+          <span class="translatable">Represented by its Founder and Chief Trustee</span><br>
+          <strong>Smt. Sathyalakshmi Thottempadi — PhD in Teaching Methodology</strong><br>
+          Bright Academy of English, Nellore | Since 1984<br>
+          Trust Registration No.: ___________________________<br>
+          Copyright Registration No.: ___________________________ <em>(Application filed; to be updated upon issuance)</em><br>
+          Address: 8-45, Kasumur, Venkatachalam Mandal, Nellore District, Andhra Pradesh, India — 524320<br>
+          Phone: +91 79895 34732 | Email: englishsathya@gmail.com<br>
+          Website: <a href="https://bilinglishsathya.github.io/website" target="_blank">https://bilinglishsathya.github.io/website</a><br>
+          Course Demo: <a href="https://thottempadi.vercel.app/demo.html" target="_blank">https://thottempadi.vercel.app/demo.html</a><br>
+          YouTube: <a href="https://www.youtube.com/@englishsathya1" target="_blank">https://www.youtube.com/@englishsathya1</a><br>
+          LinkedIn: <a href="https://www.linkedin.com/in/sathyalakshmi-thottempudi-17046b14a" target="_blank">https://www.linkedin.com/in/sathyalakshmi-thottempudi-17046b14a</a>
+        </td>
+      </tr>
+      <tr>
+        <td>LICENSEE</td>
+        <td>
+          <strong>Name / Company:</strong> ___________________________<br>
+          Legal Entity Type: Corporation / LLC / Individual<br>
+          Registered Address: ___________________________<br>
+          Authorized Representative: ___________________________<br>
+          Email: ___________________________
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 2. DEAL OPTIONS -->
+  <div class="section">
+    <p class="section-num">Section 2</p>
+    <h2 class="section-title">Deal Options</h2>
+    <p class="body-text"><span class="translatable">The Parties shall select a deal structure by initialling the chosen option before signing. Territory-Specific Licenses (Option B) are the Trust's primary and recommended pathway for new licensees, allowing market entry at accessible scale before considering broader rights.</span></p>
+
+    <!-- OPTION B — FEATURED FIRST -->
+    <p class="sub-title" style="color: var(--gold-light); font-size: 15px;">★ Recommended — Option B: Territory-Specific License</p>
+    <div class="options-grid" style="grid-template-columns: 1fr;">
+      <div class="option-card option-a" style="border: 2px solid var(--gold-light); box-shadow: 0 0 24px rgba(201,146,42,0.25);">
+        <div class="option-header">
+          <div class="option-label">Option B — Featured</div>
+          <div class="option-name">Territory-Specific License<br>(1-Year Term)</div>
+        </div>
+        <div class="option-body">
+          <div class="option-row"><span class="key">Territory Fee</span><span class="val">Negotiated individually per agreement, based on market size and demonstrated demand at time of signing — no fixed global price list</span></div>
+          <div class="option-row"><span class="key">Territory</span><span class="val">A single state, country, or defined region, as specified in the applicable Schedule</span></div>
+          <div class="option-row"><span class="key">Duration</span><span class="val"><strong>1 Year</strong> Initial Term, with a review check-in at the 6-month mark</span></div>
+          <div class="option-row"><span class="key">Royalty</span><span class="val"><strong>20%</strong> of Gross Revenue on every sale — fixed, non-negotiable, applies uniformly worldwide</span></div>
+          <div class="option-row"><span class="key">Reversion</span><span class="val">Exclusivity automatically reverts to the Trust at term end unless both Parties agree in writing to renew</span></div>
+          <div class="option-row"><span class="key">Renewal</span><span class="val">Fee reset fresh each year by the Chief Trustee, based on actual demonstrated sales performance in the prior term — not capped at the introductory rate</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="sub-title">2.1 Payment Gateway &amp; Access Control</p>
+    <ul class="bullet-list">
+      <li><span class="translatable">All payments from end users for access to the Course, in any territory, shall be processed exclusively through payment gateways owned and controlled by the Trust (currently Razorpay and PayPal). The Licensee shall never operate, control, or replicate an independent payment collection or access-granting system for the Course.</span></li>
+      <li><span class="translatable">Access to the Course shall be granted only through the Trust's own access-control system. The Trust retains sole control of the access-code generation logic and any associated cryptographic secrets at all times.</span></li>
+      <li><span class="translatable">Each territory licensee shall be assigned a unique tracked referral link. Sales attributed to that link, as recorded in the Trust's own payment gateway and access-code records, shall be the sole basis for calculating royalties and territory performance. The Trust's own records shall prevail over any Licensee-reported figures in the event of any discrepancy.</span></li>
+    </ul>
+
+    <p class="sub-title">2.2 No Expansion Without Consent</p>
+    <p class="body-text"><span class="translatable">The Licensee's rights under this Option are limited to marketing, promotion, and facilitating sales of the Course as it currently exists within the licensed territory. The Licensee shall not create, commission, or authorize any new course, expanded curriculum, or material modification to the Course without the Chief Trustee's prior written consent.</span></p>
+
+    <p class="sub-title">2.3 Re-Licensing to a New Party</p>
+    <p class="body-text"><span class="translatable">If a territory reverts to the Trust at the end of a term because the original Licensee does not renew, or the Trust elects not to renew with that Licensee, the Trust is free to grant a fresh Option B license for that same territory to a different, new party. The fee for such a new license shall be negotiated afresh with the new party, based on the demonstrated market demand and results established during the prior Licensee's term, and is not bound by, or owed to, the original Licensee in any way. The 20% Royalty under Clause 2.1 applies to the new party exactly as it applied to the original Licensee.</span></p>
+
+    <p class="option-note"><span class="translatable">Option B may be entered into for multiple territories simultaneously, each governed by its own Schedule specifying territory, fee, and effective dates, without affecting the Trust's rights under Option A below.</span></p>
+
+    <p class="sub-title">2.4 Market Opportunity — Mandatory Education, Missing Fluency</p>
+    <p class="body-text"><span class="translatable">In several of the world's largest economies — including Japan, South Korea, China, and Germany — English is a compulsory subject taught for a decade or more within the national school curriculum. Despite this, formal instruction in these systems is typically grammar-heavy, exam-focused, and delivered through memorization rather than spoken practice, leaving the great majority of students without genuine conversational fluency even after ten to fifteen years of study. BILINGLISHSATHYA does not compete with these mandatory curricula; it fills the specific gap they consistently fail to close — real spoken fluency. This makes such territories especially well-suited candidates for Option B licensing, as the underlying demand for spoken English has already been created and sustained by each country's own education system.</span></p>
+
+    <div class="divider"></div>
+
+    <!-- OPTION A — WORLDWIDE PERPETUAL, LAST -->
+    <p class="sub-title">2.4 Option A — Worldwide Rights (Perpetual)</p>
+    <p class="body-text"><span class="translatable">The Trust's ultimate ambition remains Option A — Worldwide Rights in perpetuity, covering literally all countries across the globe without exception, for the full term of copyright protection. Option B above is not a discount of this ambition, but a deliberate strategy to make BILINGLISHSATHYA accessible to smaller entrepreneurs and regional partners, allowing the Trust's global reach to be built incrementally — one territory and one term at a time — while the Trust's long-term value is protected and grown through the Royalty regardless of the scale of any individual agreement.</span></p>
+    <div class="options-grid" style="grid-template-columns: 1fr;">
+      <div class="option-card option-a">
+        <div class="option-header">
+          <div class="option-label">Option A</div>
+          <div class="option-name">World Rights<br>(Perpetual — All Countries)</div>
+        </div>
+        <div class="option-body">
+          <div class="option-row"><span class="key">License Fee</span><span class="val"><strong>INR 1,000 Crore</strong><br>(~USD 119 Million)</span></div>
+          <div class="option-row"><span class="key">Territory</span><span class="val">WORLDWIDE — Every country, without exception</span></div>
+          <div class="option-row"><span class="key">Duration</span><span class="val">Perpetual — Full Copyright Term</span></div>
+          <div class="option-row"><span class="key">Royalty</span><span class="val"><strong>25%</strong> of Gross Revenue</span></div>
+          <div class="option-row"><span class="key">Payment</span><span class="val">50% within 30 days + 50% within 90 days of signing</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="option-note"><span class="translatable">The chosen option shall be confirmed by both Parties initialling the Confirmation Block at Clause 15.</span></p>
+  </div>
+
+  <!-- 3. DEFINITIONS -->
+  <div class="section">
+    <p class="section-num">Section 3</p>
+    <h2 class="section-title">Definitions</h2>
+    <table class="data-table">
+      <tr><td>"Course"</td><td><span class="translatable">The BILINGLISHSATHYA Spoken English Course — a 50-day program comprising all HTML files, audio-visual materials, assessments, branding, scripts, proprietary drill methodology, and all associated intellectual property.</span></td></tr>
+      <tr><td>"Trust"</td><td><span class="translatable">The BILINGLISHSATHYA Foundation Trust, the legal owner of all rights in the Course.</span></td></tr>
+      <tr><td>"Chief Trustee"</td><td><span class="translatable">Smt. Sathyalakshmi Thottempadi, Founder and sole controlling authority of the Trust during her lifetime.</span></td></tr>
+      <tr><td>"Gross Revenue"</td><td><span class="translatable">The total sale price paid by any end user or institution to the Licensee, before any deductions whatsoever.</span></td></tr>
+      <tr><td>"Royalty"</td><td><span class="translatable">25% of Gross Revenue payable to the Trust on every sale.</span></td></tr>
+      <tr><td>"Trade Secret"</td><td><span class="translatable">The Licensor's proprietary drill methodology, sentence transformation system, and pedagogical framework — permanently confidential.</span></td></tr>
+      <tr><td>"Successor Trustees"</td><td><span class="translatable">The independent trustees who assume management of the Trust solely after the passing of the Chief Trustee.</span></td></tr>
+    </table>
+  </div>
+
+  <!-- 4. FOUNDATION TRUST -->
+  <div class="section">
+    <p class="section-num">Section 4</p>
+    <h2 class="section-title">BILINGLISHSATHYA Foundation Trust — Structure &amp; Control</h2>
+    <p class="sub-title">4.1 Absolute Control During Chief Trustee's Lifetime</p>
+    <ul class="bullet-list">
+      <li><span class="translatable">Smt. Sathyalakshmi Thottempadi is the Founder and Chief Trustee with absolute and sole authority over all Trust decisions during her lifetime.</span></li>
+      <li><span class="translatable">No decision — financial, legal, or operational — can be made without the Chief Trustee's written approval and signature.</span></li>
+      <li><span class="translatable">Successor Trustees have zero authority, zero access to funds, and zero decision-making power while the Chief Trustee is alive.</span></li>
+      <li><span class="translatable">All royalty payments from the Licensee shall be made directly to the Trust's bank account, controlled solely by the Chief Trustee.</span></li>
+    </ul>
+    <p class="sub-title">4.2 Successor Trustees</p>
+    <ul class="bullet-list">
+      <li><span class="translatable">Successor Trustees activate solely upon the natural passing of the Chief Trustee, evidenced by a certified death certificate.</span></li>
+      <li><span class="translatable">Successor Trustees are bound by the Trust Deed and this Agreement and may not alter the Trust's purpose or beneficiaries.</span></li>
+    </ul>
+    <p class="sub-title">4.3 Purpose of the Trust After Chief Trustee's Passing</p>
+    <ul class="bullet-list">
+      <li><span class="translatable">The Trust shall use all royalties and income for the benefit of non-native English speakers worldwide — particularly the underprivileged who cannot afford quality spoken English education.</span></li>
+      <li><span class="translatable">The Trust shall protect the Trade Secret, branding, and intellectual property of BILINGLISHSATHYA permanently.</span></li>
+    </ul>
+    <p class="sub-title">4.4 Legacy Clause</p>
+    <div class="legacy-block">
+      <span class="translatable">The Chief Trustee has no biological heirs. By her own free will and noble intention, she designates the non-native English speakers of the world as the true beneficiaries of BILINGLISHSATHYA. Her legacy shall live in every person who speaks English confidently because of this course. BILINGLISHSATHYA is not merely a course — it is a gift to humanity.</span>
+    </div>
+  </div>
+
+  <!-- 5. IP -->
+  <div class="section">
+    <p class="section-num">Section 5</p>
+    <h2 class="section-title">Intellectual Property &amp; Trade Secret Protection</h2>
+    <ul class="bullet-list">
+      <li><span class="translatable">The Trust retains full, absolute, and irrevocable ownership of all Intellectual Property in the Course including the name BILINGLISHSATHYA, all trademarks, logos, branding, and course content.</span></li>
+      <li><span class="translatable">The proprietary drill methodology is a permanently protected Trade Secret. The Licensee shall never disclose, reverse-engineer, publish, or share it with any third party.</span></li>
+      <li><span class="translatable">All future updates, enhancements, or new modules added to the Course remain the exclusive property of the Trust.</span></li>
+    </ul>
+  </div>
+
+  <!-- 6. REVERSION -->
+  <div class="section">
+    <p class="section-num">Section 6</p>
+    <h2 class="section-title">Reversion of Rights</h2>
+    <ul class="bullet-list">
+      <li><span class="translatable">Under the Indian Copyright Act 1957 and the US Copyright Act, copyright cannot be permanently alienated.</span></li>
+      <li><span class="translatable">All licensed rights revert automatically to the Trust upon expiry of the License Term. The Licensee has no right to oppose or delay such reversion.</span></li>
+      <li><span class="translatable">Any sub-licenses granted by the Licensee automatically terminate upon reversion.</span></li>
+    </ul>
+  </div>
+
+  <!-- 7. FINANCIAL -->
+  <div class="section">
+    <p class="section-num">Section 7</p>
+    <h2 class="section-title">Financial Terms</h2>
+    <p class="sub-title">7.1 Royalty Payments</p>
+    <ul class="bullet-list">
+      <li><span class="translatable">Royalties shall be paid quarterly within 30 days after each calendar quarter end.</span></li>
+      <li><span class="translatable">Each payment shall be accompanied by a Chartered Accountant verified Statement of Sales.</span></li>
+      <li><span class="translatable">Late payments shall attract interest at 18% per annum from the due date.</span></li>
+      <li><span class="translatable">Royalties shall never be reduced by the Licensee's costs, discounts, taxes, or payment gateway fees.</span></li>
+    </ul>
+    <p class="sub-title">7.2 Fee Enhancement</p>
+    <p class="body-text"><span class="translatable">The Chief Trustee may revise end-user pricing upward at any time in response to market demand, inflation, or enhanced course value. The Licensee shall implement revised pricing within 30 days of written notice.</span></p>
+    <p class="sub-title">7.3 Audit Rights</p>
+    <p class="body-text"><span class="translatable">The Trust may appoint an independent auditor with 15 days' notice to inspect the Licensee's financial records relating to Course sales. If underpayment exceeds 5%, the Licensee bears all audit costs plus the shortfall with interest at 18% per annum.</span></p>
+  </div>
+
+  <!-- 8. RESERVED RIGHTS -->
+  <div class="section">
+    <p class="section-num">Section 8</p>
+    <h2 class="section-title">Licensor's Reserved Rights</h2>
+    <ul class="bullet-list">
+      <li><span class="translatable">The Chief Trustee retains the right to conduct personal teaching, coaching, and training anywhere in the world at any time.</span></li>
+      <li><span class="translatable">The Chief Trustee may develop, create, publish, and sell any other educational courses in any subject area other than Spoken English, freely and without restriction.</span></li>
+      <li><span class="translatable">The Chief Trustee retains the sole right to enhance course fees as and when there is demand.</span></li>
+    </ul>
+  </div>
+
+  <!-- 9. NON-COMPETE -->
+  <div class="section">
+    <p class="section-num">Section 9</p>
+    <h2 class="section-title">Licensor's Non-Compete Undertaking</h2>
+    <p class="body-text"><span class="translatable">During the License Period, the Chief Trustee shall not join, partner with, or collaborate with any other venture to create or sell a Spoken English course substantially similar to BILINGLISHSATHYA within the Licensed Territory.</span></p>
+  </div>
+
+  <!-- 10. CONFIDENTIALITY -->
+  <div class="section">
+    <p class="section-num">Section 10</p>
+    <h2 class="section-title">Confidentiality</h2>
+    <p class="body-text"><span class="translatable">Both Parties shall keep all proprietary information, financial terms, and business strategies strictly confidential. The Licensee shall take special care to protect the Trade Secret and shall never disclose the drill methodology to any third party under any circumstances. This obligation is permanent and survives termination of this Agreement indefinitely.</span></p>
+  </div>
+
+  <!-- 11. TERMINATION -->
+  <div class="section">
+    <p class="section-num">Section 11</p>
+    <h2 class="section-title">Term and Termination</h2>
+    <ul class="bullet-list">
+      <li><span class="translatable">Either Party may terminate for material breach with 60 days' written notice if the breach is not remedied within the notice period.</span></li>
+      <li><span class="translatable">Upon termination: all license rights cease immediately; all outstanding royalties become immediately payable to the Trust; the Upfront License Fee is non-refundable in all circumstances.</span></li>
+    </ul>
+  </div>
+
+  <!-- 12. DISPUTE -->
+  <div class="section">
+    <p class="section-num">Section 12</p>
+    <h2 class="section-title">Dispute Resolution &amp; Governing Law</h2>
+    <ul class="bullet-list">
+      <li><span class="translatable">Disputes shall first be resolved amicably within 30 days of written notice.</span></li>
+      <li><span class="translatable">Unresolved disputes shall be referred to binding arbitration. Governing Law: India.</span></li>
+    </ul>
+  </div>
+
+  <!-- 13. GENERAL -->
+  <div class="section">
+    <p class="section-num">Section 13</p>
+    <h2 class="section-title">General Provisions</h2>
+    <ul class="bullet-list">
+      <li><span class="translatable">This Agreement supersedes all prior negotiations and representations between the Parties.</span></li>
+      <li><span class="translatable">Amendments are only valid if made in writing and signed by both Parties.</span></li>
+      <li><span class="translatable">Neither Party is liable for failure due to events beyond reasonable control including acts of God, pandemic, or government action.</span></li>
+      <li><span class="translatable">No partnership, joint venture, agency, or employment relationship is created by this Agreement.</span></li>
+    </ul>
+  </div>
+
+  <!-- 14. SUMMARY -->
+  <div class="section">
+    <p class="section-num">Section 14</p>
+    <h2 class="section-title">Key Terms Summary</h2>
+    <table class="summary-table">
+      <thead>
+        <tr><th>Term</th><th>Option B — Territory-Specific (Featured)</th><th>Option A — World Perpetual</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>License Fee</td><td>Negotiated per territory</td><td>INR 1000 Crore (~USD 119M)</td></tr>
+        <tr><td>Territory</td><td>Single state / country / region</td><td>Worldwide — all countries</td></tr>
+        <tr><td>Duration</td><td>1 Year (renewable)</td><td>Perpetual — Full Copyright Term</td></tr>
+        <tr><td>Royalty</td><td>20% of Gross Revenue</td><td>25% of Gross Revenue</td></tr>
+        <tr><td>Trade Secret</td><td>Protected permanently</td><td>Protected permanently</td></tr>
+        <tr><td>Legacy</td><td>Non-native English speakers worldwide</td><td>Non-native English speakers worldwide</td></tr>
+        <tr><td>Fee Enhancement</td><td>Chief Trustee may revise anytime</td><td>Chief Trustee may revise anytime</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 15. CONFIRMATION -->
+  <div class="section">
+    <p class="section-num">Section 15</p>
+    <h2 class="section-title">Chosen Option — Confirmation</h2>
+    <p class="body-text"><span class="translatable">The Parties confirm their chosen option (please circle and initial):</span></p>
+    <div class="confirm-block">
+      <div class="confirm-options">
+        <div class="confirm-opt a">OPTION B<br>Territory-Specific License (1 Year)<br>Fee Negotiated Per Territory</div>
+        <div class="confirm-or">— OR —</div>
+        <div class="confirm-opt b">OPTION A<br>World Rights (Perpetual)<br>INR 1000 Crore</div>
+      </div>
+      <div class="initials-row">
+        <div class="initials-item">Chief Trustee's Initials: <span class="initials-line"></span></div>
+        <div class="initials-item">Licensee's Initials: <span class="initials-line"></span></div>
+        <div class="initials-item">Chosen Option: <span class="initials-line" style="width:80px"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16. SIGNATURES -->
+  <div class="section">
+    <p class="section-num">Section 16</p>
+    <h2 class="section-title">Signatures</h2>
+    <p class="body-text"><span class="translatable">IN WITNESS WHEREOF, the Parties have executed this Agreement as of the date first written above, each having read and understood all terms herein.</span></p>
+    <div class="sig-grid">
+      <div class="sig-card">
+        <div class="sig-party">For the Licensor</div>
+        <div class="sig-trust">BILINGLISHSATHYA Foundation Trust</div>
+        <div class="sig-line"></div>
+        <div class="sig-name">Smt. Sathyalakshmi Thottempadi<br>Founder &amp; Chief Trustee</div>
+        <div class="sig-field">Date: <span></span></div>
+        <div class="sig-field">Place: <span></span></div>
+      </div>
+      <div class="sig-card">
+        <div class="sig-party">For the Licensee</div>
+        <div class="sig-trust">&nbsp;</div>
+        <div class="sig-line"></div>
+        <div class="sig-name">Authorized Representative</div>
+        <div class="sig-field">Name: <span></span></div>
+        <div class="sig-field">Designation: <span></span></div>
+        <div class="sig-field">Date: <span></span></div>
+        <div class="sig-field">Place: <span></span></div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <p class="sub-title">Witnesses</p>
+    <div class="witness-grid">
+      <div class="witness-card">
+        <div class="witness-num">Witness 1</div>
+        <div class="witness-field">Name: <span></span></div>
+        <div class="witness-field">Address: <span></span></div>
+        <div class="witness-field">ID Proof No.: <span></span></div>
+        <div class="witness-field">Date: <span></span></div>
+      </div>
+      <div class="witness-card">
+        <div class="witness-num">Witness 2</div>
+        <div class="witness-field">Name: <span></span></div>
+        <div class="witness-field">Address: <span></span></div>
+        <div class="witness-field">ID Proof No.: <span></span></div>
+        <div class="witness-field">Date: <span></span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p style="font-style:italic; font-family:'Cormorant Garamond',serif; font-size:13px; color:rgba(254,251,243,0.5); margin-bottom:10px;"><span class="translatable">This document should be reviewed by a qualified legal professional before execution.</span></p>
+  <p>© BILINGLISHSATHYA Foundation Trust. All rights reserved.</p>
+  <p class="footer-note"><span class="translatable">Founded by Smt. Sathyalakshmi Thottempadi — For the non-native English speakers of the world.</span></p>
+</footer>
+
+<!-- TRANSLATE TOOLTIP -->
+<div class="translate-tooltip" id="translateTooltip">
+    <span class="tt-close" id="tooltipClose">✕</span>
+    <div class="tt-label">Translation</div>
+    <div class="tt-text" id="tooltipText">Loading...</div>
+    <div class="tt-lang" id="tooltipLang"></div>
+</div>
+
+<!-- STICKY RECORD / STOP / PLAY PANEL -->
+<div class="record-panel">
+  <button id="recordBtn">🎙 Record</button>
+  <button id="stopBtn">⏹ Stop</button>
+  <button id="playBtn">▶ Play</button>
+  <span id="recStatus">Ready</span>
+</div>
+
+<script>
+  // ── TRANSLATE ──
+  const tooltip = document.getElementById('translateTooltip');
+  const tooltipText = document.getElementById('tooltipText');
+  const tooltipLang = document.getElementById('tooltipLang');
+  const tooltipClose = document.getElementById('tooltipClose');
+  const langSelect = document.getElementById('langSelect');
+  let selectedSpan = null;
+
+  const langNames = {};
+  document.querySelectorAll('#langSelect option').forEach(opt => {
+    if (opt.value) langNames[opt.value] = opt.textContent;
+  });
+
+  document.querySelectorAll('.translatable').forEach(span => {
+    span.addEventListener('click', async function(e) {
+      e.stopPropagation();
+      const lang = langSelect.value;
+      if (!lang) { alert('Please select a language first from the dropdown above.'); return; }
+      if (selectedSpan) selectedSpan.classList.remove('selected');
+      selectedSpan = this;
+      this.classList.add('selected');
+      tooltipText.textContent = 'Translating...';
+      tooltipLang.textContent = '';
+      positionTooltip(e);
+      tooltip.style.display = 'block';
+      const text = encodeURIComponent(this.innerText.trim());
+      try {
+        const res = await fetch(`https://api.mymemory.translated.net/get?q=${text}&langpair=en|${lang}`);
+        const data = await res.json();
+        tooltipText.textContent = data.responseData.translatedText || 'Translation not available';
+        tooltipLang.textContent = '→ ' + (langNames[lang] || lang);
+      } catch {
+        tooltipText.textContent = 'Translation failed. Check internet.';
+      }
+    });
+  });
+
+  function positionTooltip(e) {
+    const x = Math.min(e.clientX - 10, window.innerWidth - 280);
+    const y = e.clientY + 15;
+    tooltip.style.left = Math.max(5, x) + 'px';
+    tooltip.style.top = y + 'px';
+  }
+
+  tooltipClose.addEventListener('click', () => {
+    tooltip.style.display = 'none';
+    if (selectedSpan) selectedSpan.classList.remove('selected');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!tooltip.contains(e.target) && !e.target.classList.contains('translatable')) {
+      tooltip.style.display = 'none';
+      if (selectedSpan) selectedSpan.classList.remove('selected');
+    }
+  });
+
+  // ── TRANSLATE ENTIRE DOCUMENT ──
+  const translateAllBtn = document.getElementById('translateAllBtn');
+  const translateAllStatus = document.getElementById('translateAllStatus');
+  let documentTranslated = false;
+  let originalTexts = new Map();
+
+  translateAllBtn.addEventListener('click', async () => {
+    const lang = langSelect.value;
+    if (!lang) { alert('Please select a language first from the dropdown above.'); return; }
+
+    if (documentTranslated) {
+      // Restore original English
+      document.querySelectorAll('.translatable').forEach(span => {
+        if (originalTexts.has(span)) {
+          span.innerHTML = originalTexts.get(span);
+        }
+      });
+      documentTranslated = false;
+      translateAllBtn.textContent = '🌐 Translate Entire Document';
+      translateAllStatus.style.display = 'none';
+      return;
+    }
+
+    const spans = Array.from(document.querySelectorAll('.translatable'));
+    translateAllBtn.disabled = true;
+    translateAllBtn.textContent = '⏳ Translating...';
+    translateAllStatus.style.display = 'block';
+    translateAllStatus.textContent = `Translating 0 / ${spans.length} sections...`;
+
+    let completed = 0;
+    for (const span of spans) {
+      if (!originalTexts.has(span)) {
+        originalTexts.set(span, span.innerHTML);
+      }
+      const text = encodeURIComponent(span.innerText.trim());
+      try {
+        const res = await fetch(`https://api.mymemory.translated.net/get?q=${text}&langpair=en|${lang}`);
+        const data = await res.json();
+        const translated = data.responseData.translatedText;
+        if (translated) {
+          span.textContent = translated;
+        }
+      } catch {
+        // leave original text if translation fails for this segment
+      }
+      completed++;
+      translateAllStatus.textContent = `Translating ${completed} / ${spans.length} sections...`;
+      // small delay to avoid overwhelming the free translation API
+      await new Promise(r => setTimeout(r, 150));
+    }
+
+    documentTranslated = true;
+    translateAllBtn.disabled = false;
+    translateAllBtn.textContent = '↩ Show Original (English)';
+    translateAllStatus.textContent = `Document translated to ${langNames[lang] || lang}. Tap the button again to see the original English.`;
+  });
+
+  // ── VOICE RECORDER ──
+  let mediaRecorder, audioChunks = [], audioBlob, audioURL;
+
+  document.getElementById('recordBtn').addEventListener('click', async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      audioChunks = [];
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+      mediaRecorder.onstop = () => {
+        audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+        audioURL = URL.createObjectURL(audioBlob);
+        document.getElementById('recStatus').textContent = 'Recorded ✓';
+      };
+      mediaRecorder.start();
+      document.getElementById('recStatus').textContent = '● Recording';
+    } catch (err) {
+      document.getElementById('recStatus').textContent = 'Mic error';
+    }
+  });
+
+  document.getElementById('stopBtn').addEventListener('click', () => {
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+      mediaRecorder.stop();
+      mediaRecorder.stream.getTracks().forEach(t => t.stop());
+    }
+  });
+
+  document.getElementById('playBtn').addEventListener('click', () => {
+    if (audioURL) {
+      const audio = new Audio(audioURL);
+      audio.play();
+      document.getElementById('recStatus').textContent = '▶ Playing';
+      audio.onended = () => document.getElementById('recStatus').textContent = 'Done ✓';
+    } else {
+      document.getElementById('recStatus').textContent = 'No recording';
+    }
+  });
+</script>
+
+<script src="accent.js"></script>
+</body>
+</html>
