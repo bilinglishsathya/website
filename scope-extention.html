@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BILINGLISHSATHYA — Scope of Extension</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Quattrocento+Sans:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --cream: #fdf8f0;
+    --warm-white: #fffcf7;
+    --ink: #1a1208;
+    --deep-brown: #2e1f0a;
+    --gold: #b8860b;
+    --gold-light: #d4a843;
+    --gold-pale: #f0e0b0;
+    --rust: #8b4513;
+    --sage: #5a6e4a;
+    --border: #d4c4a0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--cream);
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(212,168,67,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(212,168,67,0.06) 0%, transparent 50%);
+    color: var(--ink);
+    font-family: 'Quattrocento Sans', sans-serif;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ── TRANSLATE BAR ── */
+  .lang-bar {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 8px; padding: 12px 16px;
+    background: var(--gold-pale);
+    border-bottom: 1px solid var(--border);
+    width: 100%;
+  }
+  .lang-bar label {
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 13px; color: var(--deep-brown); font-weight: 700;
+  }
+  .lang-bar select {
+    width: 100%; max-width: 500px;
+    padding: 10px; border-radius: 4px;
+    border: 1px solid var(--gold); font-size: 15px;
+    background: var(--warm-white); color: var(--deep-brown);
+    font-family: 'Quattrocento Sans', sans-serif;
+  }
+  .lang-bar .hint { font-size: 12px; color: var(--rust); text-align: center; }
+
+  /* ── TRANSLATE TOOLTIP ── */
+  .translate-tooltip {
+    display: none; position: fixed; background: #1a1a2e; color: #fff;
+    padding: 10px 14px; border-radius: 10px; font-size: 14px;
+    max-width: 260px; z-index: 9999; box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    text-align: left; line-height: 1.5;
+  }
+  .translate-tooltip::after {
+    content: ''; position: absolute; top: -8px; left: 20px;
+    border-width: 0 8px 8px 8px; border-style: solid;
+    border-color: transparent transparent #1a1a2e transparent;
+  }
+  .translate-tooltip .tt-label { font-size: 11px; color: #aaa; margin-bottom: 4px; }
+  .translate-tooltip .tt-text { font-size: 15px; font-weight: bold; color: #7effa0; }
+  .translate-tooltip .tt-lang { font-size: 11px; color: #888; margin-top: 4px; }
+  .translate-tooltip .tt-close { float: right; cursor: pointer; color: #aaa; font-size: 16px; margin-left: 8px; }
+
+  /* ── TRANSLATABLE ── */
+  .translatable {
+    cursor: pointer; border-bottom: 1px dashed rgba(184,134,11,0.5);
+    transition: background 0.2s; border-radius: 3px; padding: 1px 2px;
+  }
+  .translatable:hover { background: rgba(184,134,11,0.1); }
+  .translatable.selected { background: rgba(255,255,0,0.3); }
+
+  /* TOP BAND */
+  .top-band { background: var(--deep-brown); color: var(--gold-pale); text-align: center; padding: 10px 20px; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; }
+
+  /* HEADER */
+  header { background: var(--warm-white); border-bottom: 2px solid var(--gold); padding: 48px 24px 36px; text-align: center; }
+  .header-label { font-family: 'Quattrocento Sans', sans-serif; font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 6vw, 3.4rem); font-weight: 300; color: var(--deep-brown); line-height: 1.15; margin-bottom: 10px; }
+  header h1 span { color: var(--gold); font-style: italic; }
+  .header-sub { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 3vw, 1.25rem); font-style: italic; color: var(--rust); margin-bottom: 20px; }
+  .creator-line { font-size: 0.78rem; letter-spacing: 0.15em; color: #6b5a3a; text-transform: uppercase; }
+  .doc-tag { display: inline-block; margin-top: 20px; background: var(--gold-pale); border: 1px solid var(--gold); color: var(--deep-brown); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; padding: 6px 18px; border-radius: 2px; }
+
+  /* MAIN */
+  main { max-width: 820px; margin: 0 auto; padding: 48px 24px 100px; }
+  .section-label { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 300; color: var(--deep-brown); margin-bottom: 18px; line-height: 1.2; }
+  .section-intro { font-size: 0.97rem; color: #3a2e1a; margin-bottom: 36px; max-width: 680px; line-height: 1.8; }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+  .divider-gold { border: none; border-top: 2px solid var(--gold-pale); margin: 48px 0; position: relative; }
+  .divider-gold::after { content: '◆'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--cream); color: var(--gold); font-size: 0.9rem; padding: 0 10px; }
+
+  .extension-grid { display: grid; gap: 24px; margin-bottom: 36px; }
+  .ext-card { background: var(--warm-white); border: 1px solid var(--border); border-left: 4px solid var(--gold); padding: 28px 28px 24px; position: relative; }
+  .ext-card:hover { border-left-color: var(--rust); box-shadow: 0 4px 20px rgba(184,134,11,0.08); }
+  .ext-number { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--gold-pale); position: absolute; top: 16px; right: 20px; line-height: 1; }
+  .ext-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: var(--deep-brown); margin-bottom: 8px; }
+  .ext-card .tag { display: inline-block; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; background: var(--gold-pale); color: var(--rust); padding: 3px 10px; border-radius: 2px; margin-bottom: 12px; }
+  .ext-card p { font-size: 0.92rem; color: #3a2e1a; line-height: 1.75; }
+  .ext-card ul { margin-top: 12px; padding-left: 16px; }
+  .ext-card ul li { font-size: 0.88rem; color: #4a3a20; margin-bottom: 5px; line-height: 1.6; }
+
+  .highlight-card { background: linear-gradient(135deg, #fef9ee 0%, #fdf3d8 100%); border: 2px solid var(--gold); padding: 36px 32px; margin-bottom: 36px; position: relative; overflow: hidden; }
+  .highlight-card::before { content: ''; position: absolute; top: 0; right: 0; width: 120px; height: 120px; background: radial-gradient(circle, rgba(212,168,67,0.15) 0%, transparent 70%); }
+  .highlight-card .hl-label { font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--rust); margin-bottom: 10px; }
+  .highlight-card h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 600; color: var(--deep-brown); margin-bottom: 14px; line-height: 1.2; }
+  .highlight-card p { font-size: 0.94rem; color: #3a2e1a; line-height: 1.8; margin-bottom: 14px; }
+
+  .reverse-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 0.88rem; }
+  .reverse-table th { background: var(--deep-brown); color: var(--gold-pale); padding: 10px 14px; text-align: left; font-weight: 400; letter-spacing: 0.1em; font-size: 0.75rem; text-transform: uppercase; }
+  .reverse-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); color: #3a2e1a; }
+  .reverse-table tr:nth-child(even) td { background: rgba(212,168,67,0.04); }
+
+  .market-table { width: 100%; border-collapse: collapse; margin: 20px 0 36px; font-size: 0.9rem; }
+  .market-table th { background: var(--deep-brown); color: var(--gold-pale); padding: 12px 16px; text-align: left; font-weight: 400; letter-spacing: 0.1em; font-size: 0.72rem; text-transform: uppercase; }
+  .market-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: #2e1f0a; vertical-align: top; }
+  .market-table tr:nth-child(even) td { background: rgba(212,168,67,0.04); }
+  .market-table td:first-child { font-weight: 700; color: var(--deep-brown); }
+
+  .vision-block { background: var(--deep-brown); color: var(--gold-pale); padding: 40px 32px; margin: 48px 0; text-align: center; }
+  .vision-block .v-label { font-size: 0.62rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .vision-block blockquote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.2rem, 3vw, 1.7rem); font-style: italic; font-weight: 300; line-height: 1.5; color: #f5e8c8; margin-bottom: 16px; }
+  .vision-block cite { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+
+  .terms-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
+  .terms-table tr td:first-child { width: 40%; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); background: #fdf3d8; padding: 14px 16px; border-bottom: 1px solid var(--border); font-weight: 700; vertical-align: top; }
+  .terms-table tr td:last-child { padding: 14px 16px; border-bottom: 1px solid var(--border); color: #2e1f0a; vertical-align: top; line-height: 1.7; }
+
+  footer { background: var(--deep-brown); color: var(--gold-pale); text-align: center; padding: 36px 24px 100px; }
+  footer .f-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; margin-bottom: 8px; color: var(--gold-light); }
+  footer p { font-size: 0.75rem; letter-spacing: 0.1em; color: #c8b48a; margin-bottom: 4px; }
+  footer .doc-note { margin-top: 16px; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: #7a6040; }
+
+  /* ── STICKY RECORD PANEL ── */
+  .record-panel { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(46,31,10,0.97); border-top: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; gap: 16px; padding: 10px 20px; z-index: 1000; flex-wrap: wrap; }
+  .record-panel button { font-family: 'Quattrocento Sans', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; border: none; border-radius: 4px; padding: 9px 22px; cursor: pointer; transition: transform 0.1s; }
+  .record-panel button:active { transform: scale(0.97); }
+  #recordBtn { background: var(--gold); color: var(--deep-brown); }
+  #stopBtn   { background: #8B2020; color: #fff; }
+  #playBtn   { background: #1A5C2A; color: #fff; }
+  #recStatus { font-family: 'Quattrocento Sans', sans-serif; font-size: 11px; color: var(--gold-light); letter-spacing: 1px; min-width: 80px; text-align: center; }
+
+  @media (max-width: 600px) {
+    header { padding: 36px 16px 28px; }
+    main { padding: 32px 16px 80px; }
+    .highlight-card { padding: 24px 18px; }
+    .vision-block { padding: 32px 18px; }
+    .ext-card { padding: 22px 18px 20px; }
+    .ext-number { font-size: 2rem; top: 12px; right: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TRANSLATE BAR -->
+<div class="lang-bar">
+    <label>🌐 Translate to:</label>
+    <select id="langSelect">
+        <option value="">-- Select Language --</option>
+        <option value="te">Telugu</option>
+        <option value="hi">Hindi</option>
+        <option value="ta">Tamil</option>
+        <option value="kn">Kannada</option>
+        <option value="ml">Malayalam</option>
+        <option value="ur">Urdu</option>
+        <option value="bn">Bengali</option>
+        <option value="mr">Marathi</option>
+        <option value="zh">Chinese</option>
+        <option value="ar">Arabic</option>
+        <option value="fr">French</option>
+        <option value="de">German</option>
+        <option value="es">Spanish</option>
+        <option value="pt">Portuguese</option>
+        <option value="ru">Russian</option>
+        <option value="ja">Japanese</option>
+        <option value="ko">Korean</option>
+        <option value="id">Indonesian</option>
+        <option value="sw">Swahili</option>
+        <option value="tr">Turkish</option>
+    </select>
+    <span class="hint">👆 Tap any sentence below to see its translation</span>
+</div>
+
+<div class="top-band">Confidential — For Authorised Partners Only &nbsp;|&nbsp; BILINGLISHSATHYA &nbsp;|&nbsp; Dr. Sathyalakshmi Thottempadi</div>
+
+<header>
+  <p class="header-label">Strategic Vision Document</p>
+  <h1>Scope of <span>Extension</span></h1>
+  <p class="header-sub"><span class="translatable">Beyond Spoken English — The Full Horizon of BILINGLISHSATHYA</span></p>
+  <p class="creator-line">Created by Dr. Sathyalakshmi Thottempadi &nbsp;·&nbsp; Founder, Bright Academy of English</p>
+  <span class="doc-tag">Supplementary to Partner Agreement</span>
+</header>
+
+<main>
+
+  <p class="section-label">Overview</p>
+  <h2 class="section-title">A Platform, Not Just a Course</h2>
+  <p class="section-intro">
+    <span class="translatable">BILINGLISHSATHYA was built as a spoken English course. But the infrastructure, methodology, and pedagogical framework that powers it is far larger than one subject.</span> <span class="translatable">This document outlines the strategic extensions available to licensees who wish to grow beyond the initial offering — and the additional licensing opportunities these extensions represent.</span>
+  </p>
+
+  <hr class="divider-gold"/>
+
+  <div class="highlight-card">
+    <p class="hl-label">Breakthrough Innovation</p>
+    <h3>The Reverse Methodology — Any Language Through English</h3>
+    <p>
+      <span class="translatable">The BILINGLISHSATHYA methodology was built to teach English using the learner's mother tongue as a bridge. The same methodology can be reversed — using English as the base to teach any world language to English-speaking learners.</span>
+    </p>
+    <p>
+      <span class="translatable">This is not a modification. It is a complete second product line — built on the same proven 50-day structure, the same assessment system, and the same certificate platform. No new infrastructure required.</span>
+    </p>
+    <table class="reverse-table">
+      <thead>
+        <tr><th>Original Direction</th><th>Reverse Application</th><th>Target Market</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Mother tongue → English</td><td>English → Mandarin</td><td>US, UK, Australia</td></tr>
+        <tr><td>Mother tongue → English</td><td>English → Arabic</td><td>Western learners, diplomats</td></tr>
+        <tr><td>Mother tongue → English</td><td>English → Japanese</td><td>Global anime/business audience</td></tr>
+        <tr><td>Mother tongue → English</td><td>English → Telugu/Hindi</td><td>NRI diaspora children</td></tr>
+        <tr><td>Mother tongue → English</td><td>English → Spanish/French</td><td>Global general learners</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider"/>
+
+  <p class="section-label">Areas of Extension</p>
+  <h2 class="section-title">New Course Verticals</h2>
+  <p class="section-intro"><span class="translatable">The following course extensions can be developed and licensed independently or as bundled packages, each carrying its own pricing and royalty structure.</span></p>
+
+  <div class="extension-grid">
+
+    <div class="ext-card">
+      <span class="ext-number">01</span>
+      <h3>Business English</h3>
+      <span class="tag">High Value Corporate</span>
+      <p><span class="translatable">A structured course for professionals — meetings, emails, presentations, negotiations. Corporate buyers pay USD 500 to USD 5,000 per participant for business language training. This vertical targets companies directly.</span></p>
+      <ul>
+        <li><span class="translatable">50-day format retained</span></li>
+        <li><span class="translatable">Workplace scenarios as teaching context</span></li>
+        <li><span class="translatable">Certificate for corporate HR records</span></li>
+        <li><span class="translatable">Bulk licensing for employee batches</span></li>
+      </ul>
+    </div>
+
+    <div class="ext-card">
+      <span class="ext-number">02</span>
+      <h3>Interview English</h3>
+      <span class="tag">Career & Employment</span>
+      <p><span class="translatable">Focused on job seekers — answering questions confidently, structuring responses, tone and body language awareness. Massive demand in India and South East Asia where English interviews are the gateway to employment.</span></p>
+      <ul>
+        <li><span class="translatable">Mock interview question bank</span></li>
+        <li><span class="translatable">Industry-specific modules</span></li>
+        <li><span class="translatable">Spoken test simulates real interview</span></li>
+      </ul>
+    </div>
+
+    <div class="ext-card">
+      <span class="ext-number">03</span>
+      <h3>IELTS / TOEFL Preparation</h3>
+      <span class="tag">International Examination</span>
+      <p><span class="translatable">The spoken English foundation BILINGLISHSATHYA provides is the ideal preparation base for IELTS Speaking and TOEFL iBT. An examination-focused extension leverages the existing methodology with test-specific practice.</span></p>
+    </div>
+
+    <div class="ext-card">
+      <span class="ext-number">04</span>
+      <h3>Mother Tongue Preservation Courses</h3>
+      <span class="tag">NRI Diaspora</span>
+      <p><span class="translatable">NRI parents worldwide want their children to speak their mother tongue — Telugu, Tamil, Hindi, Kannada, Malayalam. Using English as the teaching base, BILINGLISHSATHYA can deliver structured mother tongue courses to diaspora communities globally.</span></p>
+      <ul>
+        <li><span class="translatable">Emotional connection — identity and culture</span></li>
+        <li><span class="translatable">Parents will pay premium for this</span></li>
+        <li><span class="translatable">Untapped global market</span></li>
+      </ul>
+    </div>
+
+    <div class="ext-card">
+      <span class="ext-number">05</span>
+      <h3>Personality Development & Public Speaking</h3>
+      <span class="tag">Soft Skills</span>
+      <p><span class="translatable">Dr. Thottempadi's 18+ years of teaching experience extends naturally into communication, confidence, and public speaking. A course that complements the spoken English foundation with broader life skills.</span></p>
+    </div>
+
+    <div class="ext-card">
+      <span class="ext-number">06</span>
+      <h3>Continuous Assessment Packages</h3>
+      <span class="tag">Recurring Revenue</span>
+      <p><span class="translatable">The existing spoken test and certificate system can be offered as a standalone product — independent of the course. Institutions, companies, and individuals can purchase test packages for ongoing assessment and certification.</span></p>
+      <ul>
+        <li><span class="translatable">Single test purchase</span></li>
+        <li><span class="translatable">3-test or 5-test packages</span></li>
+        <li><span class="translatable">Annual unlimited assessment subscriptions</span></li>
+        <li><span class="translatable">Institutional bulk test licensing</span></li>
+        <li><span class="translatable">This creates perpetual revenue beyond the one-time course sale</span></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <hr class="divider-gold"/>
+
+  <p class="section-label">Global Market Opportunity</p>
+  <h2 class="section-title">Extension Markets by Region</h2>
+
+  <table class="market-table">
+    <thead>
+      <tr>
+        <th>Region</th>
+        <th>Primary Extension Opportunity</th>
+        <th>Estimated Demand Scale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>China</td><td><span class="translatable">English learning, reverse methodology (English→Mandarin for Western learners)</span></td><td>400M+ English learners</td></tr>
+      <tr><td>UAE &amp; Gulf</td><td><span class="translatable">Business English, Interview English, NRI mother tongue preservation</span></td><td>3M+ Indian diaspora</td></tr>
+      <tr><td>South East Asia</td><td><span class="translatable">Spoken English, Business English, IELTS prep</span></td><td>700M population, rapid growth</td></tr>
+      <tr><td>USA &amp; Canada</td><td><span class="translatable">NRI diaspora mother tongue, reverse methodology</span></td><td>4M+ Indian diaspora</td></tr>
+      <tr><td>UK &amp; Europe</td><td><span class="translatable">Reverse methodology, diaspora language preservation</span></td><td>1.5M+ Indian diaspora</td></tr>
+      <tr><td>India</td><td><span class="translatable">All verticals — core market</span></td><td>500M+ aspiring English speakers</td></tr>
+      <tr><td>Australia &amp; NZ</td><td><span class="translatable">NRI communities, reverse methodology</span></td><td>Growing Indian diaspora</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="divider-gold"/>
+
+  <div class="vision-block">
+    <p class="v-label">Founder's Vision</p>
+    <blockquote>
+      <span class="translatable">"BILINGLISHSATHYA is not one course. It is a methodology. A methodology has no boundaries — of subject, language, or geography. What was built for spoken English can teach any language, any skill, to any learner, anywhere in the world."</span>
+    </blockquote>
+    <cite>— Dr. Sathyalakshmi Thottempadi, Creator &amp; IP Owner</cite>
+  </div>
+
+  <hr class="divider"/>
+
+  <p class="section-label">Licensing Framework</p>
+  <h2 class="section-title">Terms for Extension Licensing</h2>
+  <p class="section-intro"><span class="translatable">Extension courses and new verticals are available for licensing separately from the core BILINGLISHSATHYA spoken English course. The following terms apply to all extension agreements.</span></p>
+
+  <table class="terms-table">
+    <tbody>
+      <tr>
+        <td>IP Ownership</td>
+        <td><span class="translatable">All course content, methodology, structure, and brand remain the sole property of Dr. Sathyalakshmi Thottempadi in perpetuity.</span></td>
+      </tr>
+      <tr>
+        <td>Royalty — All Extensions</td>
+        <td><span class="translatable">25% of all revenue generated from extension courses, automatically scaled to any price change by the licensee. No renegotiation required.</span></td>
+      </tr>
+      <tr>
+        <td>Modification Rights</td>
+        <td><span class="translatable">Dr. Thottempadi retains the right to modify, update, improve, or expand any course content at any time. Licensee benefits from all updates automatically.</span></td>
+      </tr>
+      <tr>
+        <td>License Term</td>
+        <td><span class="translatable">10 years per territory per course vertical. Rights revert fully to the IP owner upon expiry.</span></td>
+      </tr>
+      <tr>
+        <td>Exclusivity</td>
+        <td><span class="translatable">One licensee per territory per course vertical. No competing licenses issued for the same vertical in the same territory.</span></td>
+      </tr>
+      <tr>
+        <td>Sublicensing</td>
+        <td><span class="translatable">Permitted with prior written approval from Dr. Thottempadi. Royalty applies to all sublicensed revenue.</span></td>
+      </tr>
+      <tr>
+        <td>New Verticals</td>
+        <td><span class="translatable">Development of new course verticals remains exclusively at the discretion of Dr. Thottempadi. Licensees may express interest; development is not guaranteed.</span></td>
+      </tr>
+      <tr>
+        <td>Assessment System</td>
+        <td><span class="translatable">The spoken test and certificate system may be licensed independently as a standalone assessment product, subject to separate negotiation.</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+</main>
+
+<footer>
+  <p class="f-title">BILINGLISHSATHYA — Scope of Extension</p>
+  <p>Dr. Sathyalakshmi Thottempadi &nbsp;·&nbsp; Founder &amp; IP Owner</p>
+  <p>Bright Academy of English &nbsp;·&nbsp; Abdullapurmet, Telangana, India</p>
+  <p>Platform: https://thottempadi.vercel.app</p>
+  <p class="doc-note">Supplementary Document &nbsp;·&nbsp; Confidential &nbsp;·&nbsp; For Authorised Partner Use Only</p>
+</footer>
+
+<!-- TRANSLATE TOOLTIP -->
+<div class="translate-tooltip" id="translateTooltip">
+    <span class="tt-close" id="tooltipClose">✕</span>
+    <div class="tt-label">Translation</div>
+    <div class="tt-text" id="tooltipText">Loading...</div>
+    <div class="tt-lang" id="tooltipLang"></div>
+</div>
+
+<!-- STICKY RECORD / STOP / PLAY PANEL -->
+<div class="record-panel">
+  <button id="recordBtn">🎙 Record</button>
+  <button id="stopBtn">⏹ Stop</button>
+  <button id="playBtn">▶ Play</button>
+  <span id="recStatus">Ready</span>
+</div>
+
+<script>
+  // ── TRANSLATE ──
+  const tooltip = document.getElementById('translateTooltip');
+  const tooltipText = document.getElementById('tooltipText');
+  const tooltipLang = document.getElementById('tooltipLang');
+  const tooltipClose = document.getElementById('tooltipClose');
+  const langSelect = document.getElementById('langSelect');
+  let selectedSpan = null;
+
+  const langNames = {
+    te:'Telugu', hi:'Hindi', ta:'Tamil', kn:'Kannada', ml:'Malayalam',
+    ur:'Urdu', bn:'Bengali', mr:'Marathi', zh:'Chinese', ar:'Arabic',
+    fr:'French', de:'German', es:'Spanish', pt:'Portuguese', ru:'Russian',
+    ja:'Japanese', ko:'Korean', id:'Indonesian', sw:'Swahili', tr:'Turkish'
+  };
+
+  document.querySelectorAll('.translatable').forEach(span => {
+    span.addEventListener('click', async function(e) {
+      e.stopPropagation();
+      const lang = langSelect.value;
+      if (!lang) { alert('Please select a language first from the dropdown above.'); return; }
+      if (selectedSpan) selectedSpan.classList.remove('selected');
+      selectedSpan = this;
+      this.classList.add('selected');
+      tooltipText.textContent = 'Translating...';
+      tooltipLang.textContent = '';
+      positionTooltip(e);
+      tooltip.style.display = 'block';
+      const text = encodeURIComponent(this.innerText.trim());
+      try {
+        const res = await fetch(`https://api.mymemory.translated.net/get?q=${text}&langpair=en|${lang}`);
+        const data = await res.json();
+        tooltipText.textContent = data.responseData.translatedText || 'Translation not available';
+        tooltipLang.textContent = '→ ' + (langNames[lang] || lang);
+      } catch {
+        tooltipText.textContent = 'Translation failed. Check internet.';
+      }
+    });
+  });
+
+  function positionTooltip(e) {
+    const x = Math.min(e.clientX - 10, window.innerWidth - 280);
+    const y = e.clientY + 15;
+    tooltip.style.left = Math.max(5, x) + 'px';
+    tooltip.style.top = y + 'px';
+  }
+
+  tooltipClose.addEventListener('click', () => {
+    tooltip.style.display = 'none';
+    if (selectedSpan) selectedSpan.classList.remove('selected');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!tooltip.contains(e.target) && !e.target.classList.contains('translatable')) {
+      tooltip.style.display = 'none';
+      if (selectedSpan) selectedSpan.classList.remove('selected');
+    }
+  });
+
+  // ── VOICE RECORDER ──
+  let mediaRecorder, audioChunks = [], audioURL;
+
+  document.getElementById('recordBtn').addEventListener('click', async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      audioChunks = [];
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(audioChunks, { type: 'audio/webm' });
+        audioURL = URL.createObjectURL(blob);
+        document.getElementById('recStatus').textContent = 'Recorded ✓';
+      };
+      mediaRecorder.start();
+      document.getElementById('recStatus').textContent = '● Recording';
+    } catch (err) {
+      document.getElementById('recStatus').textContent = 'Mic error';
+    }
+  });
+
+  document.getElementById('stopBtn').addEventListener('click', () => {
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+      mediaRecorder.stop();
+      mediaRecorder.stream.getTracks().forEach(t => t.stop());
+    }
+  });
+
+  document.getElementById('playBtn').addEventListener('click', () => {
+    if (audioURL) {
+      const audio = new Audio(audioURL);
+      audio.play();
+      document.getElementById('recStatus').textContent = '▶ Playing';
+      audio.onended = () => document.getElementById('recStatus').textContent = 'Done ✓';
+    } else {
+      document.getElementById('recStatus').textContent = 'No recording';
+    }
+  });
+</script>
+
+<script src="accent.js"></script>
+</body>
+</html>
