@@ -16,126 +16,48 @@
   --blue: #4A90D9;
   --blue-light: #6BAEE8;
 }
-
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Josefin Sans', sans-serif;
-  background: var(--ink);
-  color: var(--cream);
-  overflow-x: hidden;
-  user-select: text !important;
-  -webkit-user-select: text !important;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.35;
-}
-
-/* ── TRANSLATE BAR ── */
-.lang-bar {
-  display: flex; flex-direction: column; align-items: center;
-  gap: 8px; padding: 12px 16px;
-  background: rgba(201,146,42,0.10);
-  border-bottom: 1px solid var(--border);
-  position: relative; z-index: 10; width: 100%;
-}
-.lang-bar label {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px; letter-spacing: 2px; color: var(--gold-light);
-  text-transform: uppercase;
-}
-.lang-bar select {
-  width: 100%; max-width: 500px;
-  padding: 10px; border-radius: 4px;
-  border: 1px solid var(--border); font-size: 15px;
-  background: #2C2210; color: var(--cream);
-  font-family: 'Josefin Sans', sans-serif;
-}
+body { font-family: 'Josefin Sans', sans-serif; background: var(--ink); color: var(--cream); overflow-x: hidden; user-select: text !important; -webkit-user-select: text !important; }
+body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 0; opacity: 0.35; }
+.lang-bar { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px 16px; background: rgba(201,146,42,0.10); border-bottom: 1px solid var(--border); position: relative; z-index: 10; width: 100%; }
+.lang-bar label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--gold-light); text-transform: uppercase; }
+.lang-bar select { width: 100%; max-width: 500px; padding: 10px; border-radius: 4px; border: 1px solid var(--border); font-size: 15px; background: #2C2210; color: var(--cream); font-family: 'Josefin Sans', sans-serif; }
 .lang-bar .hint { font-size: 12px; color: var(--muted); text-align: center; }
-
-/* ── TRANSLATE TOOLTIP ── */
-.translate-tooltip {
-  display: none; position: fixed; background: #1a1a2e; color: #fff;
-  padding: 10px 14px; border-radius: 10px; font-size: 14px;
-  max-width: 260px; z-index: 9999; box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-  text-align: left; line-height: 1.5;
-}
-.translate-tooltip::after {
-  content: ''; position: absolute; top: -8px; left: 20px;
-  border-width: 0 8px 8px 8px; border-style: solid;
-  border-color: transparent transparent #1a1a2e transparent;
-}
-.translate-tooltip .tt-label { font-size: 11px; color: #aaa; margin-bottom: 4px; }
-.translate-tooltip .tt-text { font-size: 15px; font-weight: bold; color: #7effa0; }
-.translate-tooltip .tt-lang { font-size: 11px; color: #888; margin-top: 4px; }
-.translate-tooltip .tt-close { float: right; cursor: pointer; color: #aaa; font-size: 16px; margin-left: 8px; }
-
-/* ── TRANSLATABLE ── */
-.translatable {
-  cursor: pointer; border-bottom: 1px dashed rgba(201,146,42,0.4);
-  transition: background 0.2s; border-radius: 3px; padding: 1px 2px;
-}
-.translatable:hover { background: rgba(201,146,42,0.12); }
-.translatable.selected { background: rgba(255,255,0,0.2); }
-
-/* ── CONTACT BAR ── */
 .contact-bar { display: flex; align-items: center; justify-content: center; gap: 26px; padding: 13px 28px; background: linear-gradient(90deg, rgba(201,146,42,0.18), rgba(201,146,42,0.08), rgba(201,146,42,0.18)); border-bottom: 1px solid var(--border); position: relative; z-index: 10; flex-wrap: wrap; }
 .contact-item { display: flex; align-items: center; gap: 9px; text-decoration: none; }
 .contact-icon { font-size: 13px; color: var(--gold-light); }
 .contact-item span { font-family: 'DM Mono', monospace; font-size: 12px; letter-spacing: 1px; color: var(--cream); transition: color 0.2s; }
 .contact-item:hover span { color: var(--gold-light); }
 .contact-sep { width: 1px; height: 18px; background: var(--border); }
-
-/* ── CONFIDENTIAL BAR ── */
 .conf-bar { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 12px 28px; background: rgba(201,146,42,0.1); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
 .conf-bar span { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
 .conf-bar::before, .conf-bar::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-
-/* ── COVER ── */
 .cover { text-align: center; padding: 70px 28px 60px; background: radial-gradient(ellipse 80% 50% at 50% 30%, rgba(201,146,42,0.07) 0%, transparent 70%); border-bottom: 1px solid var(--border); position: relative; z-index: 1; }
 .cover-main-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 5vw, 48px); font-weight: 700; color: var(--cream); line-height: 1.15; margin-bottom: 10px; }
 .cover-sub { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 2.5vw, 22px); font-style: italic; color: var(--blue-light); margin-bottom: 6px; }
 .cover-trust { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
 .cover-ref { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 1px; border: 1px solid var(--border); display: inline-block; padding: 8px 24px; }
-
-/* ── OPENING QUOTE ── */
 .opening-quote { max-width: 820px; margin: 0 auto; padding: 40px 28px; position: relative; z-index: 1; }
 .pull-quote { background: linear-gradient(135deg, rgba(201,146,42,0.1), rgba(201,146,42,0.03)); border-left: 3px solid var(--gold); padding: 24px 32px; position: relative; }
 .pull-quote::before { content: '\201C'; font-family: 'Cormorant Garamond', serif; font-size: 70px; color: var(--gold); position: absolute; top: -8px; left: 10px; opacity: 0.25; line-height: 1; }
 .pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 2vw, 20px); font-style: italic; color: var(--cream); line-height: 1.7; }
 .about-text { margin-top: 24px; font-size: 14px; color: rgba(254,251,243,0.72); line-height: 1.85; font-weight: 300; }
-
-/* ── PAGE BODY ── */
 .page { max-width: 820px; margin: 0 auto; padding: 0 28px 100px; position: relative; z-index: 1; }
-
-/* ── SECTION ── */
 .section { margin-bottom: 48px; padding-top: 40px; border-top: 1px solid rgba(201,146,42,0.15); }
 .section-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
 .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 3vw, 32px); font-weight: 600; color: var(--cream); margin-bottom: 20px; line-height: 1.2; }
 .sub-title { font-family: 'Josefin Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--blue-light); letter-spacing: 1px; text-transform: uppercase; margin: 22px 0 10px; }
 .body-text { font-size: 14px; color: rgba(254,251,243,0.75); line-height: 1.85; margin-bottom: 14px; font-weight: 300; }
 .body-text strong { color: var(--cream); font-weight: 600; }
-
 .bullet-list { list-style: none; margin: 10px 0 18px; }
 .bullet-list li { display: flex; gap: 12px; margin-bottom: 10px; font-size: 14px; color: rgba(254,251,243,0.72); line-height: 1.75; font-weight: 300; }
 .bullet-list li::before { content: '◆'; color: var(--gold); font-size: 7px; flex-shrink: 0; margin-top: 6px; }
-
-/* ── PARTIES TABLE ── */
 .parties-table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; }
 .parties-table td { padding: 14px 16px; border: 1px solid rgba(201,146,42,0.2); vertical-align: top; font-size: 13px; line-height: 1.7; }
 .parties-table td:first-child { background: rgba(74,144,217,0.15); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1px; color: var(--blue-light); width: 18%; text-transform: uppercase; font-weight: 500; }
 .parties-table td:last-child { color: rgba(254,251,243,0.82); background: rgba(201,146,42,0.04); }
 .parties-table td strong { color: var(--cream); font-weight: 600; }
-
-/* ── DEAL OPTIONS ── */
 .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0 10px; }
 @media(max-width: 560px) { .options-grid { grid-template-columns: 1fr; } }
 .option-card { border: 1px solid var(--border); padding: 0; overflow: hidden; position: relative; }
@@ -154,19 +76,13 @@ body::before {
 .option-row .val { color: rgba(254,251,243,0.82); text-align: right; line-height: 1.5; }
 .option-row .val strong { color: var(--cream); }
 .option-note { margin-top: 14px; font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--muted); line-height: 1.6; }
-
-/* ── DATA TABLE ── */
 .data-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; }
 .data-table tr:nth-child(odd) td { background: rgba(201,146,42,0.04); }
 .data-table tr:hover td { background: rgba(201,146,42,0.09); transition: background 0.2s; }
 .data-table td { padding: 12px 15px; border-bottom: 1px solid rgba(201,146,42,0.1); font-size: 13px; vertical-align: top; }
 .data-table td:first-child { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.5px; width: 36%; padding-top: 14px; }
 .data-table td:last-child { color: rgba(254,251,243,0.78); line-height: 1.65; }
-
-/* ── LEGACY BLOCK ── */
 .legacy-block { background: linear-gradient(135deg, rgba(201,146,42,0.12), rgba(201,146,42,0.04)); border-left: 3px solid var(--gold-light); padding: 22px 28px; margin: 16px 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(15px, 2vw, 18px); font-style: italic; color: var(--cream); line-height: 1.75; }
-
-/* ── SUMMARY TABLE ── */
 .summary-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13px; }
 .summary-table th { padding: 12px 15px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 2px solid var(--border); }
 .summary-table th:first-child { color: var(--muted); text-align: left; width: 28%; }
@@ -177,8 +93,6 @@ body::before {
 .summary-table td:nth-child(2) { color: rgba(254,251,243,0.8); text-align: center; background: rgba(201,146,42,0.04); }
 .summary-table td:nth-child(3) { color: rgba(254,251,243,0.8); text-align: center; background: rgba(74,144,217,0.04); }
 .summary-table tr:hover td { background: rgba(201,146,42,0.08); }
-
-/* ── CONFIRMATION BLOCK ── */
 .confirm-block { border: 1px solid var(--border); padding: 36px 32px; margin: 20px 0; text-align: center; background: rgba(201,146,42,0.04); }
 .confirm-options { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin: 20px 0; }
 .confirm-opt { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 2.5vw, 20px); font-weight: 700; padding: 12px 24px; border: 2px solid; line-height: 1.3; }
@@ -188,8 +102,6 @@ body::before {
 .initials-row { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-top: 20px; }
 .initials-item { font-size: 13px; color: var(--muted); }
 .initials-line { display: inline-block; width: 140px; border-bottom: 1px solid var(--muted); margin-left: 8px; vertical-align: middle; }
-
-/* ── SIGNATURE BLOCK ── */
 .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
 @media(max-width: 560px) { .sig-grid { grid-template-columns: 1fr; } }
 .sig-card { border: 1px solid var(--border); padding: 24px 20px; }
@@ -199,18 +111,13 @@ body::before {
 .sig-line { border-bottom: 1px solid var(--muted); margin-bottom: 10px; height: 32px; }
 .sig-field { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
 .sig-field span { display: inline-block; width: 160px; border-bottom: 1px solid rgba(139,115,85,0.4); margin-left: 6px; }
-
-/* ── WITNESSES ── */
 .witness-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
 @media(max-width: 560px) { .witness-grid { grid-template-columns: 1fr; } }
 .witness-card { border: 1px solid rgba(201,146,42,0.15); padding: 20px; }
 .witness-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 14px; }
 .witness-field { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
 .witness-field span { display: inline-block; width: 100%; border-bottom: 1px solid rgba(139,115,85,0.4); margin-top: 4px; height: 20px; }
-
 .divider { height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 40px 0; }
-
-/* ── STICKY RECORD PANEL ── */
 .record-panel { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(14,11,6,0.97); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 16px; padding: 10px 20px; z-index: 1000; flex-wrap: wrap; }
 .record-panel button { font-family: 'Josefin Sans', sans-serif; font-size: 13px; letter-spacing: 1px; font-weight: 600; border: none; border-radius: 4px; padding: 9px 22px; cursor: pointer; transition: opacity 0.2s, transform 0.1s; }
 .record-panel button:active { transform: scale(0.97); }
@@ -218,24 +125,10 @@ body::before {
 #stopBtn   { background: #8B2020; color: #fff; }
 #playBtn   { background: #1A5C2A; color: #fff; }
 #recStatus { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold-light); letter-spacing: 1px; min-width: 80px; text-align: center; }
-
-/* ── FOOTER ── */
 footer { border-top: 1px solid var(--border); padding: 28px; padding-bottom: 100px; text-align: center; position: relative; z-index: 1; }
 footer p { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; color: var(--muted); line-height: 2; }
 footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--blue-light); margin-top: 6px; }
-
-/* ══════════════════════════════════════════════════════
-   LEGAL DOCUMENT BODY — PLAIN BLACK ON WHITE
-   Promotional styling (gold/dark theme) is reserved for
-   .cover, .opening-quote, and footer .footer-note only.
-   Everything inside .page (Sections 1–16) overrides to
-   plain black-on-white for the actual contract text.
-   ══════════════════════════════════════════════════════ */
-.page {
-  background: #FFFFFF;
-  color: #111111;
-  padding-top: 40px;
-}
+.page { background: #FFFFFF; color: #111111; padding-top: 40px; }
 .page .section { border-top: 1px solid #cccccc; }
 .page .section-num { color: #555555; }
 .page .section-title { color: #000000; }
@@ -244,12 +137,10 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
 .page .body-text strong { color: #000000; }
 .page .bullet-list li { color: #222222; }
 .page .bullet-list li::before { color: #000000; }
-
 .page .parties-table td { border: 1px solid #999999; }
 .page .parties-table td:first-child { background: #eeeeee; color: #000000; }
 .page .parties-table td:last-child { background: #ffffff; color: #111111; }
 .page .parties-table td strong { color: #000000; }
-
 .page .option-card { border: 1px solid #999999; }
 .page .option-card::before { background: #000000 !important; }
 .page .option-header { border-bottom: 1px solid #999999; }
@@ -262,15 +153,12 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
 .page .option-note { color: #555555; }
 .page .option-card[style*="border: 2px solid"] { border: 2px solid #000000 !important; box-shadow: none !important; }
 .page .sub-title[style*="color"] { color: #000000 !important; }
-
 .page .data-table tr:nth-child(odd) td { background: #f5f5f5; }
 .page .data-table tr:hover td { background: #eeeeee; }
 .page .data-table td { border-bottom: 1px solid #cccccc; }
 .page .data-table td:first-child { color: #000000; }
 .page .data-table td:last-child { color: #222222; }
-
 .page .legacy-block { background: #f5f5f5; border-left: 3px solid #000000; color: #111111; }
-
 .page .summary-table th { border-bottom: 2px solid #000000; }
 .page .summary-table th:first-child { color: #555555; }
 .page .summary-table th:nth-child(2) { color: #000000; }
@@ -280,14 +168,12 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
 .page .summary-table td:nth-child(2) { color: #111111; background: #f5f5f5; }
 .page .summary-table td:nth-child(3) { color: #111111; background: #eeeeee; }
 .page .summary-table tr:hover td { background: #e5e5e5; }
-
 .page .confirm-block { border: 1px solid #999999; background: #f9f9f9; }
 .page .confirm-opt.a { color: #000000; border-color: #000000; }
 .page .confirm-opt.b { color: #000000; border-color: #000000; }
 .page .confirm-or { color: #555555; }
 .page .initials-item { color: #333333; }
 .page .initials-line { border-bottom: 1px solid #333333; }
-
 .page .sig-card { border: 1px solid #999999; }
 .page .sig-party { color: #000000; }
 .page .sig-trust { color: #333333; }
@@ -295,17 +181,19 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
 .page .sig-line { border-bottom: 1px solid #333333; }
 .page .sig-field { color: #555555; }
 .page .sig-field span { border-bottom: 1px solid #999999; }
-
 .page .witness-card { border: 1px solid #999999; }
 .page .witness-num { color: #555555; }
 .page .witness-field { color: #555555; }
 .page .witness-field span { border-bottom: 1px solid #999999; }
-
 .page .divider { background: #000000; height: 1px; }
+.cost-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13px; }
+.cost-table th { padding: 10px 14px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 2px solid #000000; text-align: left; color: #000000; }
+.cost-table td { padding: 10px 14px; border-bottom: 1px solid #cccccc; vertical-align: top; line-height: 1.6; color: #222222; }
+.cost-table td:first-child { font-weight: 600; color: #000000; width: 22%; }
+.cost-table tr:nth-child(odd) td { background: #f7f7f7; }
 </style>
 </head>
 <body>
-
 <!-- TRANSLATE BAR -->
 <div class="lang-bar">
     <label>🌐 Translate to:</label>
@@ -440,7 +328,7 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
         <option value="yo">Yoruba</option>
         <option value="zu">Zulu</option>
     </select>
-    <span class="hint">👆 Tap any sentence below to see its translation, or use the button below to translate the whole document at once</span>
+    <span class="hint">👇 Select a language, then tap the button below to translate the entire document</span>
     <button id="translateAllBtn" style="margin-top:8px; padding:10px 20px; border-radius:20px; border:1px solid var(--border); background: var(--gold); color: var(--ink); font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:13px; cursor:pointer;">🌐 Translate Entire Document</button>
     <span class="hint" id="translateAllStatus" style="display:none;"></span>
 </div>
@@ -481,7 +369,6 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
 </div>
 
 <div class="page">
-
   <!-- 1. PREAMBLE -->
   <div class="section">
     <p class="section-num">Section 1</p>
@@ -524,7 +411,6 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
     <h2 class="section-title">Deal Options</h2>
     <p class="body-text"><span class="translatable">The Parties shall select a deal structure by initialling the chosen option before signing. Territory-Specific Licenses (Option B) are the Trust's primary and recommended pathway for new licensees, allowing market entry at accessible scale before considering broader rights.</span></p>
 
-    <!-- OPTION B — FEATURED FIRST -->
     <p class="sub-title" style="color: var(--gold-light); font-size: 15px;">★ Recommended — Option B: Territory-Specific License</p>
     <div class="options-grid" style="grid-template-columns: 1fr;">
       <div class="option-card option-a" style="border: 2px solid var(--gold-light); box-shadow: 0 0 24px rgba(201,146,42,0.25);">
@@ -563,7 +449,6 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
 
     <div class="divider"></div>
 
-    <!-- OPTION A — WORLDWIDE PERPETUAL, LAST -->
     <p class="sub-title">2.4 Option A — Worldwide Rights (Perpetual)</p>
     <p class="body-text"><span class="translatable">The Trust's ultimate ambition remains Option A — Worldwide Rights in perpetuity, covering literally all countries across the globe without exception, for the full term of copyright protection. Option B above is not a discount of this ambition, but a deliberate strategy to make BILINGLISHSATHYA accessible to smaller entrepreneurs and regional partners, allowing the Trust's global reach to be built incrementally — one territory and one term at a time — while the Trust's long-term value is protected and grown through the Royalty regardless of the scale of any individual agreement.</span></p>
     <div class="options-grid" style="grid-template-columns: 1fr;">
@@ -585,6 +470,53 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
     <p class="option-note"><span class="translatable">The chosen option shall be confirmed by both Parties initialling the Confirmation Block at Clause 15.</span></p>
   </div>
 
+  <!-- 2.5 GRAMMAR-CHECK USAGE & PLATFORM MAINTENANCE COSTS -->
+  <div class="section">
+    <p class="section-num">Section 2.5</p>
+    <h2 class="section-title">Grammar-Check Feature — Usage Limits &amp; Platform Maintenance Costs</h2>
+
+    <p class="sub-title">2.5.1 Usage Allowance</p>
+    <ul class="bullet-list">
+      <li><span class="translatable">Each enrolled learner's access to the Grammar-Check Feature begins on the date of that learner's first use, and remains available for fifty (50) consecutive calendar days from that date only.</span></li>
+      <li><span class="translatable">Within this 50-day window, each learner is entitled to a maximum of twenty (20) grammar corrections per calendar day. This daily allowance does not carry over or accumulate if unused.</span></li>
+      <li><span class="translatable">After the 50-day window has elapsed, the Grammar-Check Feature is disabled for that learner permanently. All other course content, including all fifty day-lessons, recording and playback, and the accent-score display, remains available for the full six (6) month course access period regardless of Grammar-Check Feature expiry.</span></li>
+    </ul>
+
+    <p class="sub-title">2.5.2 Platform Maintenance Costs — Borne Separately by the Licensee</p>
+    <ul class="bullet-list">
+      <li><span class="translatable">The ongoing platform maintenance costs described in the table below (payment processing, website hosting, source code repository, and the Grammar-Check AI service) are separate and distinct from, and shall not reduce, dilute, or be deducted from, the Royalty payable to the Trust under Section 7. The Royalty is calculated on full Gross Revenue with no deductions whatsoever, exactly as defined in Section 3 and Clause 7.1.</span></li>
+      <li><span class="translatable"><strong>Where the Licensee holds Option A (Worldwide, Perpetual):</strong> the Licensee shall bear all such platform maintenance costs directly, for the full territory and duration of the license, as an obligation separate from and in addition to the License Fee and Royalty.</span></li>
+      <li><span class="translatable"><strong>Where the Licensee holds Option B (Territory-Specific):</strong> the Licensee shall bear such platform maintenance costs as are attributable to their own licensed territory, separate from and in addition to the Territory Fee and Royalty.</span></li>
+      <li><span class="translatable">The Trust shall invoice the Licensee for actual platform maintenance costs incurred on the Licensee's behalf on a quarterly basis, payable within 30 days of invoice, alongside — but never combined or netted against — the quarterly Royalty payment.</span></li>
+    </ul>
+
+    <table class="cost-table">
+      <thead>
+        <tr><th>Cost Head</th><th>Nature of Cost</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Payment Processing<br>(Razorpay / PayPal)</td>
+          <td><span class="translatable">A transaction-based fee (typically a small percentage of each payment collected) charged by the payment gateway providers. This cost only arises when a payment is successfully collected and is proportionate to actual sales in the Licensee's territory.</span></td>
+        </tr>
+        <tr>
+          <td>Website Hosting<br>(Vercel)</td>
+          <td><span class="translatable">Hosting of the Course's day-lesson files and associated systems. Costs arise only if traffic or usage attributable to the Licensee's learners significantly exceeds the hosting provider's free-tier threshold.</span></td>
+        </tr>
+        <tr>
+          <td>Source Code Repository<br>(GitHub)</td>
+          <td><span class="translatable">Private version-controlled storage of the Course's source files. A fixed, nominal cost apportioned reasonably among active Licensees where applicable.</span></td>
+        </tr>
+        <tr>
+          <td>Grammar-Check AI Service<br>(API Key)</td>
+          <td><span class="translatable">A per-use cost charged by the Trust's AI service provider each time a learner requests a grammar correction, incurred only within the usage limits described in Clause 2.5.1, and calculated based on actual usage by the Licensee's enrolled learners.</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="sub-title">2.5.3 Institutional &amp; Bulk Usage</p>
+    <p class="body-text"><span class="translatable">Where the Licensee is an institution, coaching centre, or other bulk purchaser enrolling multiple learners under a single license, any usage allowance materially exceeding the individual-learner limits described in Clause 2.5.1 — including but not limited to shared microphone or classroom-wide access arrangements — shall be the subject of a separate written addendum between the Parties, with associated costs to be borne by the Licensee as agreed in that addendum, in addition to the ordinary platform maintenance costs described above.</span></p>
+  </div>
   <!-- 3. DEFINITIONS -->
   <div class="section">
     <p class="section-num">Section 3</p>
@@ -597,6 +529,7 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
       <tr><td>"Royalty"</td><td><span class="translatable">25% of Gross Revenue payable to the Trust on every sale.</span></td></tr>
       <tr><td>"Trade Secret"</td><td><span class="translatable">The Licensor's proprietary drill methodology, sentence transformation system, and pedagogical framework — permanently confidential.</span></td></tr>
       <tr><td>"Successor Trustees"</td><td><span class="translatable">The independent trustees who assume management of the Trust solely after the passing of the Chief Trustee.</span></td></tr>
+      <tr><td>"Grammar-Check Feature"</td><td><span class="translatable">The AI-assisted spoken/written grammar correction feature made available to enrolled learners during their 50-day active course period, subject to the usage limits described in Section 2.5.</span></td></tr>
     </table>
   </div>
 
@@ -736,6 +669,7 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
         <tr><td>Territory</td><td>Single state / country / region</td><td>Worldwide — all countries</td></tr>
         <tr><td>Duration</td><td>1 Year (renewable)</td><td>Perpetual — Full Copyright Term</td></tr>
         <tr><td>Royalty</td><td>20% of Gross Revenue</td><td>25% of Gross Revenue</td></tr>
+        <tr><td>Grammar-Check Feature</td><td>50 days / 20 corrections per day per learner; maintenance costs borne by Licensee for their territory</td><td>50 days / 20 corrections per day per learner; maintenance costs borne by Licensee worldwide</td></tr>
         <tr><td>Trade Secret</td><td>Protected permanently</td><td>Protected permanently</td></tr>
         <tr><td>Legacy</td><td>Non-native English speakers worldwide</td><td>Non-native English speakers worldwide</td></tr>
         <tr><td>Fee Enhancement</td><td>Chief Trustee may revise anytime</td><td>Chief Trustee may revise anytime</td></tr>
@@ -815,14 +749,6 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
   <p class="footer-note"><span class="translatable">Founded by Smt. Sathyalakshmi Thottempadi — For the non-native English speakers of the world.</span></p>
 </footer>
 
-<!-- TRANSLATE TOOLTIP -->
-<div class="translate-tooltip" id="translateTooltip">
-    <span class="tt-close" id="tooltipClose">✕</span>
-    <div class="tt-label">Translation</div>
-    <div class="tt-text" id="tooltipText">Loading...</div>
-    <div class="tt-lang" id="tooltipLang"></div>
-</div>
-
 <!-- STICKY RECORD / STOP / PLAY PANEL -->
 <div class="record-panel">
   <button id="recordBtn">🎙 Record</button>
@@ -832,60 +758,11 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
 </div>
 
 <script>
-  // ── TRANSLATE ──
-  const tooltip = document.getElementById('translateTooltip');
-  const tooltipText = document.getElementById('tooltipText');
-  const tooltipLang = document.getElementById('tooltipLang');
-  const tooltipClose = document.getElementById('tooltipClose');
+  // ── LANGUAGE NAMES (used by whole-document translate) ──
   const langSelect = document.getElementById('langSelect');
-  let selectedSpan = null;
-
   const langNames = {};
   document.querySelectorAll('#langSelect option').forEach(opt => {
     if (opt.value) langNames[opt.value] = opt.textContent;
-  });
-
-  document.querySelectorAll('.translatable').forEach(span => {
-    span.addEventListener('click', async function(e) {
-      e.stopPropagation();
-      const lang = langSelect.value;
-      if (!lang) { alert('Please select a language first from the dropdown above.'); return; }
-      if (selectedSpan) selectedSpan.classList.remove('selected');
-      selectedSpan = this;
-      this.classList.add('selected');
-      tooltipText.textContent = 'Translating...';
-      tooltipLang.textContent = '';
-      positionTooltip(e);
-      tooltip.style.display = 'block';
-      const text = encodeURIComponent(this.innerText.trim());
-      try {
-        const res = await fetch(`https://api.mymemory.translated.net/get?q=${text}&langpair=en|${lang}`);
-        const data = await res.json();
-        tooltipText.textContent = data.responseData.translatedText || 'Translation not available';
-        tooltipLang.textContent = '→ ' + (langNames[lang] || lang);
-      } catch {
-        tooltipText.textContent = 'Translation failed. Check internet.';
-      }
-    });
-  });
-
-  function positionTooltip(e) {
-    const x = Math.min(e.clientX - 10, window.innerWidth - 280);
-    const y = e.clientY + 15;
-    tooltip.style.left = Math.max(5, x) + 'px';
-    tooltip.style.top = y + 'px';
-  }
-
-  tooltipClose.addEventListener('click', () => {
-    tooltip.style.display = 'none';
-    if (selectedSpan) selectedSpan.classList.remove('selected');
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!tooltip.contains(e.target) && !e.target.classList.contains('translatable')) {
-      tooltip.style.display = 'none';
-      if (selectedSpan) selectedSpan.classList.remove('selected');
-    }
   });
 
   // ── TRANSLATE ENTIRE DOCUMENT ──
@@ -899,7 +776,6 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
     if (!lang) { alert('Please select a language first from the dropdown above.'); return; }
 
     if (documentTranslated) {
-      // Restore original English
       document.querySelectorAll('.translatable').forEach(span => {
         if (originalTexts.has(span)) {
           span.innerHTML = originalTexts.get(span);
@@ -935,7 +811,6 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
       }
       completed++;
       translateAllStatus.textContent = `Translating ${completed} / ${spans.length} sections...`;
-      // small delay to avoid overwhelming the free translation API
       await new Promise(r => setTimeout(r, 150));
     }
 
