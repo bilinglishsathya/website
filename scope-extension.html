@@ -53,31 +53,6 @@
   }
   .lang-bar .hint { font-size: 12px; color: var(--rust); text-align: center; }
 
-  /* ── TRANSLATE TOOLTIP ── */
-  .translate-tooltip {
-    display: none; position: fixed; background: #1a1a2e; color: #fff;
-    padding: 10px 14px; border-radius: 10px; font-size: 14px;
-    max-width: 260px; z-index: 9999; box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-    text-align: left; line-height: 1.5;
-  }
-  .translate-tooltip::after {
-    content: ''; position: absolute; top: -8px; left: 20px;
-    border-width: 0 8px 8px 8px; border-style: solid;
-    border-color: transparent transparent #1a1a2e transparent;
-  }
-  .translate-tooltip .tt-label { font-size: 11px; color: #aaa; margin-bottom: 4px; }
-  .translate-tooltip .tt-text { font-size: 15px; font-weight: bold; color: #7effa0; }
-  .translate-tooltip .tt-lang { font-size: 11px; color: #888; margin-top: 4px; }
-  .translate-tooltip .tt-close { float: right; cursor: pointer; color: #aaa; font-size: 16px; margin-left: 8px; }
-
-  /* ── TRANSLATABLE ── */
-  .translatable {
-    cursor: pointer; border-bottom: 1px dashed rgba(184,134,11,0.5);
-    transition: background 0.2s; border-radius: 3px; padding: 1px 2px;
-  }
-  .translatable:hover { background: rgba(184,134,11,0.1); }
-  .translatable.selected { background: rgba(255,255,0,0.3); }
-
   /* TOP BAND */
   .top-band { background: var(--deep-brown); color: var(--gold-pale); text-align: center; padding: 10px 20px; font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; }
 
@@ -141,15 +116,6 @@
   footer p { font-size: 0.75rem; letter-spacing: 0.1em; color: #c8b48a; margin-bottom: 4px; }
   footer .doc-note { margin-top: 16px; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: #7a6040; }
 
-  /* ── STICKY RECORD PANEL ── */
-  .record-panel { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(46,31,10,0.97); border-top: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; gap: 16px; padding: 10px 20px; z-index: 1000; flex-wrap: wrap; }
-  .record-panel button { font-family: 'Quattrocento Sans', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; border: none; border-radius: 4px; padding: 9px 22px; cursor: pointer; transition: transform 0.1s; }
-  .record-panel button:active { transform: scale(0.97); }
-  #recordBtn { background: var(--gold); color: var(--deep-brown); }
-  #stopBtn   { background: #8B2020; color: #fff; }
-  #playBtn   { background: #1A5C2A; color: #fff; }
-  #recStatus { font-family: 'Quattrocento Sans', sans-serif; font-size: 11px; color: var(--gold-light); letter-spacing: 1px; min-width: 80px; text-align: center; }
-
   @media (max-width: 600px) {
     header { padding: 36px 16px 28px; }
     main { padding: 32px 16px 80px; }
@@ -188,7 +154,9 @@
         <option value="sw">Swahili</option>
         <option value="tr">Turkish</option>
     </select>
-    <span class="hint">👆 Tap any sentence below to see its translation</span>
+    <span class="hint">👇 Select a language, then tap the button below to translate the entire page</span>
+    <button id="translateAllBtn" style="margin-top:8px; padding:10px 20px; border-radius:20px; border:1px solid var(--gold); background: var(--gold-pale); color: var(--deep-brown); font-family:'Quattrocento Sans',sans-serif; font-weight:700; font-size:13px; cursor:pointer;">🌐 Translate Entire Page</button>
+    <span class="hint" id="translateAllStatus" style="display:none;"></span>
 </div>
 
 <div class="top-band">Confidential — For Authorised Partners Only &nbsp;|&nbsp; BILINGLISHSATHYA &nbsp;|&nbsp; Dr. Sathyalakshmi Thottempadi</div>
@@ -396,31 +364,9 @@
   <p class="doc-note">Supplementary Document &nbsp;·&nbsp; Confidential &nbsp;·&nbsp; For Authorised Partner Use Only</p>
 </footer>
 
-<!-- TRANSLATE TOOLTIP -->
-<div class="translate-tooltip" id="translateTooltip">
-    <span class="tt-close" id="tooltipClose">✕</span>
-    <div class="tt-label">Translation</div>
-    <div class="tt-text" id="tooltipText">Loading...</div>
-    <div class="tt-lang" id="tooltipLang"></div>
-</div>
-
-<!-- STICKY RECORD / STOP / PLAY PANEL -->
-<div class="record-panel">
-  <button id="recordBtn">🎙 Record</button>
-  <button id="stopBtn">⏹ Stop</button>
-  <button id="playBtn">▶ Play</button>
-  <span id="recStatus">Ready</span>
-</div>
-
 <script>
-  // ── TRANSLATE ──
-  const tooltip = document.getElementById('translateTooltip');
-  const tooltipText = document.getElementById('tooltipText');
-  const tooltipLang = document.getElementById('tooltipLang');
-  const tooltipClose = document.getElementById('tooltipClose');
+  // ── LANGUAGE NAMES (used by whole-page translate) ──
   const langSelect = document.getElementById('langSelect');
-  let selectedSpan = null;
-
   const langNames = {
     te:'Telugu', hi:'Hindi', ta:'Tamil', kn:'Kannada', ml:'Malayalam',
     ur:'Urdu', bn:'Bengali', mr:'Marathi', zh:'Chinese', ar:'Arabic',
@@ -428,89 +374,61 @@
     ja:'Japanese', ko:'Korean', id:'Indonesian', sw:'Swahili', tr:'Turkish'
   };
 
-  document.querySelectorAll('.translatable').forEach(span => {
-    span.addEventListener('click', async function(e) {
-      e.stopPropagation();
-      const lang = langSelect.value;
-      if (!lang) { alert('Please select a language first from the dropdown above.'); return; }
-      if (selectedSpan) selectedSpan.classList.remove('selected');
-      selectedSpan = this;
-      this.classList.add('selected');
-      tooltipText.textContent = 'Translating...';
-      tooltipLang.textContent = '';
-      positionTooltip(e);
-      tooltip.style.display = 'block';
-      const text = encodeURIComponent(this.innerText.trim());
+  // ── TRANSLATE ENTIRE PAGE ──
+  const translateAllBtn = document.getElementById('translateAllBtn');
+  const translateAllStatus = document.getElementById('translateAllStatus');
+  let pageTranslated = false;
+  let originalTexts = new Map();
+
+  translateAllBtn.addEventListener('click', async () => {
+    const lang = langSelect.value;
+    if (!lang) { alert('Please select a language first from the dropdown above.'); return; }
+
+    if (pageTranslated) {
+      document.querySelectorAll('.translatable').forEach(span => {
+        if (originalTexts.has(span)) {
+          span.innerHTML = originalTexts.get(span);
+        }
+      });
+      pageTranslated = false;
+      translateAllBtn.textContent = '🌐 Translate Entire Page';
+      translateAllStatus.style.display = 'none';
+      return;
+    }
+
+    const spans = Array.from(document.querySelectorAll('.translatable'));
+    translateAllBtn.disabled = true;
+    translateAllBtn.textContent = '⏳ Translating...';
+    translateAllStatus.style.display = 'block';
+    translateAllStatus.textContent = `Translating 0 / ${spans.length} sections...`;
+
+    let completed = 0;
+    for (const span of spans) {
+      if (!originalTexts.has(span)) {
+        originalTexts.set(span, span.innerHTML);
+      }
+      const text = encodeURIComponent(span.innerText.trim());
       try {
         const res = await fetch(`https://api.mymemory.translated.net/get?q=${text}&langpair=en|${lang}`);
         const data = await res.json();
-        tooltipText.textContent = data.responseData.translatedText || 'Translation not available';
-        tooltipLang.textContent = '→ ' + (langNames[lang] || lang);
+        const translated = data.responseData.translatedText;
+        if (translated) {
+          span.textContent = translated;
+        }
       } catch {
-        tooltipText.textContent = 'Translation failed. Check internet.';
+        // leave original text if translation fails for this segment
       }
-    });
-  });
-
-  function positionTooltip(e) {
-    const x = Math.min(e.clientX - 10, window.innerWidth - 280);
-    const y = e.clientY + 15;
-    tooltip.style.left = Math.max(5, x) + 'px';
-    tooltip.style.top = y + 'px';
-  }
-
-  tooltipClose.addEventListener('click', () => {
-    tooltip.style.display = 'none';
-    if (selectedSpan) selectedSpan.classList.remove('selected');
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!tooltip.contains(e.target) && !e.target.classList.contains('translatable')) {
-      tooltip.style.display = 'none';
-      if (selectedSpan) selectedSpan.classList.remove('selected');
+      completed++;
+      translateAllStatus.textContent = `Translating ${completed} / ${spans.length} sections...`;
+      await new Promise(r => setTimeout(r, 150));
     }
-  });
 
-  // ── VOICE RECORDER ──
-  let mediaRecorder, audioChunks = [], audioURL;
-
-  document.getElementById('recordBtn').addEventListener('click', async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      audioChunks = [];
-      mediaRecorder = new MediaRecorder(stream);
-      mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
-      mediaRecorder.onstop = () => {
-        const blob = new Blob(audioChunks, { type: 'audio/webm' });
-        audioURL = URL.createObjectURL(blob);
-        document.getElementById('recStatus').textContent = 'Recorded ✓';
-      };
-      mediaRecorder.start();
-      document.getElementById('recStatus').textContent = '● Recording';
-    } catch (err) {
-      document.getElementById('recStatus').textContent = 'Mic error';
-    }
-  });
-
-  document.getElementById('stopBtn').addEventListener('click', () => {
-    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
-      mediaRecorder.stop();
-      mediaRecorder.stream.getTracks().forEach(t => t.stop());
-    }
-  });
-
-  document.getElementById('playBtn').addEventListener('click', () => {
-    if (audioURL) {
-      const audio = new Audio(audioURL);
-      audio.play();
-      document.getElementById('recStatus').textContent = '▶ Playing';
-      audio.onended = () => document.getElementById('recStatus').textContent = 'Done ✓';
-    } else {
-      document.getElementById('recStatus').textContent = 'No recording';
-    }
+    pageTranslated = true;
+    translateAllBtn.disabled = false;
+    translateAllBtn.textContent = '↩ Show Original (English)';
+    translateAllStatus.textContent = `Page translated to ${langNames[lang] || lang}. Tap the button again to see the original English.`;
   });
 </script>
 
-<script src="accent.js"></script>
 </body>
 </html>
