@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BILINGLISHSATHYA Demo</title>
+    <title>BILINGLISHSATHYA</title>
     <style>
         body { font-family: Arial, sans-serif; padding: 15px; background: #f4f7f6; text-align: center; color: #333; }
         .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
@@ -20,7 +20,6 @@
         .why-english p { margin: 8px 0; font-size: 15px; line-height: 1.6; }
         .why-english .highlight { font-size: 17px; font-weight: bold; margin-top: 14px; }
         .why-english .tagline { font-size: 16px; font-style: italic; color: #e8ffe0; margin-top: 10px; }
-        .target-sentence-box { background: #fff8e1; border: 2px solid #fbc02d; border-radius: 8px; padding: 12px; margin: 10px 0; font-size: 15px; color: #555; min-height: 40px; }
         .assessment-result { margin-top: 12px; padding: 12px; border-radius: 8px; background: #fdf2f2; border: 1px solid #f5c6cb; text-align: left; }
         .assessment-result .score { font-size: 16px; font-weight: bold; color: #721c24; margin-bottom: 8px; }
         .certificate-section { background: linear-gradient(135deg, #fff8e1, #fffde7); border: 2px solid #f9a825; border-radius: 14px; padding: 20px; margin: 25px 0; text-align: center; }
@@ -62,10 +61,8 @@
 <div class="container">
     <h1>BILINGLISHSATHYA</h1>
     <img src="profile.jpg" alt="Dr. Sathya" class="profile-img">
-    <p><strong>Dr. Sathya — PhD in Teaching Methodology</strong></p>
-    <p><em>48 Years Experience | National Merit Scholar</em></p>
-    <p><em>Bright Academy of English, Nellore | Since 1984</em></p>
-    <p><em>50-Day Proven Course | Classroom Tested</em></p>
+    <p><strong>Dr. Sathyalakshmi Thottempadi — PhD in Teaching Methodology</strong></p>
+    <p><em>Founder: Bright Academy of English, Nellore (Since 1984)</em></p>
 
     <div class="lang-bar">
         <label>🌐 Show meaning in:</label>
@@ -196,12 +193,17 @@
         <iframe src="https://www.youtube.com/embed/f-_pZohRciY" frameborder="0" allowfullscreen></iframe>
     </div>
 
-    <div style="border: 2px solid #28a745; padding: 15px; border-radius: 12px; margin: 20px 0;">
+    <div style="border: 2px solid #28a745; padding: 15px; border-radius: 12px; margin: 20px 0; background: #fff;">
         <div style="font-size: 20px; font-weight: bold; color: #d32f2f; margin-bottom: 12px;">₹1,00,000 INR / $1,000 USD</div>
-        <form>
-            <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TJILbXCU6Il0N8" async></script>
-        </form>
-        <a href="https://www.paypal.com/ncp/payment/LFQLKU9HJW58N" target="_blank" class="btn paypal">Pay $1,000 USD (Global)</a>
+        
+        <!-- Corrected Razorpay Form Element with exact syntax -->
+        <div id="razorpay-container" style="margin: 15px 0;">
+            <form>
+                <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TJILbXCU6Il0N8" async></script>
+            </form>
+        </div>
+
+        <a href="https://www.paypal.com/ncp/payment/LFQLKU9HJW58N" target="_blank" class="btn paypal" style="background:#003087;">🌐 Pay via PayPal (International)</a>
         <a href="https://bilinglishsathya.github.io/website" target="_blank" class="btn website-link">Visit Official Website</a>
     </div>
 
