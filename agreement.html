@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BILINGLISHSATHYA — Course License & Distribution Agreement</title>
+<title>BILINGLISHSATHYA — Course License & Distribution Agreement (Term Sheet)</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Josefin+Sans:wght@300;400;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -33,307 +33,106 @@ body::before { content: ''; position: fixed; inset: 0; background-image: url("da
 .conf-bar { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 12px 28px; background: rgba(201,146,42,0.1); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
 .conf-bar span { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
 .conf-bar::before, .conf-bar::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-.cover { text-align: center; padding: 70px 28px 60px; background: radial-gradient(ellipse 80% 50% at 50% 30%, rgba(201,146,42,0.07) 0%, transparent 70%); border-bottom: 1px solid var(--border); position: relative; z-index: 1; }
+
+/* Table of Contents Styling */
+.toc-box { max-width: 820px; margin: 30px auto 10px; background: rgba(201,146,42,0.05); border: 1px solid var(--border); padding: 24px 32px; position: relative; z-index: 1; }
+.toc-title { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--gold-light); text-transform: uppercase; margin-bottom: 12px; text-align: center; }
+.toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; font-size: 13px; }
+@media(max-width: 560px) { .toc-grid { grid-template-columns: 1fr; } }
+.toc-grid a { color: rgba(254,251,243,0.8); text-decoration: none; transition: color 0.2s; display: flex; gap: 8px; }
+.toc-grid a:hover { color: var(--gold-light); }
+.toc-grid a span { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); }
+
+.cover { text-align: center; padding: 50px 28px 40px; background: radial-gradient(ellipse 80% 50% at 50% 30%, rgba(201,146,42,0.07) 0%, transparent 70%); border-bottom: 1px solid var(--border); position: relative; z-index: 1; }
 .cover-main-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 5vw, 48px); font-weight: 700; color: var(--cream); line-height: 1.15; margin-bottom: 10px; }
 .cover-sub { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 2.5vw, 22px); font-style: italic; color: var(--blue-light); margin-bottom: 6px; }
 .cover-trust { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
 .cover-ref { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 1px; border: 1px solid var(--border); display: inline-block; padding: 8px 24px; }
-.opening-quote { max-width: 820px; margin: 0 auto; padding: 40px 28px; position: relative; z-index: 1; }
-.pull-quote { background: linear-gradient(135deg, rgba(201,146,42,0.1), rgba(201,146,42,0.03)); border-left: 3px solid var(--gold); padding: 24px 32px; position: relative; }
-.pull-quote::before { content: '\201C'; font-family: 'Cormorant Garamond', serif; font-size: 70px; color: var(--gold); position: absolute; top: -8px; left: 10px; opacity: 0.25; line-height: 1; }
-.pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 2vw, 20px); font-style: italic; color: var(--cream); line-height: 1.7; }
-.about-text { margin-top: 24px; font-size: 14px; color: rgba(254,251,243,0.72); line-height: 1.85; font-weight: 300; }
-.page { max-width: 820px; margin: 0 auto; padding: 0 28px 100px; position: relative; z-index: 1; }
-.section { margin-bottom: 48px; padding-top: 40px; border-top: 1px solid rgba(201,146,42,0.15); }
-.section-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
-.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 3vw, 32px); font-weight: 600; color: var(--cream); margin-bottom: 20px; line-height: 1.2; }
-.sub-title { font-family: 'Josefin Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--blue-light); letter-spacing: 1px; text-transform: uppercase; margin: 22px 0 10px; }
-.body-text { font-size: 14px; color: rgba(254,251,243,0.75); line-height: 1.85; margin-bottom: 14px; font-weight: 300; }
-.body-text strong { color: var(--cream); font-weight: 600; }
-.bullet-list { list-style: none; margin: 10px 0 18px; }
-.bullet-list li { display: flex; gap: 12px; margin-bottom: 10px; font-size: 14px; color: rgba(254,251,243,0.72); line-height: 1.75; font-weight: 300; }
-.bullet-list li::before { content: '◆'; color: var(--gold); font-size: 7px; flex-shrink: 0; margin-top: 6px; }
-.parties-table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; }
-.parties-table td { padding: 14px 16px; border: 1px solid rgba(201,146,42,0.2); vertical-align: top; font-size: 13px; line-height: 1.7; }
-.parties-table td:first-child { background: rgba(74,144,217,0.15); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1px; color: var(--blue-light); width: 18%; text-transform: uppercase; font-weight: 500; }
-.parties-table td:last-child { color: rgba(254,251,243,0.82); background: rgba(201,146,42,0.04); }
-.parties-table td strong { color: var(--cream); font-weight: 600; }
-.options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0 10px; }
-@media(max-width: 560px) { .options-grid { grid-template-columns: 1fr; } }
-.option-card { border: 1px solid var(--border); padding: 0; overflow: hidden; position: relative; }
-.option-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
-.option-a::before { background: var(--gold); }
-.option-b::before { background: var(--blue); }
-.option-header { padding: 16px 18px 12px; border-bottom: 1px solid rgba(201,146,42,0.15); }
-.option-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 4px; }
-.option-a .option-label { color: var(--gold); }
-.option-b .option-label { color: var(--blue-light); }
-.option-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--cream); line-height: 1.2; }
-.option-body { padding: 14px 18px; }
-.option-row { display: flex; justify-content: space-between; gap: 8px; padding: 7px 0; border-bottom: 1px solid rgba(201,146,42,0.08); font-size: 12px; }
+.opening-quote { max-width: 820px; margin: 0 auto; padding: 30px 28px; position: relative; z-index: 1; }
+.pull-quote { background: linear-gradient(135deg, rgba(201,146,42,0.1), rgba(201,146,42,0.03)); border-left: 3px solid var(--gold); padding: 20px 28px; position: relative; }
+.pull-quote p { font-family: 'Cormorant Garamond', serif; font-size: clamp(15px, 2vw, 18px); font-style: italic; color: var(--cream); line-height: 1.6; }
+.about-text { margin-top: 18px; font-size: 13px; color: rgba(254,251,243,0.72); line-height: 1.75; font-weight: 300; }
+.page { max-width: 820px; margin: 0 auto; padding: 0 28px 100px; position: relative; z-index: 1; background: #FFFFFF; color: #111111; }
+.section { margin-bottom: 36px; padding-top: 30px; border-top: 1px solid #cccccc; }
+.section-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; color: #555555; text-transform: uppercase; margin-bottom: 6px; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 2.5vw, 28px); font-weight: 600; color: #000000; margin-bottom: 14px; line-height: 1.2; }
+.sub-title { font-family: 'Josefin Sans', sans-serif; font-size: 12px; font-weight: 600; color: #000000; letter-spacing: 1px; text-transform: uppercase; margin: 18px 0 8px; border-bottom: 1px solid #999999; padding-bottom: 3px; }
+.body-text { font-size: 13px; color: #222222; line-height: 1.75; margin-bottom: 12px; font-weight: 300; }
+.body-text strong { color: #000000; font-weight: 600; }
+.bullet-list { list-style: none; margin: 8px 0 14px; }
+.bullet-list li { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; color: #222222; line-height: 1.65; font-weight: 300; }
+.bullet-list li::before { content: '◆'; color: #000000; font-size: 6px; flex-shrink: 0; margin-top: 6px; }
+.parties-table { width: 100%; border-collapse: collapse; margin: 16px 0 20px; }
+.parties-table td { padding: 12px 14px; border: 1px solid #999999; vertical-align: top; font-size: 12px; line-height: 1.6; }
+.parties-table td:first-child { background: #eeeeee; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; color: #000000; width: 18%; text-transform: uppercase; font-weight: 500; }
+.parties-table td:last-child { color: #111111; background: #ffffff; }
+.parties-table td strong { color: #000000; font-weight: 600; }
+.options-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin: 16px 0 10px; }
+.option-card { border: 2px solid #000000; padding: 0; overflow: hidden; position: relative; }
+.option-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: #000000; }
+.option-header { padding: 14px 16px 10px; border-bottom: 1px solid #999999; }
+.option-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 4px; color: #000000; }
+.option-name { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 600; color: #000000; line-height: 1.2; }
+.option-body { padding: 12px 16px; }
+.option-row { display: flex; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid #dddddd; font-size: 12px; }
 .option-row:last-child { border-bottom: none; }
-.option-row .key { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.5px; flex-shrink: 0; }
-.option-row .val { color: rgba(254,251,243,0.82); text-align: right; line-height: 1.5; }
-.option-row .val strong { color: var(--cream); }
-.option-note { margin-top: 14px; font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--muted); line-height: 1.6; }
-.data-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; }
-.data-table tr:nth-child(odd) td { background: rgba(201,146,42,0.04); }
-.data-table tr:hover td { background: rgba(201,146,42,0.09); transition: background 0.2s; }
-.data-table td { padding: 12px 15px; border-bottom: 1px solid rgba(201,146,42,0.1); font-size: 13px; vertical-align: top; }
-.data-table td:first-child { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.5px; width: 36%; padding-top: 14px; }
-.data-table td:last-child { color: rgba(254,251,243,0.78); line-height: 1.65; }
-.legacy-block { background: linear-gradient(135deg, rgba(201,146,42,0.12), rgba(201,146,42,0.04)); border-left: 3px solid var(--gold-light); padding: 22px 28px; margin: 16px 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(15px, 2vw, 18px); font-style: italic; color: var(--cream); line-height: 1.75; }
-.summary-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13px; }
-.summary-table th { padding: 12px 15px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 2px solid var(--border); }
-.summary-table th:first-child { color: var(--muted); text-align: left; width: 28%; }
-.summary-table th:nth-child(2) { color: var(--gold); text-align: center; }
-.summary-table th:nth-child(3) { color: var(--blue-light); text-align: center; }
-.summary-table td { padding: 11px 15px; border-bottom: 1px solid rgba(201,146,42,0.1); vertical-align: top; line-height: 1.6; }
-.summary-table td:first-child { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.3px; }
-.summary-table td:nth-child(2) { color: rgba(254,251,243,0.8); text-align: center; background: rgba(201,146,42,0.04); }
-.summary-table td:nth-child(3) { color: rgba(254,251,243,0.8); text-align: center; background: rgba(74,144,217,0.04); }
-.summary-table tr:hover td { background: rgba(201,146,42,0.08); }
-.confirm-block { border: 1px solid var(--border); padding: 36px 32px; margin: 20px 0; text-align: center; background: rgba(201,146,42,0.04); }
-.confirm-options { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin: 20px 0; }
-.confirm-opt { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 2.5vw, 20px); font-weight: 700; padding: 12px 24px; border: 2px solid; line-height: 1.3; }
-.confirm-opt.a { color: var(--gold-light); border-color: var(--gold); }
-.confirm-opt.b { color: var(--blue-light); border-color: var(--blue); }
-.confirm-or { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 2px; }
-.initials-row { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-top: 20px; }
-.initials-item { font-size: 13px; color: var(--muted); }
-.initials-line { display: inline-block; width: 140px; border-bottom: 1px solid var(--muted); margin-left: 8px; vertical-align: middle; }
-.sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
-@media(max-width: 560px) { .sig-grid { grid-template-columns: 1fr; } }
-.sig-card { border: 1px solid var(--border); padding: 24px 20px; }
-.sig-party { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
-.sig-trust { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-style: italic; color: var(--blue-light); margin-bottom: 18px; }
-.sig-name { font-size: 13px; font-weight: 600; color: var(--cream); margin-bottom: 20px; }
-.sig-line { border-bottom: 1px solid var(--muted); margin-bottom: 10px; height: 32px; }
-.sig-field { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
-.sig-field span { display: inline-block; width: 160px; border-bottom: 1px solid rgba(139,115,85,0.4); margin-left: 6px; }
-.witness-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 20px 0; }
-@media(max-width: 560px) { .witness-grid { grid-template-columns: 1fr; } }
-.witness-card { border: 1px solid rgba(201,146,42,0.15); padding: 20px; }
-.witness-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; margin-bottom: 14px; }
-.witness-field { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
-.witness-field span { display: inline-block; width: 100%; border-bottom: 1px solid rgba(139,115,85,0.4); margin-top: 4px; height: 20px; }
-.divider { height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 40px 0; }
+.option-row .key { font-family: 'DM Mono', monospace; font-size: 10px; color: #555555; letter-spacing: 0.5px; flex-shrink: 0; }
+.option-row .val { color: #111111; text-align: right; line-height: 1.4; }
+.option-row .val strong { color: #000000; }
+.option-note { margin-top: 10px; font-family: 'Cormorant Garamond', serif; font-size: 12px; font-style: italic; color: #555555; line-height: 1.5; }
+.data-table, .cost-table, .summary-table { width: 100%; border-collapse: collapse; margin: 14px 0 20px; font-size: 12px; }
+.data-table tr:nth-child(odd) td, .cost-table tr:nth-child(odd) td { background: #f7f7f7; }
+.data-table td, .cost-table td { padding: 10px 12px; border-bottom: 1px solid #cccccc; vertical-align: top; line-height: 1.6; }
+.data-table td:first-child { font-family: 'DM Mono', monospace; font-size: 10px; color: #000000; letter-spacing: 0.5px; width: 32%; }
+.data-table td:last-child { color: #222222; }
+.cost-table th, .summary-table th { padding: 10px 12px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 2px solid #000000; text-align: left; color: #000000; }
+.cost-table td:first-child { font-weight: 600; color: #000000; width: 25%; }
+.summary-table th:first-child { color: #555555; text-align: left; width: 30%; }
+.summary-table th:nth-child(2) { color: #000000; text-align: center; }
+.summary-table td { padding: 10px 12px; border-bottom: 1px solid #cccccc; vertical-align: top; line-height: 1.5; }
+.summary-table td:first-child { font-family: 'DM Mono', monospace; font-size: 10px; color: #555555; }
+.summary-table td:nth-child(2) { color: #111111; text-align: center; background: #f5f5f5; }
+.confirm-block { border: 1px solid #999999; padding: 24px 20px; margin: 16px 0; text-align: center; background: #f9f9f9; }
+.confirm-options { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin: 14px 0; }
+.confirm-opt { font-family: 'Cormorant Garamond', serif; font-size: clamp(15px, 2.2vw, 18px); font-weight: 700; padding: 10px 18px; border: 2px solid #000000; color: #000000; line-height: 1.3; }
+.initials-row { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 14px; }
+.initials-item { font-size: 12px; color: #333333; }
+.initials-line { display: inline-block; width: 120px; border-bottom: 1px solid #333333; margin-left: 6px; vertical-align: middle; }
+.sig-grid, .witness-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 16px 0; }
+@media(max-width: 560px) { .sig-grid, .witness-grid { grid-template-columns: 1fr; } }
+.sig-card, .witness-card { border: 1px solid #999999; padding: 18px 16px; }
+.sig-party { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #000000; margin-bottom: 4px; }
+.sig-trust { font-family: 'Cormorant Garamond', serif; font-size: 14px; font-style: italic; color: #333333; margin-bottom: 14px; }
+.sig-name { font-size: 12px; font-weight: 600; color: #000000; margin-bottom: 16px; }
+.sig-line { border-bottom: 1px solid #333333; margin-bottom: 8px; height: 26px; }
+.sig-field, .witness-field { font-size: 11px; color: #555555; margin-bottom: 10px; }
+.sig-field span, .witness-field span { display: inline-block; width: 140px; border-bottom: 1px solid #999999; margin-left: 6px; }
+.witness-num { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #555555; text-transform: uppercase; margin-bottom: 10px; }
+.witness-field span { width: 100%; height: 18px; margin-top: 2px; }
+.divider { height: 1px; background: #000000; margin: 30px 0; }
 .record-panel { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(14,11,6,0.97); border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: center; gap: 16px; padding: 10px 20px; z-index: 1000; flex-wrap: wrap; }
 .record-panel button { font-family: 'Josefin Sans', sans-serif; font-size: 13px; letter-spacing: 1px; font-weight: 600; border: none; border-radius: 4px; padding: 9px 22px; cursor: pointer; transition: opacity 0.2s, transform 0.1s; }
-.record-panel button:active { transform: scale(0.97); }
 #recordBtn { background: var(--gold); color: var(--ink); }
 #stopBtn   { background: #8B2020; color: #fff; }
 #playBtn   { background: #1A5C2A; color: #fff; }
 #recStatus { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold-light); letter-spacing: 1px; min-width: 80px; text-align: center; }
-footer { border-top: 1px solid var(--border); padding: 28px; padding-bottom: 100px; text-align: center; position: relative; z-index: 1; }
-footer p { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; color: var(--muted); line-height: 2; }
-footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px; font-style: italic; color: var(--blue-light); margin-top: 6px; }
-.page { background: #FFFFFF; color: #111111; padding-top: 40px; }
-.page .section { border-top: 1px solid #cccccc; }
-.page .section-num { color: #555555; }
-.page .section-title { color: #000000; }
-.page .sub-title { color: #000000; border-bottom: 1px solid #999999; padding-bottom: 4px; }
-.page .body-text { color: #222222; }
-.page .body-text strong { color: #000000; }
-.page .bullet-list li { color: #222222; }
-.page .bullet-list li::before { color: #000000; }
-.page .parties-table td { border: 1px solid #999999; }
-.page .parties-table td:first-child { background: #eeeeee; color: #000000; }
-.page .parties-table td:last-child { background: #ffffff; color: #111111; }
-.page .parties-table td strong { color: #000000; }
-.page .option-card { border: 1px solid #999999; }
-.page .option-card::before { background: #000000 !important; }
-.page .option-header { border-bottom: 1px solid #999999; }
-.page .option-label { color: #000000 !important; }
-.page .option-name { color: #000000; }
-.page .option-row { border-bottom: 1px solid #dddddd; }
-.page .option-row .key { color: #555555; }
-.page .option-row .val { color: #111111; }
-.page .option-row .val strong { color: #000000; }
-.page .option-note { color: #555555; }
-.page .option-card[style*="border: 2px solid"] { border: 2px solid #000000 !important; box-shadow: none !important; }
-.page .sub-title[style*="color"] { color: #000000 !important; }
-.page .data-table tr:nth-child(odd) td { background: #f5f5f5; }
-.page .data-table tr:hover td { background: #eeeeee; }
-.page .data-table td { border-bottom: 1px solid #cccccc; }
-.page .data-table td:first-child { color: #000000; }
-.page .data-table td:last-child { color: #222222; }
-.page .legacy-block { background: #f5f5f5; border-left: 3px solid #000000; color: #111111; }
-.page .summary-table th { border-bottom: 2px solid #000000; }
-.page .summary-table th:first-child { color: #555555; }
-.page .summary-table th:nth-child(2) { color: #000000; }
-.page .summary-table th:nth-child(3) { color: #000000; }
-.page .summary-table td { border-bottom: 1px solid #cccccc; }
-.page .summary-table td:first-child { color: #555555; }
-.page .summary-table td:nth-child(2) { color: #111111; background: #f5f5f5; }
-.page .summary-table td:nth-child(3) { color: #111111; background: #eeeeee; }
-.page .summary-table tr:hover td { background: #e5e5e5; }
-.page .confirm-block { border: 1px solid #999999; background: #f9f9f9; }
-.page .confirm-opt.a { color: #000000; border-color: #000000; }
-.page .confirm-opt.b { color: #000000; border-color: #000000; }
-.page .confirm-or { color: #555555; }
-.page .initials-item { color: #333333; }
-.page .initials-line { border-bottom: 1px solid #333333; }
-.page .sig-card { border: 1px solid #999999; }
-.page .sig-party { color: #000000; }
-.page .sig-trust { color: #333333; }
-.page .sig-name { color: #000000; }
-.page .sig-line { border-bottom: 1px solid #333333; }
-.page .sig-field { color: #555555; }
-.page .sig-field span { border-bottom: 1px solid #999999; }
-.page .witness-card { border: 1px solid #999999; }
-.page .witness-num { color: #555555; }
-.page .witness-field { color: #555555; }
-.page .witness-field span { border-bottom: 1px solid #999999; }
-.page .divider { background: #000000; height: 1px; }
-.cost-table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 13px; }
-.cost-table th { padding: 10px 14px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 2px solid #000000; text-align: left; color: #000000; }
-.cost-table td { padding: 10px 14px; border-bottom: 1px solid #cccccc; vertical-align: top; line-height: 1.6; color: #222222; }
-.cost-table td:first-child { font-weight: 600; color: #000000; width: 22%; }
-.cost-table tr:nth-child(odd) td { background: #f7f7f7; }
+footer { border-top: 1px solid #000000; padding: 24px; padding-bottom: 90px; text-align: center; background: #fcfcfc; }
+footer p { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; color: #555555; line-height: 1.8; }
 </style>
 </head>
 <body>
-<!-- TRANSLATE BAR -->
+
 <div class="lang-bar">
     <label>🌐 Translate to:</label>
     <select id="langSelect">
         <option value="">-- Select Language --</option>
-        <option value="af">Afrikaans</option>
-        <option value="sq">Albanian</option>
-        <option value="am">Amharic</option>
-        <option value="ar">Arabic</option>
-        <option value="hy">Armenian</option>
-        <option value="as">Assamese</option>
-        <option value="ay">Aymara</option>
-        <option value="az">Azerbaijani</option>
-        <option value="bm">Bambara</option>
-        <option value="eu">Basque</option>
-        <option value="be">Belarusian</option>
-        <option value="bn">Bengali</option>
-        <option value="bs">Bosnian</option>
-        <option value="bg">Bulgarian</option>
-        <option value="my">Burmese</option>
-        <option value="ca">Catalan</option>
-        <option value="ceb">Cebuano</option>
-        <option value="ny">Chichewa</option>
-        <option value="zh-CN">Chinese (Simplified)</option>
-        <option value="zh-TW">Chinese (Traditional)</option>
-        <option value="co">Corsican</option>
-        <option value="hr">Croatian</option>
-        <option value="cs">Czech</option>
-        <option value="da">Danish</option>
-        <option value="dv">Dhivehi</option>
-        <option value="doi">Dogri</option>
-        <option value="nl">Dutch</option>
-        <option value="eo">Esperanto</option>
-        <option value="et">Estonian</option>
-        <option value="ee">Ewe</option>
-        <option value="tl">Filipino</option>
-        <option value="fi">Finnish</option>
-        <option value="fr">French</option>
-        <option value="fy">Frisian</option>
-        <option value="gl">Galician</option>
-        <option value="ka">Georgian</option>
-        <option value="de">German</option>
-        <option value="el">Greek</option>
-        <option value="gn">Guarani</option>
-        <option value="gu">Gujarati</option>
-        <option value="ht">Haitian Creole</option>
-        <option value="ha">Hausa</option>
-        <option value="haw">Hawaiian</option>
-        <option value="iw">Hebrew</option>
-        <option value="hi">Hindi</option>
-        <option value="hmn">Hmong</option>
-        <option value="hu">Hungarian</option>
-        <option value="is">Icelandic</option>
-        <option value="ig">Igbo</option>
-        <option value="id">Indonesian</option>
-        <option value="ga">Irish</option>
-        <option value="it">Italian</option>
-        <option value="ja">Japanese</option>
-        <option value="jw">Javanese</option>
-        <option value="kn">Kannada</option>
-        <option value="kk">Kazakh</option>
-        <option value="km">Khmer</option>
-        <option value="rw">Kinyarwanda</option>
-        <option value="gom">Konkani</option>
-        <option value="ko">Korean</option>
-        <option value="kri">Krio</option>
-        <option value="ku">Kurdish (Kurmanji)</option>
-        <option value="ckb">Kurdish (Sorani)</option>
-        <option value="ky">Kyrgyz</option>
-        <option value="lo">Lao</option>
-        <option value="la">Latin</option>
-        <option value="lv">Latvian</option>
-        <option value="ln">Lingala</option>
-        <option value="lt">Lithuanian</option>
-        <option value="lg">Luganda</option>
-        <option value="lb">Luxembourgish</option>
-        <option value="mk">Macedonian</option>
-        <option value="mai">Maithili</option>
-        <option value="mg">Malagasy</option>
-        <option value="ms">Malay</option>
-        <option value="ml">Malayalam</option>
-        <option value="mt">Maltese</option>
-        <option value="mi">Maori</option>
-        <option value="mr">Marathi</option>
-        <option value="mni-Mtei">Meiteilon (Manipuri)</option>
-        <option value="lus">Mizo</option>
-        <option value="ne">Nepali</option>
-        <option value="no">Norwegian</option>
-        <option value="or">Odia (Oriya)</option>
-        <option value="om">Oromo</option>
-        <option value="ps">Pashto</option>
-        <option value="fa">Persian</option>
-        <option value="pl">Polish</option>
-        <option value="pt">Portuguese</option>
-        <option value="pa">Punjabi</option>
-        <option value="qu">Quechua</option>
-        <option value="ro">Romanian</option>
-        <option value="ru">Russian</option>
-        <option value="sm">Samoan</option>
-        <option value="sa">Sanskrit</option>
-        <option value="gd">Scots Gaelic</option>
-        <option value="sr">Serbian</option>
-        <option value="st">Sesotho</option>
-        <option value="sn">Shona</option>
-        <option value="sd">Sindhi</option>
-        <option value="si">Sinhala</option>
-        <option value="sk">Slovak</option>
-        <option value="sl">Slovenian</option>
-        <option value="so">Somali</option>
-        <option value="es">Spanish</option>
-        <option value="su">Sundanese</option>
-        <option value="sw">Swahili</option>
-        <option value="sv">Swedish</option>
-        <option value="tg">Tajik</option>
-        <option value="ta">Tamil</option>
-        <option value="tt">Tatar</option>
-        <option value="te">Telugu</option>
-        <option value="th">Thai</option>
-        <option value="ti">Tigrinya</option>
-        <option value="ts">Tsonga</option>
-        <option value="tr">Turkish</option>
-        <option value="tk">Turkmen</option>
-        <option value="ak">Twi</option>
-        <option value="uk">Ukrainian</option>
-        <option value="ur">Urdu</option>
-        <option value="ug">Uyghur</option>
-        <option value="uz">Uzbek</option>
-        <option value="vi">Vietnamese</option>
-        <option value="cy">Welsh</option>
-        <option value="xh">Xhosa</option>
-        <option value="yi">Yiddish</option>
-        <option value="yo">Yoruba</option>
-        <option value="zu">Zulu</option>
+        <option value="ar">Arabic</option><option value="zh-CN">Chinese (Simplified)</option><option value="nl">Dutch</option><option value="fr">French</option><option value="de">German</option><option value="hi">Hindi</option><option value="id">Indonesian</option><option value="it">Italian</option><option value="ja">Japanese</option><option value="ko">Korean</option><option value="pt">Portuguese</option><option value="ru">Russian</option><option value="es">Spanish</option><option value="te">Telugu</option><option value="tr">Turkish</option>
     </select>
-    <span class="hint">👇 Select a language, then tap the button below to translate the entire document</span>
-    <button id="translateAllBtn" style="margin-top:8px; padding:10px 20px; border-radius:20px; border:1px solid var(--border); background: var(--gold); color: var(--ink); font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:13px; cursor:pointer;">🌐 Translate Entire Document</button>
+    <span class="hint">👇 Select a language, then tap to translate</span>
+    <button id="translateAllBtn" style="margin-top:6px; padding:8px 16px; border-radius:16px; border:1px solid var(--border); background: var(--gold); color: var(--ink); font-family:'Josefin Sans',sans-serif; font-weight:600; font-size:12px; cursor:pointer;">🌐 Translate Document</button>
     <span class="hint" id="translateAllStatus" style="display:none;"></span>
 </div>
 
-<!-- CONTACT BAR -->
 <div class="contact-bar">
   <a class="contact-item" href="tel:+917989534732"><span class="contact-icon">📞</span><span>+91 79895 34732</span></a>
   <div class="contact-sep"></div>
@@ -342,381 +141,229 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
   <a class="contact-item" href="https://bilinglishsathya.github.io/website" target="_blank" rel="noopener"><span class="contact-icon">🌐</span><span>Website</span></a>
   <div class="contact-sep"></div>
   <a class="contact-item" href="https://thottempadi.vercel.app/demo.html" target="_blank" rel="noopener"><span class="contact-icon">▶</span><span>Course Demo</span></a>
-  <div class="contact-sep"></div>
-  <a class="contact-item" href="https://www.youtube.com/@englishsathya1" target="_blank" rel="noopener"><span class="contact-icon">▶</span><span>YouTube</span></a>
-  <div class="contact-sep"></div>
-  <a class="contact-item" href="https://www.linkedin.com/in/sathyalakshmi-thottempudi-17046b14a" target="_blank" rel="noopener"><span class="contact-icon">in</span><span>LinkedIn</span></a>
 </div>
 
 <div class="conf-bar">
-  <span>Strictly Private &amp; Confidential — For Authorised Parties Only</span>
+  <span>Strictly Private &amp; Confidential — Condensed Term Sheet</span>
 </div>
 
-<!-- COVER -->
+<!-- Table of Contents Section -->
+<div class="toc-box">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-grid">
+    <a href="#sec1"><span>01.</span> Parties &amp; Preamble</a>
+    <a href="#sec2"><span>02.</span> Territory Licensing &amp; Royalty</a>
+    <a href="#sec2a"><span>02A.</span> Grammar-Check &amp; Testing</a>
+    <a href="#sec3"><span>03.</span> Definitions</a>
+    <a href="#sec4"><span>04.</span> Trust Structure &amp; Control</a>
+    <a href="#sec5"><span>05.</span> Intellectual Property &amp; Trade Secret</a>
+    <a href="#sec6"><span>06.</span> Reversion of Rights</a>
+    <a href="#sec7"><span>07.</span> Financial Terms &amp; Taxes</a>
+    <a href="#sec8"><span>08.</span> Licensor's Reserved Rights</a>
+    <a href="#sec9"><span>09.</span> Non-Compete Undertaking</a>
+    <a href="#sec10"><span>10.</span> Confidentiality</a>
+    <a href="#sec11"><span>11.</span> Term &amp; Termination</a>
+    <a href="#sec12"><span>12.</span> Governing Law &amp; Disputes</a>
+    <a href="#sec13"><span>13.</span> General Provisions</a>
+    <a href="#sec14"><span>14.</span> Summary &amp; Confirmation</a>
+    <a href="#sec15"><span>15.</span> Execution &amp; Signatures</a>
+  </div>
+</div>
+
 <div class="cover">
   <p class="cover-main-title">Course License and Distribution Agreement</p>
-  <p class="cover-sub">BILINGLISHSATHYA Spoken English Course</p>
+  <p class="cover-sub">BILINGLISHSATHYA Spoken English Course — Term Sheet</p>
   <p class="cover-trust">BILINGLISHSATHYA Foundation Trust</p>
   <div class="cover-ref">Agreement Reference No. &nbsp; BILIN-________-2026</div>
 </div>
 
-<!-- ABOUT -->
 <div class="opening-quote">
   <div class="pull-quote">
-    <p><span class="translatable">In the 15th century, Caxton's press made English the language of every reader and writer. In the 20th century, the computer brought English into every home. In the 21st century, English is the language of the Internet, AI and Robotics. English is no longer just a language — it is the key to every future. Spoken English is the gateway to success.</span></p>
+    <p><span class="translatable">Spoken English is the gateway to success in the era of Internet, AI and Robotics. BILINGLISHSATHYA is a 50-day structured program created by Dr. Sathyalakshmi Thottempadi, PhD in Teaching Methodology, leveraging 48 years of language teaching expertise (Bright Academy, Nellore).</span></p>
   </div>
-  <p class="about-text"><span class="translatable">BILINGLISHSATHYA is a 50-day structured Spoken English course created by Dr. Sathyalakshmi Thottempadi, PhD in Teaching Methodology, with 48 years of experience in English language teaching and methodology, including classroom leadership at Bright Academy of English, Nellore, since 1984.</span> <span class="translatable">The course employs a proprietary drill methodology that is the exclusive Trade Secret of the Licensor and the BILINGLISHSATHYA Foundation Trust.</span></p>
+  <p class="about-text"><span class="translatable">Explore the interactive <a href="https://thottempadi.vercel.app/demo.html" target="_blank">Course Demo</a>, review macro-level market strategies on our <a href="https://bilinglishsathya.github.io/website" target="_blank">Scope of Development page</a>, and review certification guidelines via our <a href="https://bilinglishsathya.github.io/website" target="_blank">Test Procedure page</a>.</span></p>
 </div>
 
 <div class="page">
-  <!-- 1. PREAMBLE -->
-  <div class="section">
+
+  <!-- Section 1 -->
+  <div class="section" id="sec1">
     <p class="section-num">Section 1</p>
     <h2 class="section-title">Preamble — Parties to the Agreement</h2>
-    <p class="body-text"><span class="translatable">This Course License and Distribution Agreement is entered into on this day, by and between the Licensor and the Licensee as described below.</span></p>
     <table class="parties-table">
       <tr>
         <td>LICENSOR</td>
         <td>
           <strong>BILINGLISHSATHYA Foundation Trust</strong><br>
-          <span class="translatable">Represented by its Founder and Chief Trustee</span><br>
-          <strong>Smt. Sathyalakshmi Thottempadi — PhD in Teaching Methodology</strong><br>
-          Bright Academy of English, Nellore | Since 1984<br>
-          Trust Registration No.: ___________________________<br>
-          Copyright Diary No. (Literary/Dramatic Work): LD-30906/2026-CO<br>
-          Copyright Diary No. (Computer Software): SW-30885/2026-CO<br>
-          <em>(Applications filed; Diary Numbers shown — Registration Numbers to be updated upon issuance)</em><br>
-          Address: 8-45, Kasumur, Venkatachalam Mandal, Nellore District, Andhra Pradesh, India — 524320<br>
-          Phone: +91 79895 34732 | Email: englishsathya@gmail.com<br>
-          Website: <a href="https://bilinglishsathya.github.io/website" target="_blank">https://bilinglishsathya.github.io/website</a><br>
-          Course Demo: <a href="https://thottempadi.vercel.app/demo.html" target="_blank">https://thottempadi.vercel.app/demo.html</a><br>
-          YouTube: <a href="https://www.youtube.com/@englishsathya1" target="_blank">https://www.youtube.com/@englishsathya1</a><br>
-          LinkedIn: <a href="https://www.linkedin.com/in/sathyalakshmi-thottempudi-17046b14a" target="_blank">https://www.linkedin.com/in/sathyalakshmi-thottempudi-17046b14a</a>
+          Represented by Founder &amp; Chief Trustee: <strong>Smt. Sathyalakshmi Thottempadi (PhD)</strong><br>
+          Copyright Diary Nos.: LD-30906/2026-CO (Literary) | SW-30885/2026-CO (Software)<br>
+          Address: Kasumur, Venkatachalam Mandal, Nellore, AP, India — 524320<br>
+          Email: englishsathya@gmail.com | Web: <a href="https://bilinglishsathya.github.io/website" target="_blank">Website</a>
         </td>
       </tr>
       <tr>
         <td>LICENSEE</td>
         <td>
-          <strong>Name / Company:</strong> ___________________________<br>
-          Legal Entity Type: Corporation / LLC / Individual<br>
+          <strong>Name / Entity:</strong> ___________________________<br>
           Registered Address: ___________________________<br>
-          Authorized Representative: ___________________________<br>
-          Email: ___________________________
+          Authorized Rep: ___________________________ | Email: ___________________________
         </td>
       </tr>
     </table>
   </div>
 
-  <!-- 2. DEAL OPTIONS -->
-  <div class="section">
+  <!-- Section 2 -->
+  <div class="section" id="sec2">
     <p class="section-num">Section 2</p>
-    <h2 class="section-title">Territory Licensing — Royalty-First Structure</h2>
-    <p class="body-text"><span class="translatable">The Trust licenses BILINGLISHSATHYA to territory partners on a royalty-first basis. A non-refundable advance, calculated as royalty on 100 student enrollments or ₹25,00,000 (whichever is higher), secures exclusive territorial marketing rights and is credited against ongoing per-transaction royalty as actual sales occur. This protects the Trust's position fully from day one, while giving the Territory Partner a clear, proportional path to growing margin as their own sales increase.</span></p>
+    <h2 class="section-title">Territory Licensing &amp; Royalty Structure</h2>
+    <p class="body-text"><span class="translatable">The Trust grants exclusive territorial marketing rights on a royalty-first model. Securing a territory requires a non-refundable advance equivalent to royalty on 100 enrollments or <strong>₹25,00,000</strong> (whichever is higher), credited against ongoing per-transaction royalties.</span></p>
 
-    <div class="options-grid" style="grid-template-columns: 1fr;">
-      <div class="option-card option-a" style="border: 2px solid var(--gold-light); box-shadow: 0 0 24px rgba(201,146,42,0.25);">
+    <div class="options-grid">
+      <div class="option-card">
         <div class="option-header">
-          <div class="option-label">Territory License</div>
-          <div class="option-name">Territory-Specific License<br>(Royalty-First Structure)</div>
+          <div class="option-label">Commercial Terms</div>
+          <div class="option-name">Royalty-First Territory License</div>
         </div>
         <div class="option-body">
-          <div class="option-row"><span class="key">Advance Royalty</span><span class="val">Royalty on 100 students, or <strong>₹25,00,000</strong>, whichever is higher — payable upon signing, <strong>non-refundable</strong></span></div>
-          <div class="option-row"><span class="key">Royalty on Sales</span><span class="val"><strong>Fixed 25%</strong> of Gross Revenue, uniform across all territories</span></div>
-          <div class="option-row"><span class="key">Settlement</span><span class="val">Per-transaction, realized directly at BILINGLISHSATHYA's payment gateway — not batched or quarterly</span></div>
-          <div class="option-row"><span class="key">Minimum Guaranteed Royalty</span><span class="val">Annual floor, set per territory, protecting against inactive or dormant licenses</span></div>
-          <div class="option-row"><span class="key">Review</span><span class="val">Annual — MGR and territory scope revisited; the 25% royalty rate itself remains fixed</span></div>
-          <div class="option-row"><span class="key">Payment Routing</span><span class="val">Mandatory — PayPal (international) or Razorpay (domestic); no independent payment collection permitted</span></div>
+          <div class="option-row"><span class="key">Advance Royalty</span><span class="val">Royalty on 100 students or <strong>₹25,00,000</strong> (non-refundable)</span></div>
+          <div class="option-row"><span class="key">Ongoing Royalty</span><span class="val"><strong>Fixed 25%</strong> of Gross Revenue across all transactions</span></div>
+          <div class="option-row"><span class="key">Payment Routing</span><span class="val">Mandatory via Trust Gateways (Razorpay / PayPal)</span></div>
         </div>
       </div>
     </div>
 
-    <p class="sub-title">2.1 Advance Royalty — Mechanics</p>
-    <p class="body-text"><span class="translatable">To secure exclusive territorial marketing rights, a Territory Partner is liable for royalty on a minimum of 100 student enrollments, or ₹25,00,000 (or the equivalent in the relevant international currency), whichever is higher, payable upon signing. This advance is non-refundable under any circumstances, consistent with standard practice for securing exclusive access to a valuable, limited asset. At the fixed 25% royalty rate on the current domestic price, royalty on 100 students equals ₹25,00,000 — the two figures align at current pricing; if course pricing changes, the higher of the two amounts always applies. This is not a separate fee in addition to royalty — it is royalty, paid as a guaranteed minimum up front, credited against actual per-transaction royalty as real sales occur.</span></p>
-    <p class="body-text"><span class="translatable">At the end of the first 12-month period, the advance is reconciled against actual royalty accrued from real sales during the year. If actual royalty exceeds ₹25,00,000, the Territory Partner pays the excess in the normal per-transaction manner — the advance is not a cap. If actual royalty is less than ₹25,00,000, no refund or credit is due to the Territory Partner; the advance is retained in full, as the price of securing exclusive territorial access for the year, whether or not that access was fully utilized. This reconciliation determines only what, if anything, is owed beyond the advance — it never results in money being returned to the Territory Partner.</span></p>
-
-    <p class="sub-title">2.2 Payment Gateway &amp; Access Control</p>
-    <ul class="bullet-list">
-      <li><span class="translatable">All payments from end users for access to the Course, in any territory, shall be processed exclusively through payment gateways owned and controlled by the Trust (currently Razorpay and PayPal). The Licensee shall never operate, control, or replicate an independent payment collection or access-granting system for the Course.</span></li>
-      <li><span class="translatable">Access to the Course shall be granted only through the Trust's own access-control system. The Trust retains sole control of the access-code generation logic and any associated cryptographic secrets at all times.</span></li>
-      <li><span class="translatable">Royalty is settled as and when each student payment is received, not accumulated and paid in batches. Because all payments route through the Trust's designated gateway, the Trust's 25% royalty share is realized directly at the point of each transaction, with the remaining balance due to the Territory Partner. No separate audit process is required, as the payment gateway itself provides verified sales data at the time of each transaction, and the Trust's own gateway records shall prevail over any Licensee-reported figures in the event of any discrepancy.</span></li>
-    </ul>
-
-    <p class="sub-title">2.3 Nature of Territorial Rights (Digital Product Clarification)</p>
-    <p class="body-text"><span class="translatable">Because the Course is delivered digitally, geographic territory cannot function as a physical access restriction the way it might for a tangible product. A Territory granted under this Agreement refers to the Licensee's exclusive right to market, advertise, and solicit sales within that geography — it does not, and cannot, prevent a student located anywhere in the world from accessing the Trust's website or purchasing directly through the Trust's own channels. Sales made directly through the Trust's own website or gateways, without referral from or active solicitation by a Territory Partner, remain the Trust's own sales and are not owed to any Territory Partner. A sale is attributed to a Territory Partner's royalty calculation only where reasonably traceable to that partner's specific marketing activity, referral link, or documented lead; where attribution is unclear, the sale is treated as a direct Trust sale. The Trust does not guarantee that a Territory Partner will be the sole source of course access for that geography, given the inherently borderless nature of digital distribution — the value of the license lies in exclusive marketing rights and the locally-tailored sales relationship the partner builds.</span></p>
-
-    <p class="sub-title">2.3.1 Universal Payment-Gated Access</p>
-    <p class="body-text"><span class="translatable">Access to the Course is available to any student, anywhere in the world, on payment of the applicable course fee through the Trust's or a Territory Partner's designated payment gateway, regardless of the student's nationality, location, or country of residence, and regardless of whether that country is presently covered by an active Territory Partner. No Territory Partner may restrict, block, or condition a student's access to the Course on any basis other than payment of the applicable fee. Where a student's country has no active Territory Partner, the student may access the Course directly through the Trust's own channels, on the same payment-gated basis. This ensures the Course remains available, without geographic barrier, to any student who has paid for it — including a student who relocates from one country to another for study, work, or any other purpose, whose access, once purchased, is not tied to or restricted by their location at the time of purchase or at any point thereafter.</span></p>
-
-    <p class="sub-title">2.3.2 Cross-Territory Access Disputes</p>
-    <p class="body-text"><span class="translatable">Because access under Clause 2.3.1 is deliberately unrestricted by geography, questions may arise as to which Territory Partner, if any, a given student's enrollment should be attributed to for royalty purposes — for example, where a student purchases while physically present in one Territory Partner's region but is a resident, citizen, or long-term marketing target of another. Any such cross-access dispute between Territory Partners, or between a Territory Partner and the Trust, regarding attribution of a specific enrollment shall be resolved at the sole discretion of the Chief Trustee, whose determination shall be final and binding on all Territory Partners. The Chief Trustee shall exercise this discretion in the interest of the student's uninterrupted access to the Course, and shall not be influenced by which outcome yields a larger Royalty to the Trust, since the Trust's own interest in any such dispute is limited to the fixed 25% Royalty regardless of which Territory Partner the enrollment is attributed to. This discretion applies specifically to cross-territory attribution questions arising under Clause 2.3.1, and is distinct from, and does not limit, the general dispute resolution process set out in Section 12 for other matters.</span></p>
-
-    <p class="sub-title">2.4 No Expansion Without Consent</p>
-    <p class="body-text"><span class="translatable">The Licensee's rights are limited to marketing, promotion, and facilitating sales of the Course as it currently exists within the licensed territory. The Licensee shall not create, commission, or authorize any new course, expanded curriculum, or material modification to the Course without the Chief Trustee's prior written consent.</span></p>
-
-    <p class="sub-title">2.5 Sub-Licensing and Segment Delegation</p>
-    <p class="body-text"><span class="translatable">A Territory Partner may manage all sales segments within their territory directly — institutional, individual, and ed-tech platform licensing alike — or may propose delegating one or more segments to another party better positioned to reach that segment. The Trust has no objection in principle, provided any such arrangement is proposed to and approved in writing by the Trust before it takes effect; the original Territory Partner remains responsible for ensuring the sub-licensed party adheres to the same terms of this Agreement; and the fixed 25% royalty applies to all territory sales regardless of how many parties are involved. The Trust reserves the right to decline any proposed sub-license or delegation at its discretion.</span></p>
-
-    <p class="sub-title">2.6 Re-Licensing to a New Party</p>
-    <p class="body-text"><span class="translatable">If a territory reverts to the Trust at the end of a term because the original Licensee does not renew, or the Trust elects not to renew with that Licensee, the Trust is free to grant a fresh license for that same territory to a different, new party, on terms negotiated afresh and not bound by, or owed to, the original Licensee in any way.</span></p>
-
-    <p class="sub-title">2.7 Year 1 Market Entry &amp; Future Scaling — The Growth Ladder</p>
-    <p class="body-text"><span class="translatable">The Trust's licensing terms are designed to scale up gradually and predictably as a territory proves itself, rather than jumping to a materially higher commitment at once. This gives a Territory Partner a clear, foreseeable path as their market grows, and gives the Trust growing returns that track real, demonstrated demand.</span></p>
-
-    <table class="data-table">
-      <tr><td>Year 1</td><td><span class="translatable">Advance Royalty of ₹25,00,000 (or royalty on 100 students, whichever is higher), as described in Clause 2.1. Royalty fixed at 25% throughout.</span></td></tr>
-      <tr><td>Renewal — Year 2</td><td><span class="translatable">If Year 1 sales met or exceeded 100 students, the Year 2 advance is set at the greater of the Year 1 advance or royalty on the Territory Partner's own actual Year 1 enrollment figure — i.e. the floor rises only as far as the territory has already proven itself, not beyond it. If Year 1 sales fell short of 100 students, the Trust and Territory Partner shall discuss the Year 2 advance in good faith, which may remain unchanged, taking into account the reasons for the shortfall and the partner's plans for the coming year.</span></td></tr>
-      <tr><td>Renewal — Year 3 onward</td><td><span class="translatable">The same step logic continues at each annual renewal: the advance is recalibrated to the greater of the prior year's advance or royalty on the most recently completed year's actual enrollment, so that increases always track real, demonstrated growth in that specific territory rather than a fixed or arbitrary escalation.</span></td></tr>
-      <tr><td>Established, high-volume territories</td><td><span class="translatable">Once a territory has sustained strong enrollment over multiple years, the Trust may, at its discretion, discuss materially larger commitments with the Territory Partner — including extended terms, broader segment rights, or equity-linked arrangements as described below — but only as a further step up the same ladder, never as a precondition to entry.</span></td></tr>
-    </table>
-
-    <p class="body-text"><span class="translatable">The 25% royalty rate itself never changes at any step of this ladder. Only the advance and MGR floor move, and only in the direction and to the extent that actual sales in that territory have already justified. If a territory attracts interest from multiple prospective partners once viability is proven, the Trust may open the territory to competitive terms before selecting or renewing a partner. In territories where sustained volume and competition justify it, the Trust may also consider equity-linked or profit-share arrangements with a Territory Partner, in place of or in addition to standard licensing terms, entirely at the Trust's discretion.</span></p>
-
-    <p class="sub-title">2.8 Market Opportunity — Mandatory Education, Missing Fluency</p>
-    <p class="body-text"><span class="translatable">In several of the world's largest economies — including Japan, South Korea, China, and Germany — English is a compulsory subject taught for a decade or more within the national school curriculum. Despite this, formal instruction in these systems is typically grammar-heavy, exam-focused, and delivered through memorization rather than spoken practice, leaving the great majority of students without genuine conversational fluency even after ten to fifteen years of study. BILINGLISHSATHYA does not compete with these mandatory curricula; it fills the specific gap they consistently fail to close — real spoken fluency. This makes such territories especially well-suited candidates for territorial licensing, as the underlying demand for spoken English has already been created and sustained by each country's own education system.</span></p>
-
-    <p class="option-note"><span class="translatable">Territory, advance amount, and any deal-specific terms shall be confirmed by both Parties initialling the Confirmation Block at Clause 15.</span></p>
+    <p class="sub-title">2.1 Digital Access &amp; Scope</p>
+    <p class="body-text"><span class="translatable">Because the course is digital, territory grants cover active marketing within the region. Direct unassigned sales via Trust channels remain with the Trust. Detailed growth frameworks and regional market potentials are outlined in our <a href="https://bilinglishsathya.github.io/website" target="_blank">Scope of Development</a>.</span></p>
   </div>
 
-  <!-- 2.5 GRAMMAR-CHECK USAGE & PLATFORM MAINTENANCE COSTS -->
-  <div class="section">
-    <p class="section-num">Section 2.5</p>
-    <h2 class="section-title">Grammar-Check Feature — Usage Limits &amp; Platform Maintenance Costs</h2>
-
-    <p class="sub-title">2.5.1 Usage Allowance</p>
+  <!-- Section 2A -->
+  <div class="section" id="sec2a">
+    <p class="section-num">Section 2A</p>
+    <h2 class="section-title">Grammar-Check &amp; Certification Standards</h2>
     <ul class="bullet-list">
-      <li><span class="translatable">Each enrolled learner's access to the Grammar-Check Feature begins on the date of that learner's first use, and remains available for fifty (50) consecutive calendar days from that date only.</span></li>
-      <li><span class="translatable">Within this 50-day window, each learner is entitled to a maximum of twenty (20) grammar corrections per calendar day. This daily allowance does not carry over or accumulate if unused.</span></li>
-      <li><span class="translatable">After the 50-day window has elapsed, the Grammar-Check Feature is disabled for that learner permanently. All other course content, including all fifty day-lessons, recording and playback, and the accent-score display, remains available for the full six (6) month course access period regardless of Grammar-Check Feature expiry.</span></li>
-      <li><span class="translatable">A learner wishing to continue using the Course beyond their initial six-month access period may renew or extend access on payment of the applicable renewal fee, as published on the Trust's website and course platform from time to time. Such renewals constitute a further sale under this Agreement, and Royalty is payable on them in the same manner, and at the same fixed rate, as on any initial enrollment. The Territory Partner is licensed to market and facilitate such renewals within their territory on the same basis as initial course sales.</span></li>
+      <li><span class="translatable"><strong>Grammar-Check Feature:</strong> Active for 50 consecutive calendar days from first learner use, capped at 20 corrections per day. Platform and AI maintenance costs are invoiced quarterly to the Licensee separately from Royalty.</span></li>
+      <li><span class="translatable"><strong>Certification Test:</strong> Digital, spoken monthly assessments. First 6 months include free attempts. Subsequent retests incur a high-value protection fee structured as a standard revenue-share sale. Full guidelines are detailed on the <a href="https://bilinglishsathya.github.io/website" target="_blank">Test Procedure page</a>.</span></li>
     </ul>
-
-    <p class="sub-title">2.5.2 Platform Maintenance Costs — Borne Separately by the Licensee</p>
-    <ul class="bullet-list">
-      <li><span class="translatable">The ongoing platform maintenance costs described in the table below (payment processing, website hosting, source code repository, and the Grammar-Check AI service) are separate and distinct from, and shall not reduce, dilute, or be deducted from, the Royalty payable to the Trust under Section 7. The Royalty is calculated on full Gross Revenue with no deductions whatsoever, exactly as defined in Section 3 and Clause 7.1.</span></li>
-      <li><span class="translatable">The Licensee shall bear such platform maintenance costs as are attributable to their own licensed territory, separate from and in addition to the Advance Royalty and ongoing Royalty described in Section 2.</span></li>
-      <li><span class="translatable">The Trust shall invoice the Licensee for actual platform maintenance costs incurred on the Licensee's behalf on a quarterly basis, payable within 30 days of invoice, alongside — but never combined or netted against — the Licensee's per-transaction Royalty obligations.</span></li>
-    </ul>
-
-    <table class="cost-table">
-      <thead>
-        <tr><th>Cost Head</th><th>Nature of Cost</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Payment Processing<br>(Razorpay / PayPal)</td>
-          <td><span class="translatable">A transaction-based fee (typically a small percentage of each payment collected) charged by the payment gateway providers. This cost only arises when a payment is successfully collected and is proportionate to actual sales in the Licensee's territory.</span></td>
-        </tr>
-        <tr>
-          <td>Website Hosting<br>(Vercel)</td>
-          <td><span class="translatable">Hosting of the Course's day-lesson files and associated systems. Costs arise only if traffic or usage attributable to the Licensee's learners significantly exceeds the hosting provider's free-tier threshold.</span></td>
-        </tr>
-        <tr>
-          <td>Source Code Repository<br>(GitHub)</td>
-          <td><span class="translatable">Private version-controlled storage of the Course's source files. A fixed, nominal cost apportioned reasonably among active Licensees where applicable.</span></td>
-        </tr>
-        <tr>
-          <td>Grammar-Check AI Service<br>(API Key)</td>
-          <td><span class="translatable">A per-use cost charged by the Trust's AI service provider each time a learner requests a grammar correction, incurred only within the usage limits described in Clause 2.5.1, and calculated based on actual usage by the Licensee's enrolled learners.</span></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p class="sub-title">2.5.3 Certification Testing and Retest Fees</p>
-    <p class="body-text"><span class="translatable">A learner's first attempt at the Digital Online Spoken English Test for certification, described in Clause 2.5.1, is included at no additional cost as part of the learner's initial course enrollment. Each subsequent retest attempt is chargeable at the applicable retest fee, as published on the Trust's website and course platform from time to time. This fee is intentionally set at a level that discourages casual or repeated retesting, so that the certificate continues to reflect genuine achievement; it is not a feature the Trust or any Territory Partner actively promotes or encourages learners to use, and remains available on a tentative, as-needed basis for a learner who has not adequately prepared on a prior attempt. Where a retest is availed, it constitutes a further sale under this Agreement, and Royalty is payable on it in the same manner, and at the same fixed rate, as on any initial enrollment. No Territory Partner shall market, advertise, or actively solicit retest sales; this clause exists only to clarify Royalty treatment where a learner independently chooses to retest.</span></p>
-
-    <p class="sub-title">2.5.4 Institutional &amp; Bulk Usage</p>
-    <p class="body-text"><span class="translatable">Where the Licensee is an institution, coaching centre, or other bulk purchaser enrolling multiple learners under a single license, any usage allowance materially exceeding the individual-learner limits described in Clause 2.5.1 — including but not limited to shared microphone or classroom-wide access arrangements — shall be the subject of a separate written addendum between the Parties, with associated costs to be borne by the Licensee as agreed in that addendum, in addition to the ordinary platform maintenance costs described above.</span></p>
   </div>
-  <!-- 3. DEFINITIONS -->
-  <div class="section">
+
+  <!-- Section 3 -->
+  <div class="section" id="sec3">
     <p class="section-num">Section 3</p>
     <h2 class="section-title">Definitions</h2>
     <table class="data-table">
-      <tr><td>"Course"</td><td><span class="translatable">The BILINGLISHSATHYA Spoken English Course — a 50-day program comprising all HTML files, audio-visual materials, assessments, branding, scripts, proprietary drill methodology, and all associated intellectual property.</span></td></tr>
-      <tr><td>"Trust"</td><td><span class="translatable">The BILINGLISHSATHYA Foundation Trust, the legal owner of all rights in the Course.</span></td></tr>
-      <tr><td>"Chief Trustee"</td><td><span class="translatable">Smt. Sathyalakshmi Thottempadi, Founder and sole controlling authority of the Trust during her lifetime.</span></td></tr>
-      <tr><td>"Gross Revenue"</td><td><span class="translatable">The total sale price paid by any end user or institution to the Licensee, before any deductions whatsoever.</span></td></tr>
-      <tr><td>"Royalty"</td><td><span class="translatable">25% of Gross Revenue payable to the Trust on every sale, settled per transaction as described in Section 7.</span></td></tr>
-      <tr><td>"Advance Royalty"</td><td><span class="translatable">The non-refundable sum payable upon signing, equal to Royalty on 100 student enrollments or ₹25,00,000, whichever is higher, as described in Clause 2.1.</span></td></tr>
-      <tr><td>"Territory Partner" / "Licensee"</td><td><span class="translatable">The party granted exclusive territorial marketing rights under Section 2 of this Agreement.</span></td></tr>
-      <tr><td>"Trade Secret"</td><td><span class="translatable">The Licensor's proprietary drill methodology, sentence transformation system, and pedagogical framework — permanently confidential.</span></td></tr>
-      <tr><td>"Successor Trustees"</td><td><span class="translatable">The independent trustees who assume management of the Trust solely after the passing of the Chief Trustee.</span></td></tr>
-      <tr><td>"Grammar-Check Feature"</td><td><span class="translatable">The AI-assisted spoken/written grammar correction feature made available to enrolled learners during their 50-day active course period, subject to the usage limits described in Section 2.5.</span></td></tr>
+      <tr><td>"Course"</td><td><span class="translatable">The 50-day BILINGLISHSATHYA Spoken English program, materials, software, and IP.</span></td></tr>
+      <tr><td>"Trust"</td><td><span class="translatable">BILINGLISHSATHYA Foundation Trust, legal owner of all assets.</span></td></tr>
+      <tr><td>"Chief Trustee"</td><td><span class="translatable">Smt. Sathyalakshmi Thottempadi, sole controlling authority during her lifetime.</span></td></tr>
+      <tr><td>"Gross Revenue"</td><td><span class="translatable">Total amount collected from end users prior to deductions.</span></td></tr>
+      <tr><td>"Trade Secret"</td><td><span class="translatable">Proprietary drill methodology and pedagogy, permanently confidential.</span></td></tr>
     </table>
   </div>
 
-  <!-- 4. FOUNDATION TRUST -->
-  <div class="section">
+  <!-- Section 4 -->
+  <div class="section" id="sec4">
     <p class="section-num">Section 4</p>
-    <h2 class="section-title">BILINGLISHSATHYA Foundation Trust — Structure &amp; Control</h2>
-    <p class="sub-title">4.1 Absolute Control During Chief Trustee's Lifetime</p>
+    <h2 class="section-title">Trust Structure &amp; Control</h2>
     <ul class="bullet-list">
-      <li><span class="translatable">Smt. Sathyalakshmi Thottempadi is the Founder and Chief Trustee with absolute and sole authority over all Trust decisions during her lifetime.</span></li>
-      <li><span class="translatable">No decision — financial, legal, or operational — can be made without the Chief Trustee's written approval and signature.</span></li>
-      <li><span class="translatable">Successor Trustees have zero authority, zero access to funds, and zero decision-making power while the Chief Trustee is alive.</span></li>
-      <li><span class="translatable">All royalty payments from the Licensee shall be made directly to the Trust's bank account, controlled solely by the Chief Trustee.</span></li>
-    </ul>
-    <p class="sub-title">4.2 Successor Trustees</p>
-    <ul class="bullet-list">
-      <li><span class="translatable">Successor Trustees activate solely upon the natural passing of the Chief Trustee, evidenced by a certified death certificate.</span></li>
-      <li><span class="translatable">Successor Trustees are bound by the Trust Deed and this Agreement and may not alter the Trust's purpose or beneficiaries.</span></li>
-    </ul>
-    <p class="sub-title">4.3 Purpose of the Trust After Chief Trustee's Passing</p>
-    <ul class="bullet-list">
-      <li><span class="translatable">The Trust's purpose is the commercial operation, licensing, and growth of BILINGLISHSATHYA, and the collection and management of Royalty and other income arising from it, for the benefit of the Trust and its designated beneficiaries as set out in the Trust Deed.</span></li>
-      <li><span class="translatable">The Trust shall protect the Trade Secret, branding, and intellectual property of BILINGLISHSATHYA permanently.</span></li>
+      <li><span class="translatable"><strong>Lifetime Control:</strong> The Chief Trustee holds absolute authority over all operational and financial decisions during her lifetime. Successor trustees activate only upon her passing.</span></li>
     </ul>
   </div>
 
-  <!-- 5. IP -->
-  <div class="section">
+  <!-- Section 5 -->
+  <div class="section" id="sec5">
     <p class="section-num">Section 5</p>
-    <h2 class="section-title">Intellectual Property &amp; Trade Secret Protection</h2>
-    <ul class="bullet-list">
-      <li><span class="translatable">The Trust retains full, absolute, and irrevocable ownership of all Intellectual Property in the Course including the name BILINGLISHSATHYA, all trademarks, logos, branding, and course content.</span></li>
-      <li><span class="translatable">The proprietary drill methodology is a permanently protected Trade Secret. The Licensee shall never disclose, reverse-engineer, publish, or share it with any third party.</span></li>
-      <li><span class="translatable">All future updates, enhancements, or new modules added to the Course remain the exclusive property of the Trust.</span></li>
-    </ul>
+    <h2 class="section-title">Intellectual Property &amp; Trade Secret</h2>
+    <p class="body-text"><span class="translatable">The Trust retains absolute ownership of all trademarks, software, and content. Licensees agree never to reverse-engineer or disclose the proprietary drill methodology.</span></p>
   </div>
 
-  <!-- 6. REVERSION -->
-  <div class="section">
+  <!-- Section 6 -->
+  <div class="section" id="sec6">
     <p class="section-num">Section 6</p>
     <h2 class="section-title">Reversion of Rights</h2>
-    <ul class="bullet-list">
-      <li><span class="translatable">Under the Indian Copyright Act 1957 and the US Copyright Act, copyright cannot be permanently alienated.</span></li>
-      <li><span class="translatable">All licensed rights revert automatically to the Trust upon expiry of the License Term. The Licensee has no right to oppose or delay such reversion.</span></li>
-      <li><span class="translatable">Any sub-licenses granted by the Licensee automatically terminate upon reversion.</span></li>
-    </ul>
+    <p class="body-text"><span class="translatable">Upon agreement expiration or termination, all distribution rights revert automatically to the Trust under applicable copyright provisions.</span></p>
   </div>
 
-  <!-- 7. FINANCIAL -->
-  <div class="section">
+  <!-- Section 7 -->
+  <div class="section" id="sec7">
     <p class="section-num">Section 7</p>
-    <h2 class="section-title">Financial Terms</h2>
-    <p class="sub-title">7.1 Royalty Settlement — Per Transaction</p>
+    <h2 class="section-title">Financial Terms &amp; Taxes</h2>
     <ul class="bullet-list">
-      <li><span class="translatable">Royalty is settled as and when each student payment is received, not accumulated and paid in batches. Because all student payments route through the Trust's designated gateway (PayPal for international, Razorpay for domestic), the Trust's 25% royalty share is realized directly at the point of each transaction, with the remaining balance due to the Territory Partner.</span></li>
-      <li><span class="translatable">For example, at the current domestic course price of ₹1,00,000, a 25% royalty equals ₹25,000 per student enrollment. For international sales, the 25% royalty is calculated proportionally on the applicable transaction amount. If course pricing changes for any territory in future, the royalty amount adjusts automatically, as it is always calculated as 25% of actual transaction value.</span></li>
-      <li><span class="translatable">Royalties shall never be reduced by the Licensee's costs, discounts, taxes, or payment gateway fees.</span></li>
+      <li><span class="translatable"><strong>Settlement:</strong> Realized per-transaction via gateway; 25% is retained/remitted immediately to the Trust.</span></li>
+      <li><span class="translatable"><strong>Taxes:</strong> Each party independently handles local tax compliance (GST, VAT, Corporate Income Tax) without deduction from amounts owed to the Trust.</span></li>
     </ul>
-    <p class="sub-title">7.2 Advance Royalty and Minimum Guaranteed Royalty</p>
-    <p class="body-text"><span class="translatable">The advance royalty described in Clause 2.1 is payable upon signing and is credited against per-transaction royalty as actual sales occur, subject to the non-refundable terms set out there. In addition, each Territory Partner agrees to a Minimum Guaranteed Royalty (MGR) — a minimum annual royalty floor set per territory. If actual royalty realized from sales in a given year falls below this floor, the Territory Partner pays the difference to meet the MGR. The MGR exists to protect against inactive or dormant licenses and does not replace or delay per-transaction settlement, which applies from the first sale onward.</span></p>
-    <p class="sub-title">7.3 Payment Verification</p>
-    <p class="body-text"><span class="translatable">Because all student payments are routed directly through the Trust's designated PayPal (international) or Razorpay (domestic) gateway, the Trust receives direct, independent confirmation of every sale, and royalty calculations are based on this record. No separate audit process is required, as the payment gateway itself provides verified sales data at the time of each transaction.</span></p>
-    <p class="sub-title">7.4 Fee Enhancement</p>
-    <p class="body-text"><span class="translatable">The Chief Trustee may revise end-user pricing upward at any time in response to market demand, inflation, or enhanced course value. The Licensee shall implement revised pricing within 30 days of written notice.</span></p>
-
-    <p class="sub-title">7.5 Operational Infrastructure — Borne by the Territory Partner</p>
-    <p class="body-text"><span class="translatable">The Course is delivered through infrastructure owned and controlled solely by the Trust, comprising the GitHub source code repository, Vercel website hosting, Razorpay and PayPal payment gateways, and the Grammar-Check AI service. As set out in Clause 2.5.2 and the accompanying cost table, the ongoing costs of this infrastructure attributable to the Territory Partner's own licensed territory — including payment processing charges, hosting costs beyond free-tier thresholds, repository costs where apportioned, and Grammar-Check AI usage costs within the limits described in Clause 2.5.1 — are borne by the Territory Partner, separately from and in addition to the Advance Royalty and ongoing Royalty. These costs are invoiced by the Trust quarterly, as described in Clause 2.5.2, and are never netted or adjusted against Royalty due to the Trust.</span></p>
-
-    <p class="sub-title">7.6 Scheduled Review Meetings</p>
-    <p class="body-text"><span class="translatable">In addition to the Annual Review described in Section 5, the Chief Trustee and the Territory Partner shall hold a review meeting — by video call, phone, or in person as mutually convenient — at least once every calendar quarter during the license term, to discuss sales performance, marketing activity, platform issues, and any matters relevant to the territory. Either Party may request an additional review meeting on reasonable written notice. Meetings shall be scheduled promptly and in good faith by both Parties; failure by the Territory Partner to participate in scheduled review meetings without reasonable cause may be treated as a factor in the Annual Review and in any decision regarding renewal.</span></p>
-
-    <p class="sub-title">7.7 Taxes</p>
-    <p class="body-text"><span class="translatable">Each Party is solely responsible for its own income tax and other statutory tax obligations arising from amounts received or retained under this Agreement, in its own jurisdiction, under its own applicable law. For the avoidance of doubt, the Trust is solely responsible for income tax and any other applicable statutory tax on the Advance Royalty and ongoing Royalty it receives, exactly as an individual or entity is responsible for tax on any other income received in the ordinary course. The Territory Partner is solely responsible for any Goods and Services Tax, Value Added Tax, withholding tax, or equivalent indirect or direct tax obligations arising in their territory on Gross Revenue, on their retained share of Gross Revenue, or on the Advance Royalty paid to the Trust, and shall bear these independently of, and without deduction from, any Royalty or Advance Royalty due to the Trust. Nothing in this Agreement shall be construed as the Trust assuming any tax liability on the Territory Partner's behalf, or the Territory Partner assuming any tax liability on the Trust's behalf.</span></p>
   </div>
 
-  <!-- 8. RESERVED RIGHTS -->
-  <div class="section">
+  <!-- Section 8 -->
+  <div class="section" id="sec8">
     <p class="section-num">Section 8</p>
     <h2 class="section-title">Licensor's Reserved Rights</h2>
-    <ul class="bullet-list">
-      <li><span class="translatable">The Chief Trustee retains the right to conduct personal teaching, coaching, and training anywhere in the world at any time.</span></li>
-      <li><span class="translatable">The Chief Trustee may develop, create, publish, and sell any other educational courses in any subject area other than Spoken English, freely and without restriction.</span></li>
-      <li><span class="translatable">The Chief Trustee retains the sole right to enhance course fees as and when there is demand.</span></li>
-    </ul>
+    <p class="body-text"><span class="translatable">The Chief Trustee retains full rights to conduct personal teaching, develop non-competing courses, and adjust base pricing with 30 days' notice.</span></p>
   </div>
 
-  <!-- 9. NON-COMPETE -->
-  <div class="section">
+  <!-- Section 9 -->
+  <div class="section" id="sec9">
     <p class="section-num">Section 9</p>
-    <h2 class="section-title">Licensor's Non-Compete Undertaking</h2>
-    <p class="body-text"><span class="translatable">During the License Period, the Chief Trustee shall not join, partner with, or collaborate with any other venture to create or sell a Spoken English course substantially similar to BILINGLISHSATHYA within the Licensed Territory.</span></p>
+    <h2 class="section-title">Non-Compete Undertaking</h2>
+    <p class="body-text"><span class="translatable">The Trust shall not partner with competing entities to offer a substantially similar Spoken English course within the Licensee's active territory.</span></p>
   </div>
 
-  <!-- 10. CONFIDENTIALITY -->
-  <div class="section">
+  <!-- Section 10 -->
+  <div class="section" id="sec10">
     <p class="section-num">Section 10</p>
     <h2 class="section-title">Confidentiality</h2>
-    <p class="body-text"><span class="translatable">Both Parties shall keep all proprietary information, financial terms, and business strategies strictly confidential. The Licensee shall take special care to protect the Trade Secret and shall never disclose the drill methodology to any third party under any circumstances. This obligation is permanent and survives termination of this Agreement indefinitely.</span></p>
+    <p class="body-text"><span class="translatable">All commercial terms, customer data, and pedagogical frameworks remain strictly confidential indefinitely.</span></p>
   </div>
 
-  <!-- 11. TERMINATION -->
-  <div class="section">
+  <!-- Section 11 -->
+  <div class="section" id="sec11">
     <p class="section-num">Section 11</p>
     <h2 class="section-title">Term and Termination</h2>
-    <ul class="bullet-list">
-      <li><span class="translatable">Either Party may terminate for material breach with 60 days' written notice if the breach is not remedied within the notice period.</span></li>
-      <li><span class="translatable">Upon termination: all license rights cease immediately; all outstanding royalties become immediately payable to the Trust; the Advance Royalty described in Clause 2.1 is non-refundable in all circumstances.</span></li>
-    </ul>
+    <p class="body-text"><span class="translatable">Agreements run for 1 year with annual review. Termination may occur for material breach following a 60-day cure period; advances remain strictly non-refundable.</span></p>
   </div>
 
-  <!-- 12. DISPUTE -->
-  <div class="section">
+  <!-- Section 12 -->
+  <div class="section" id="sec12">
     <p class="section-num">Section 12</p>
     <h2 class="section-title">Dispute Resolution &amp; Governing Law</h2>
-    <ul class="bullet-list">
-      <li><span class="translatable">Disputes shall first be resolved amicably within 30 days of written notice.</span></li>
-      <li><span class="translatable">Unresolved disputes shall be referred to binding arbitration. Governing Law: India.</span></li>
-    </ul>
+    <p class="body-text"><span class="translatable">Disputes are settled via good-faith negotiation, failing which binding arbitration applies under Indian jurisdiction.</span></p>
   </div>
 
-  <!-- 13. GENERAL -->
-  <div class="section">
+  <!-- Section 13 -->
+  <div class="section" id="sec13">
     <p class="section-num">Section 13</p>
     <h2 class="section-title">General Provisions</h2>
-    <ul class="bullet-list">
-      <li><span class="translatable">This Agreement supersedes all prior negotiations and representations between the Parties.</span></li>
-      <li><span class="translatable">Amendments are only valid if made in writing and signed by both Parties.</span></li>
-      <li><span class="translatable">Neither Party is liable for failure due to events beyond reasonable control including acts of God, pandemic, or government action.</span></li>
-      <li><span class="translatable">No partnership, joint venture, agency, or employment relationship is created by this Agreement.</span></li>
-    </ul>
+    <p class="body-text"><span class="translatable">Constitutes the entire agreement between parties. Modifications require explicit written endorsement by both signatories.</span></p>
   </div>
 
-  <!-- 14. SUMMARY -->
-  <div class="section">
+  <!-- Section 14 -->
+  <div class="section" id="sec14">
     <p class="section-num">Section 14</p>
     <h2 class="section-title">Key Terms Summary</h2>
     <table class="summary-table">
-      <thead>
-        <tr><th>Term</th><th colspan="2" style="text-align:center;">Territory License</th></tr>
-      </thead>
+      <thead><tr><th>Parameter</th><th>Agreement Specification</th></tr></thead>
       <tbody>
-        <tr><td>Advance Royalty</td><td colspan="2" style="text-align:center;">Royalty on 100 students, or ₹25,00,000, whichever is higher — non-refundable</td></tr>
-        <tr><td>Territory</td><td colspan="2" style="text-align:center;">Single state / country / region, as specified in the applicable Schedule</td></tr>
-        <tr><td>Duration</td><td colspan="2" style="text-align:center;">1 Year (renewable, subject to annual review)</td></tr>
-        <tr><td>Royalty</td><td colspan="2" style="text-align:center;">25% of Gross Revenue — fixed, uniform across all territories</td></tr>
-        <tr><td>Settlement</td><td colspan="2" style="text-align:center;">Per-transaction, via designated payment gateway</td></tr>
-        <tr><td>Grammar-Check Feature</td><td colspan="2" style="text-align:center;">50 days / 20 corrections per day per learner; maintenance costs borne by Licensee for their territory</td></tr>
-        <tr><td>Trade Secret</td><td colspan="2" style="text-align:center;">Protected permanently</td></tr>
-        <tr><td>Fee Enhancement</td><td colspan="2" style="text-align:center;">Chief Trustee may revise anytime</td></tr>
+        <tr><td>Advance Royalty</td><td>Royalty on 100 students or ₹25,00,000 (Non-refundable)</td></tr>
+        <tr><td>Ongoing Royalty</td><td>Fixed 25% of Gross Revenue per transaction</td></tr>
+        <tr><td>Term Length</td><td>1 Year (Annual Review Cycle)</td></tr>
+        <tr><td>Platform Features</td><td>50-Day Course, Grammar-Check, Digital Certification</td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- 15. CONFIRMATION -->
-  <div class="section">
-    <p class="section-num">Section 15</p>
-    <h2 class="section-title">Territory &amp; Terms — Confirmation</h2>
-    <p class="body-text"><span class="translatable">The Parties confirm the licensed territory and applicable advance amount for this Agreement:</span></p>
+  <!-- Section 15 -->
+  <div class="section" id="sec15">
+    <p class="section-num">Section 15 &amp; 16</p>
+    <h2 class="section-title">Confirmation &amp; Signatures</h2>
     <div class="confirm-block">
       <div class="confirm-options">
-        <div class="confirm-opt a">TERRITORY:<br><span class="initials-line" style="width:220px"></span></div>
-        <div class="confirm-opt b">ADVANCE ROYALTY:<br>₹ <span class="initials-line" style="width:160px"></span></div>
+        <div class="confirm-opt">TERRITORY: <span class="initials-line" style="width:180px"></span></div>
+        <div class="confirm-opt">ADVANCE: ₹ <span class="initials-line" style="width:140px"></span></div>
       </div>
       <div class="initials-row">
-        <div class="initials-item">Chief Trustee's Initials: <span class="initials-line"></span></div>
-        <div class="initials-item">Licensee's Initials: <span class="initials-line"></span></div>
+        <div class="initials-item">Trustee Initials: <span class="initials-line"></span></div>
+        <div class="initials-item">Licensee Initials: <span class="initials-line"></span></div>
       </div>
     </div>
-  </div>
 
-  <!-- 16. SIGNATURES -->
-  <div class="section">
-    <p class="section-num">Section 16</p>
-    <h2 class="section-title">Signatures</h2>
-    <p class="body-text"><span class="translatable">IN WITNESS WHEREOF, the Parties have executed this Agreement as of the date first written above, each having read and understood all terms herein.</span></p>
     <div class="sig-grid">
       <div class="sig-card">
         <div class="sig-party">For the Licensor</div>
@@ -732,27 +379,7 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
         <div class="sig-line"></div>
         <div class="sig-name">Authorized Representative</div>
         <div class="sig-field">Name: <span></span></div>
-        <div class="sig-field">Designation: <span></span></div>
         <div class="sig-field">Date: <span></span></div>
-        <div class="sig-field">Place: <span></span></div>
-      </div>
-    </div>
-    <div class="divider"></div>
-    <p class="sub-title">Witnesses</p>
-    <div class="witness-grid">
-      <div class="witness-card">
-        <div class="witness-num">Witness 1</div>
-        <div class="witness-field">Name: <span></span></div>
-        <div class="witness-field">Address: <span></span></div>
-        <div class="witness-field">ID Proof No.: <span></span></div>
-        <div class="witness-field">Date: <span></span></div>
-      </div>
-      <div class="witness-card">
-        <div class="witness-num">Witness 2</div>
-        <div class="witness-field">Name: <span></span></div>
-        <div class="witness-field">Address: <span></span></div>
-        <div class="witness-field">ID Proof No.: <span></span></div>
-        <div class="witness-field">Date: <span></span></div>
       </div>
     </div>
   </div>
@@ -760,12 +387,10 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
 </div>
 
 <footer>
-  <p style="font-style:italic; font-family:'Cormorant Garamond',serif; font-size:13px; color:rgba(254,251,243,0.5); margin-bottom:10px;"><span class="translatable">This document should be reviewed by a qualified legal professional before execution.</span></p>
-  <p>© BILINGLISHSATHYA Foundation Trust. All rights reserved.</p>
-  <p class="footer-note"><span class="translatable">Founded by Smt. Sathyalakshmi Thottempadi.</span></p>
+  <p><span class="translatable">Draft term sheet — Subject to final legal and chartered accountant review.</span></p>
+  <p>© BILINGLISHSATHYA Foundation Trust. All rights reserved. Founded by Smt. Sathyalakshmi Thottempadi.</p>
 </footer>
 
-<!-- STICKY RECORD / STOP / PLAY PANEL -->
 <div class="record-panel">
   <button id="recordBtn">🎙 Record</button>
   <button id="stopBtn">⏹ Stop</button>
@@ -774,14 +399,7 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
 </div>
 
 <script>
-  // ── LANGUAGE NAMES (used by whole-document translate) ──
   const langSelect = document.getElementById('langSelect');
-  const langNames = {};
-  document.querySelectorAll('#langSelect option').forEach(opt => {
-    if (opt.value) langNames[opt.value] = opt.textContent;
-  });
-
-  // ── TRANSLATE ENTIRE DOCUMENT ──
   const translateAllBtn = document.getElementById('translateAllBtn');
   const translateAllStatus = document.getElementById('translateAllStatus');
   let documentTranslated = false;
@@ -789,56 +407,37 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
 
   translateAllBtn.addEventListener('click', async () => {
     const lang = langSelect.value;
-    if (!lang) { alert('Please select a language first from the dropdown above.'); return; }
-
+    if (!lang) { alert('Please select a language first.'); return; }
     if (documentTranslated) {
       document.querySelectorAll('.translatable').forEach(span => {
-        if (originalTexts.has(span)) {
-          span.innerHTML = originalTexts.get(span);
-        }
+        if (originalTexts.has(span)) span.innerHTML = originalTexts.get(span);
       });
       documentTranslated = false;
-      translateAllBtn.textContent = '🌐 Translate Entire Document';
+      translateAllBtn.textContent = '🌐 Translate Document';
       translateAllStatus.style.display = 'none';
       return;
     }
-
     const spans = Array.from(document.querySelectorAll('.translatable'));
     translateAllBtn.disabled = true;
     translateAllBtn.textContent = '⏳ Translating...';
     translateAllStatus.style.display = 'block';
-    translateAllStatus.textContent = `Translating 0 / ${spans.length} sections...`;
 
-    let completed = 0;
     for (const span of spans) {
-      if (!originalTexts.has(span)) {
-        originalTexts.set(span, span.innerHTML);
-      }
-      const text = encodeURIComponent(span.innerText.trim());
+      if (!originalTexts.has(span)) originalTexts.set(span, span.innerHTML);
       try {
-        const res = await fetch(`https://api.mymemory.translated.net/get?q=${text}&langpair=en|${lang}`);
+        const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(span.innerText.trim())}&langpair=en|${lang}`);
         const data = await res.json();
-        const translated = data.responseData.translatedText;
-        if (translated) {
-          span.textContent = translated;
-        }
-      } catch {
-        // leave original text if translation fails for this segment
-      }
-      completed++;
-      translateAllStatus.textContent = `Translating ${completed} / ${spans.length} sections...`;
-      await new Promise(r => setTimeout(r, 150));
+        if (data.responseData.translatedText) span.textContent = data.responseData.translatedText;
+      } catch (e) {}
+      await new Promise(r => setTimeout(r, 100));
     }
-
     documentTranslated = true;
     translateAllBtn.disabled = false;
-    translateAllBtn.textContent = '↩ Show Original (English)';
-    translateAllStatus.textContent = `Document translated to ${langNames[lang] || lang}. Tap the button again to see the original English.`;
+    translateAllBtn.textContent = '↩ Show Original';
+    translateAllStatus.style.display = 'none';
   });
 
-  // ── VOICE RECORDER ──
   let mediaRecorder, audioChunks = [], audioBlob, audioURL;
-
   document.getElementById('recordBtn').addEventListener('click', async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -851,30 +450,20 @@ footer .footer-note { font-family: 'Cormorant Garamond', serif; font-size: 13px;
         document.getElementById('recStatus').textContent = 'Recorded ✓';
       };
       mediaRecorder.start();
-      document.getElementById('recStatus').textContent = '● Recording';
-    } catch (err) {
-      document.getElementById('recStatus').textContent = 'Mic error';
-    }
+      document.getElementById('recStatus').textContent = '● Rec';
+    } catch (e) { document.getElementById('recStatus').textContent = 'Mic error'; }
   });
-
   document.getElementById('stopBtn').addEventListener('click', () => {
-    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
-      mediaRecorder.stop();
-      mediaRecorder.stream.getTracks().forEach(t => t.stop());
-    }
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
   });
-
   document.getElementById('playBtn').addEventListener('click', () => {
     if (audioURL) {
-      const audio = new Audio(audioURL);
-      audio.play();
+      new Audio(audioURL).play();
       document.getElementById('recStatus').textContent = '▶ Playing';
-      audio.onended = () => document.getElementById('recStatus').textContent = 'Done ✓';
     } else {
       document.getElementById('recStatus').textContent = 'No recording';
     }
   });
 </script>
-
 </body>
 </html>
