@@ -7,79 +7,83 @@
     <title>BILINGLISHSATHYA | Dr. Sathyalakshmi Thottempadi</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; font-size: 14px; }
-        .logo-area { text-align: center; padding: 30px 20px; background: #f8fafc; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f172a; color: #f8fafc; line-height: 1.6; font-size: 14px; }
+        .logo-area { text-align: center; padding: 30px 20px; background: #0f172a; }
         .logo-area img { max-width: 280px; width: 100%; height: auto; }
-        header { background: #2c3e50; color: white; padding: 25px 15px; text-align: center; border-bottom: 5px solid #8e44ad; }
-        header h1 { font-size: 24px; letter-spacing: 1px; font-weight: bold; text-transform: uppercase; }
-        header p { font-size: 13px; color: #cbd5e1; margin-top: 4px; font-style: italic; }
-        .nav-bar { display: flex; flex-wrap: wrap; background: #1e293b; justify-content: center; padding: 5px; }
-        .nav-link { color: #94a3b8; text-decoration: none; padding: 8px 12px; font-size: 11px; text-transform: uppercase; font-weight: bold; }
+        header { background: #1e293b; color: white; padding: 25px 15px; text-align: center; border-bottom: 5px solid #a855f7; }
+        header h1 { font-size: 24px; letter-spacing: 1px; font-weight: bold; text-transform: uppercase; color: #f8fafc; }
+        header p { font-size: 13px; color: #94a3b8; margin-top: 4px; font-style: italic; }
+        .nav-bar { display: flex; flex-wrap: wrap; background: #090d16; justify-content: center; padding: 5px; border-bottom: 1px solid #1e293b; }
+        .nav-link { color: #cbd5e1; text-decoration: none; padding: 8px 12px; font-size: 11px; text-transform: uppercase; font-weight: bold; transition: color 0.2s; }
+        .nav-link:hover { color: #c084fc; }
         .container { max-width: 600px; margin: 0 auto; padding: 15px; }
-        section { background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.04); border: 1px solid #e2e8f0; }
-        h2 { font-size: 16px; color: #8e44ad; text-transform: uppercase; margin-bottom: 12px; border-left: 4px solid #8e44ad; padding-left: 8px; }
-        p { margin-bottom: 12px; text-align: justify; color: #334155; font-size: 13.5px; }
+        section { background: #1e293b; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3); border: 1px solid #334155; }
+        h2 { font-size: 16px; color: #c084fc; text-transform: uppercase; margin-bottom: 12px; border-left: 4px solid #a855f7; padding-left: 8px; }
+        p { margin-bottom: 12px; text-align: justify; color: #cbd5e1; font-size: 13.5px; }
         .link-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0; }
-        .hub-link { background: #f1f5f9; color: #2c3e50; text-decoration: none; padding: 12px; border-radius: 6px; font-size: 12px; font-weight: bold; text-align: center; border: 1px solid #cbd5e1; display: block; }
+        .hub-link { background: #0f172a; color: #f8fafc; text-decoration: none; padding: 12px; border-radius: 6px; font-size: 12px; font-weight: bold; text-align: center; border: 1px solid #334155; display: block; transition: all 0.2s; }
+        .hub-link:hover { background: #1e1b4b; border-color: #a855f7; color: #c084fc; }
         .social-row { display: flex; gap: 10px; margin-bottom: 15px; }
         .social-btn { flex: 1; text-align: center; padding: 10px; color: white; font-weight: bold; font-size: 12px; text-decoration: none; border-radius: 6px; text-transform: uppercase; }
-        .btn-youtube { background: #e74c3c; }
-        .btn-linkedin { background: #2980b9; }
-        .btn-email { background: #007bff; }
+        .btn-youtube { background: #ef4444; }
+        .btn-linkedin { background: #3b82f6; }
+        .btn-email { background: #2563eb; }
         .timeline { list-style: none; margin: 15px 0; padding-left: 5px; }
-        .timeline-item { position: relative; padding-left: 20px; margin-bottom: 12px; border-left: 2px solid #8e44ad; font-size: 13px; }
-        .timeline-item strong { color: #2c3e50; }
+        .timeline-item { position: relative; padding-left: 20px; margin-bottom: 12px; border-left: 2px solid #a855f7; font-size: 13px; color: #cbd5e1; }
+        .timeline-item strong { color: #f8fafc; }
         .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
-        .gallery-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px; text-align: center; font-size: 11px; color: #475569; font-weight: bold; }
+        .gallery-card { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 8px; text-align: center; font-size: 11px; color: #cbd5e1; font-weight: bold; }
         .gallery-card img { width: 100%; height: 130px; object-fit: cover; border-radius: 6px; margin-bottom: 6px; display: block; }
         .video-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 15px; }
-        .video-thumb { display: block; text-decoration: none; background: #000; border-radius: 8px; overflow: hidden; position: relative; }
+        .video-thumb { display: block; text-decoration: none; background: #000; border-radius: 8px; overflow: hidden; position: relative; border: 1px solid #334155; }
         .video-thumb img { width: 100%; height: 200px; object-fit: cover; opacity: 0.85; display: block; }
-        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(255,0,0,0.85); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
-        .video-title { background: #1e293b; color: #f1f5f9; font-size: 11px; padding: 6px 8px; text-align: center; }
-        .pricing-zone { background: #fff8e7; border: 2px dashed #f39c12; border-radius: 8px; padding: 20px; text-align: center; margin-top: 15px; }
-        .price-tag { font-size: 22px; font-weight: bold; color: #d35400; margin-bottom: 15px; }
-        .pay-btn { display: block; width: 100%; max-width: 280px; margin: 10px auto; padding: 14px; border-radius: 30px; font-weight: bold; font-size: 15px; text-decoration: none; text-transform: uppercase; text-align: center; color: white; background: #8e44ad; }
+        .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(239, 68, 68, 0.9); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+        .video-title { background: #0f172a; color: #f8fafc; font-size: 11px; padding: 6px 8px; text-align: center; }
+        .pricing-zone { background: #1a1705; border: 2px dashed #f59e0b; border-radius: 8px; padding: 20px; text-align: center; margin-top: 15px; }
+        .price-tag { font-size: 22px; font-weight: bold; color: #fbbf24; margin-bottom: 15px; }
+        .pay-btn { display: block; width: 100%; max-width: 280px; margin: 10px auto; padding: 14px; border-radius: 30px; font-weight: bold; font-size: 15px; text-decoration: none; text-transform: uppercase; text-align: center; color: white; background: #a855f7; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4); }
         
-        /* Scholarship Box Styling */
+        /* Scholarship Box Styling (Optimized for Dark Theme) */
         .scholarship-box {
-            background-color: #fff3cd;
-            border: 2px solid #ffc107;
+            background-color: #272108;
+            border: 2px solid #f59e0b;
             padding: 15px;
             margin: 15px 0;
             border-radius: 8px;
             text-align: center;
             animation: pulse 2s infinite;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
         }
-        .scholarship-box strong { color: #856404; font-size: 14px; }
-        .scholarship-box p { font-size: 13px; color: #533f03; margin-top: 5px; line-height: 1.5; text-align: center; }
+        .scholarship-box strong { color: #fde047; font-size: 14px; }
+        .scholarship-box p { font-size: 13px; color: #fef08a; margin-top: 5px; line-height: 1.5; text-align: center; }
         @keyframes pulse {
-            0% { border-color: #ffc107; }
-            50% { border-color: #ff851b; box-shadow: 0 0 10px #ff851b; }
-            100% { border-color: #ffc107; }
+            0% { border-color: #f59e0b; box-shadow: 0 0 10px rgba(245, 158, 11, 0.2); }
+            50% { border-color: #fbbf24; box-shadow: 0 0 20px rgba(251, 191, 36, 0.5); }
+            100% { border-color: #f59e0b; box-shadow: 0 0 10px rgba(245, 158, 11, 0.2); }
         }
 
-        footer { background: #2c3e50; color: #94a3b8; text-align: center; padding: 20px 15px; font-size: 11px; margin-top: 30px; border-top: 4px solid #8e44ad; }
-        .system-lead { font-size: 14.5px; font-weight: 600; color: #e74c3c; line-height: 1.5; margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; }
-        .voice-quote { background: #f8fafc; border-left: 4px solid #8e44ad; padding: 12px; margin: 15px 0; border-radius: 0 6px 6px 0; }
-        .voice-quote p { font-style: italic; margin-bottom: 8px; color: #475569; }
-        .voice-quote strong { color: #1e293b; display: block; margin-top: 4px; font-size: 13px; }
+        footer { background: #090d16; color: #94a3b8; text-align: center; padding: 20px 15px; font-size: 11px; margin-top: 30px; border-top: 4px solid #a855f7; }
+        .system-lead { font-size: 14.5px; font-weight: 600; color: #f87171; line-height: 1.5; margin-bottom: 15px; border-bottom: 1px solid #334155; padding-bottom: 12px; }
+        .voice-quote { background: #0f172a; border-left: 4px solid #a855f7; padding: 12px; margin: 15px 0; border-radius: 0 6px 6px 0; border: 1px solid #334155; border-left-width: 4px; }
+        .voice-quote p { font-style: italic; margin-bottom: 8px; color: #cbd5e1; }
+        .voice-quote strong { color: #f8fafc; display: block; margin-top: 4px; font-size: 13px; }
         .comparison-box { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0; }
-        .comp-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 12px; text-align: center; }
-        .comp-card h4 { font-size: 13px; color: #2c3e50; text-transform: uppercase; margin-bottom: 4px; }
-        .comp-card p { font-size: 12px; text-align: center; margin-bottom: 0; color: #64748b; }
-        .panel-heading { font-size: 14px; font-weight: bold; color: #2c3e50; margin: 15px 0 8px 0; }
+        .comp-card { background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 12px; text-align: center; }
+        .comp-card h4 { font-size: 13px; color: #f8fafc; text-transform: uppercase; margin-bottom: 4px; }
+        .comp-card p { font-size: 12px; text-align: center; margin-bottom: 0; color: #94a3b8; }
+        .panel-heading { font-size: 14px; font-weight: bold; color: #f8fafc; margin: 15px 0 8px 0; }
         .panel-list { list-style: none; padding-left: 0; margin-bottom: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        .panel-list li { background: #f1f5f9; padding: 8px; border-radius: 4px; font-size: 12px; font-weight: 600; text-align: center; color: #334155; border: 1px solid #e2e8f0; }
-        .system-tagline { font-size: 15px; font-weight: 800; color: #dc2626; text-align: center; margin-top: 15px; letter-spacing: 0.5px; text-transform: uppercase; border-top: 1px solid #f1f5f9; padding-top: 12px; }
-        #google_translate_element { text-align: center; padding: 10px; background: #f1f5f9; border-bottom: 1px solid #e2e8f0; }
-        .voice-controls { display: flex; flex-direction: column; align-items: center; padding: 12px 15px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; gap: 10px; }
-        .btn-listen { background: #2c3e50; color: white; border: none; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 13px; width: 100%; max-width: 400px; }
+        .panel-list li { background: #0f172a; padding: 8px; border-radius: 4px; font-size: 12px; font-weight: 600; text-align: center; color: #cbd5e1; border: 1px solid #334155; }
+        .system-tagline { font-size: 15px; font-weight: 800; color: #f87171; text-align: center; margin-top: 15px; letter-spacing: 0.5px; text-transform: uppercase; border-top: 1px solid #334155; padding-top: 12px; }
+        #google_translate_element { text-align: center; padding: 10px; background: #0f172a; border-bottom: 1px solid #334155; }
+        .voice-controls { display: flex; flex-direction: column; align-items: center; padding: 12px 15px; background: #1e293b; border-bottom: 1px solid #334155; gap: 10px; }
+        .btn-listen { background: #0f172a; color: white; border: 1px solid #334155; padding: 10px 25px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 13px; width: 100%; max-width: 400px; transition: background 0.2s; }
+        .btn-listen:hover { background: #334155; }
         .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; max-width: 400px; }
         .btn { padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 13px; color: white; text-align: center; }
-        .btn-r { background: #e74c3c; }
-        .btn-s { background: #2c3e50; display: none; }
-        .btn-p { background: #3498db; display: none; }
+        .btn-r { background: #ef4444; }
+        .btn-s { background: #334155; display: none; }
+        .btn-p { background: #3b82f6; display: none; }
     </style>
 </head>
 <body>
@@ -126,7 +130,7 @@
         </div>
         <div class="comparison-box">
             <div class="comp-card"><h4>Mirror</h4><p>For correction of personal appearance.</p></div>
-            <div class="comp-card" style="border-color:#8e44ad;background:#faf5ff;"><h4 style="color:#8e44ad;">This Course</h4><p style="color:#6b21a8;">For your spoken English correction.</p></div>
+            <div class="comp-card" style="border-color:#a855f7;background:#1e1b4b;"><h4 style="color:#c084fc;">This Course</h4><p style="color:#d8b4fe;">For your spoken English correction.</p></div>
         </div>
         <div class="panel-heading">Use our Accent Practice Panel unlimitedly:</div>
         <ul class="panel-list">
@@ -222,7 +226,7 @@
                     async>
                 </script>
             </form>
-            <a href="https://www.paypal.com/ncp/payment/LFQLKU9HJW58N" class="pay-btn" target="_blank" style="background:#0070ba;">🌐 Pay via PayPal (International)</a>
+            <a href="https://www.paypal.com/ncp/payment/LFQLKU9HJW58N" class="pay-btn" target="_blank" style="background:#0284c7;">🌐 Pay via PayPal (International)</a>
         </div>
     </section>
 
