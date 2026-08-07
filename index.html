@@ -273,8 +273,9 @@
         <h2>Secure Enrollment Pipeline</h2>
         <div class="pricing-zone">
             <div class="price-tag">₹1,00,000 INR / $1,000 USD</div>
-            <!-- Robust container to ensure Razorpay payment button script executes and renders properly -->
-            <div id="razorpay-button-container" style="margin: 15px auto; min-height: 50px;">
+            
+            <!-- Robust container for Razorpay script button -->
+            <div style="margin: 15px auto; min-height: 50px; display: flex; justify-content: center; align-items: center;">
                 <form>
                     <script
                         src="https://checkout.razorpay.com/v1/payment-button.js"
@@ -283,6 +284,11 @@
                     </script>
                 </form>
             </div>
+
+            <!-- Fallback Direct Button for mobile apps / webviews where script elements can be restricted -->
+            <a href="https://rzp.io/l/TJ36IIkbU3Y9lQ" class="pay-btn" target="_blank" style="background: #2563eb; margin-bottom: 12px;">💳 Pay via Razorpay (India)</a>
+
+            <!-- PayPal International Link -->
             <a href="https://www.paypal.com/ncp/payment/LFQLKU9HJW58N" class="pay-btn" target="_blank" style="background:#0284c7;">🌐 Pay via PayPal (International)</a>
         </div>
     </section>
