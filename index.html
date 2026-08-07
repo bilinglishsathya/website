@@ -41,7 +41,7 @@
         .video-title { background: #0f172a; color: #f8fafc; font-size: 11px; padding: 6px 8px; text-align: center; }
         .pricing-zone { background: #1a1705; border: 2px dashed #f59e0b; border-radius: 8px; padding: 20px; text-align: center; margin-top: 15px; }
         .price-tag { font-size: 20px; font-weight: bold; color: #fbbf24; margin-bottom: 15px; white-space: nowrap; }
-        .pay-btn { display: block; width: 100%; max-width: 280px; margin: 10px auto; padding: 14px; border-radius: 30px; font-weight: bold; font-size: 15px; text-decoration: none; text-transform: uppercase; text-align: center; color: white; background: #a855f7; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4); }
+        .pay-btn { display: block; width: 100%; max-width: 280px; margin: 10px auto; padding: 14px; border-radius: 30px; font-weight: bold; font-size: 15px; text-decoration: none; text-transform: uppercase; text-align: center; color: white; background: #2563eb; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4); }
         
         /* Scholarship Box Styling */
         .scholarship-box {
@@ -274,19 +274,8 @@
         <div class="pricing-zone">
             <div class="price-tag">₹1,00,000 INR / $1,000 USD</div>
             
-            <!-- Robust container for Razorpay script button -->
-            <div style="margin: 15px auto; min-height: 50px; display: flex; justify-content: center; align-items: center;">
-                <form>
-                    <script
-                        src="https://checkout.razorpay.com/v1/payment-button.js"
-                        data-payment_button_id="pl_TJ36IIkbU3Y9lQ"
-                        async>
-                    </script>
-                </form>
-            </div>
-
-            <!-- Fallback Direct Button for mobile apps / webviews where script elements can be restricted -->
-            <a href="https://rzp.io/l/TJ36IIkbU3Y9lQ" class="pay-btn" target="_blank" style="background: #2563eb; margin-bottom: 12px;">💳 Pay via Razorpay (India)</a>
+            <!-- Guaranteed Direct Button Replacement for Razorpay to completely eliminate script blank-screen/error issues -->
+            <a href="https://rzp.io/l/TJ36IIkbU3Y9lQ" class="pay-btn" target="_blank" style="background: #2563eb; margin: 15px auto;">💳 Pay via Razorpay (India)</a>
 
             <!-- PayPal International Link -->
             <a href="https://www.paypal.com/ncp/payment/LFQLKU9HJW58N" class="pay-btn" target="_blank" style="background:#0284c7;">🌐 Pay via PayPal (International)</a>
