@@ -40,7 +40,7 @@
         .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(239, 68, 68, 0.9); color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
         .video-title { background: #0f172a; color: #f8fafc; font-size: 11px; padding: 6px 8px; text-align: center; }
         .pricing-zone { background: #1a1705; border: 2px dashed #f59e0b; border-radius: 8px; padding: 20px; text-align: center; margin-top: 15px; }
-        .price-tag { font-size: 22px; font-weight: bold; color: #fbbf24; margin-bottom: 15px; }
+        .price-tag { font-size: 20px; font-weight: bold; color: #fbbf24; margin-bottom: 15px; white-space: nowrap; }
         .pay-btn { display: block; width: 100%; max-width: 280px; margin: 10px auto; padding: 14px; border-radius: 30px; font-weight: bold; font-size: 15px; text-decoration: none; text-transform: uppercase; text-align: center; color: white; background: #a855f7; box-shadow: 0 4px 12px rgba(168, 85, 247, 0.4); }
         
         /* Scholarship Box Styling */
@@ -137,7 +137,7 @@
         <p>Complete the course and make full use of your 3 monthly test attempts across your progress (totaling 9 test records, with the 9th being your final submission). Full fee refunds are granted <strong style="color: #fde047; text-transform: uppercase;">ONLY UPON RIGOROUS SCRUTINY OF ALL 9 TEST RECORDS, FINAL SCORES, AND COMPLETE VERIFICATION OF THE LEARNER'S BACKGROUND AND GENUINE DEVELOPMENT</strong> by our team. Successful scholars will also receive a special note of appreciation on their certificate recognizing their exceptional hard work!</p>
     </div>
 
-    <!-- NEW SECTION: COURSE VS SUBSCRIPTION -->
+    <!-- COURSE VS SUBSCRIPTION SECTION -->
     <section id="subscription-clarity">
         <h2>A Bilinglishsathya App is a Course, Not a Subscription</h2>
         <p>You pay once for a complete, structured 50-day spoken English program — not a recurring monthly or annual fee for endless, casual practice. Your payment includes 6 months of practice access to fully master everything you've learned, plus your certification test. Like enrolling in any serious course or degree program, you're expected to complete it within your access window — genuine, committed students always do.</p>
@@ -273,13 +273,16 @@
         <h2>Secure Enrollment Pipeline</h2>
         <div class="pricing-zone">
             <div class="price-tag">₹1,00,000 INR / $1,000 USD</div>
-            <form>
-                <script
-                    src="https://checkout.razorpay.com/v1/payment-button.js"
-                    data-payment_button_id="pl_TJ36IIkbU3Y9lQ"
-                    async>
-                </script>
-            </form>
+            <!-- Robust container to ensure Razorpay payment button script executes and renders properly -->
+            <div id="razorpay-button-container" style="margin: 15px auto; min-height: 50px;">
+                <form>
+                    <script
+                        src="https://checkout.razorpay.com/v1/payment-button.js"
+                        data-payment_button_id="pl_TJ36IIkbU3Y9lQ"
+                        async>
+                    </script>
+                </form>
+            </div>
             <a href="https://www.paypal.com/ncp/payment/LFQLKU9HJW58N" class="pay-btn" target="_blank" style="background:#0284c7;">🌐 Pay via PayPal (International)</a>
         </div>
     </section>
@@ -307,7 +310,7 @@
         try {
             const s = await navigator.mediaDevices.getUserMedia({ audio: true });
             rec = new MediaRecorder(s);
-            rec.ondataavailable = e => chunks.post(e.data);
+            rec.ondataavailable = e => chunks.push(e.data);
             rec.onstop = () => {
                 const b = new Blob(chunks, { type: 'audio/wav' });
                 audio = new Audio(URL.createObjectURL(b));
