@@ -273,9 +273,11 @@
         <h2>Secure Enrollment Pipeline</h2>
         <div class="pricing-zone">
             <div class="price-tag">₹1,00,000 INR / $1,000 USD</div>
-            
-            <!-- Direct Anchor Link with rel="noopener" to completely fix blank screen issues in mobile webviews -->
-            <a href="https://rzp.io/l/TJ36IIkbU3Y9lQ" target="_blank" rel="noopener noreferrer" class="pay-btn" style="background: #2563eb; margin: 15px auto; display: block;">💳 Pay via Razorpay (India)</a>
+
+            <!-- Razorpay Payment Button (same working method as demo.html) -->
+            <form>
+            <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TJILbXCU6Il0N8" async></script>
+            </form>
 
             <!-- PayPal International Link -->
             <a href="https://www.paypal.com/ncp/payment/LFQLKU9HJW58N" target="_blank" rel="noopener noreferrer" class="pay-btn" style="background:#0284c7; display: block;">🌐 Pay via PayPal (International)</a>
