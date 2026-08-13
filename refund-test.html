@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BILINGLISHSATHYA | Certificate of Excellence & Scholarship Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px 20px 100px; color: #333; background: #fffdf0; }
+        .container { background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 2px solid #d4a832; }
+        .header { text-align: center; border-bottom: 2px solid #d4a832; padding-bottom: 15px; margin-bottom: 20px; }
+        .header h1 { color: #856404; margin: 0; font-size: 26px; }
+        
+        /* SECURE TERMS & EXPENSE-DEDUCTED REFUND POLICY */
+        .terms-highlight { background-color: #fff8e1; border: 2px solid #ffc107; padding: 20px; border-radius: 8px; color: #333; margin-bottom: 25px; }
+        .terms-highlight h3 { color: #856404; margin-top: 0; font-size: 16px; border-bottom: 1px dashed #ffeeba; padding-bottom: 8px; }
+        .timeline-steps { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; font-size: 12px; }
+        .step { background: #ffe082; padding: 6px 10px; border-radius: 4px; font-weight: 600; border: 1px solid #ffd54f; color: #533f03; }
+
+        .paper-box { background-color: #fff8e7; border-left: 5px solid #d4a832; padding: 20px; border-radius: 4px; margin-bottom: 25px; }
+        .question-item { line-height: 1.6; font-size: 15px; color: #2c3e50; margin-bottom: 15px; background: #fff; padding: 12px; border-radius: 4px; border: 1px solid #f3e5ab; }
+        
+        .submit-btn { padding: 15px 40px; font-size: 18px; background-color: #d4a832; color: #1a0f00; font-weight: bold; width: 100%; margin-top: 20px; border: none; border-radius: 6px; cursor: pointer; }
+        .submit-btn:hover { background-color: #ffc107; }
+
+        /* STICKY RECORD PANEL */
+        .record-panel {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            background: rgba(44,62,80,0.97); border-top: 2px solid #d4a832;
+            display: flex; align-items: center; justify-content: center;
+            gap: 14px; padding: 10px 20px; z-index: 1000; flex-wrap: wrap;
+        }
+        .record-panel button { font-size: 13px; font-weight: 700; border: none; border-radius: 5px; padding: 9px 20px; cursor: pointer; color: #fff; }
+        #recordBtn { background: #27ae60; }
+        #stopBtn   { background: #c0392b; }
+        #playBtn   { background: #2980b9; }
+        #recStatus { font-size: 12px; color: #f0d890; letter-spacing: 1px; min-width: 90px; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>BILINGLISHSATHYA</h1>
+        <p style="margin: 5px 0 0 0; font-weight: bold; color: #856404;">Certificate of Excellence & Scholarship Evaluation Portal</p>
+    </div>
+
+    <!-- TERMS & TIMELINE HIGHLIGHTED BOX -->
+    <div class="terms-highlight">
+        <h3>📜 Scholarship & Expense-Deducted Refund Policy</h3>
+        <p style="font-size: 14px; margin: 5px 0 10px 0;">To cover operational overheads (agent commissions, IT infrastructure, APIs, and evaluation costs), refunds are governed strictly by the following framework:</p>
+        
+        <div class="timeline-steps">
+            <div class="step">1. 90–100 Days Window</div>
+            <div class="step">2. Pay ₹10,000 Evaluation Fee</div>
+            <div class="step">3. Expert Panel Review</div>
+            <div class="step">4. Partial Refund After Expenses</div>
+            <div class="step">5. Valid Up to Dec 2027</div>
+            <div class="step">6. 6-Month Hard Settlement</div>
+        </div>
+
+        <ul style="margin: 12px 0 0 0; padding-left: 18px; font-size: 13px; color: #533f03; line-height: 1.6;">
+            <li><strong>Partial Fee Refund:</strong> Only a portion of the course fees will be refunded after strict calculation and deduction of all incurred operational and evaluation expenses.</li>
+            <li><strong>Evaluation Processing Fee:</strong> Candidates must pay a mandatory fee of <strong>₹10,000 INR</strong> towards processing the manual and technical evaluation before review.</li>
+            <li><strong>Offer Validity:</strong> This evaluation offer remains open strictly up to <strong>December 2027</strong> only and may be extended at management discretion.</li>
+            <li><strong>Timeline:</strong> Completed between 90–100 days post-enrollment; final disputes resolved within 10 days, closing completely by the 6-month limit.</li>
+        </ul>
+    </div>
+
+    <!-- DYNAMIC QUESTION PAPER CONTAINER -->
+    <div class="paper-box">
+        <h3 id="paperTitle" style="margin-top:0; color:#b8860b;">Advanced Scholarship Assessment Paper</h3>
+        <div id="activePaper">
+            <!-- Questions load dynamically here based on monthly rotation -->
+        </div>
+    </div>
+
+    <button class="submit-btn" onclick="submitScholarshipTest()">Pay ₹10,000 Evaluation Fee & Submit for Review</button>
+</div>
+
+<!-- STICKY RECORD PANEL -->
+<div class="record-panel">
+    <button id="recordBtn">🎙 Record</button>
+    <button id="stopBtn">⏹ Stop</button>
+    <button id="playBtn">▶ Play</button>
+    <span id="recStatus">Ready</span>
+</div>
+
+<script>
+// ── GATEKEEPER & VALIDITY TIMELINE VALIDATION ──
+function checkEligibilityTimeline() {
+    const currentEndpointDate = new Date();
+    const expiryLimitDate = new Date('2027-12-31T23:59:59');
+    
+    if (currentEndpointDate > expiryLimitDate) {
+        alert("Notice: This scholarship evaluation offer expired as of December 2027.");
+        window.location.href = 'certificate.html';
+        return false;
+    }
+
+    if (localStorage.getItem('test_passed') !== 'true') {
+        alert("Condition Check Failed: Please pass your regular final certification test (≥80%) before attempting the scholarship assessment.");
+        window.location.href = 'test.html';
+        return false;
+    }
+
+    const enrollmentDateStr = localStorage.getItem('enrollment_date');
+    const enrollmentDate = enrollmentDateStr ? new Date(enrollmentDateStr) : new Date(Date.now() - (30 * 24 * 60 * 60 * 1000)); // Safe fallback demo date
+    const today = new Date();
+    const diffDays = Math.ceil((today - enrollmentDate) / (1000 * 60 * 60 * 24));
+
+    if (diffDays < 90) {
+        alert(`Too Early: Only ${diffDays} days have elapsed. Scholarship assessment opens between 90 and 100 days of enrollment.`);
+        window.location.href = 'certificate.html';
+        return false;
+    } 
+    
+    if (diffDays > 180) {
+        alert(`Expired: The 6-month limit (${diffDays} days) from enrollment has passed. Scholarship claim window is closed.`);
+        window.location.href = 'certificate.html';
+        return false;
+    }
+
+    return true;
+}
+
+// ── TOUGHER 3-MONTH ROTATING QUESTION PAPERS ──
+const scholarshipPapers = [
+    {
+        paperNum: "Paper 1 (Cognitive Linguistics Focus)",
+        q1: "Deconstruct the exact neuro-linguistic barrier that causes 'translation lag' in second-language learners, and explain how the Bilinglish mother-tongue anchor permanently rewires this hesitation.",
+        q2: "You are auditing an advanced communication seminar. Deliver an impromptu 2-minute critique on why eliminating filler words and complex jargon increases technical authority."
+    },
+    {
+        paperNum: "Paper 2 (Methodology Mastery Focus)",
+        q1: "Critique the traditional grammar-translation method (GTM) used in institutional colleges, contrasting its structural failures with your research-backed acquisition framework.",
+        q2: "Address a skeptical university panel: argue persuasively why teaching a student to master intuitive spoken rhythm before academic writing is the only valid developmental sequence."
+    },
+    {
+        paperNum: "Paper 3 (Leadership & Delivery Focus)",
+        q1: "Analyze the psychology of 'voice fear' as an emotional block rather than a linguistic deficit, and detail your step-by-step coaching mechanism to reverse it in real time.",
+        q2: "Roleplay a high-pressure intervention: explain to a senior team why a simple, direct vocabulary yields higher persuasion metrics than flowery corporate prose."
+    }
+];
+
+window.onload = function() {
+    if (!checkEligibilityTimeline()) return;
+
+    const now = new Date();
+    const monthIndex = now.getUTCMonth() % 3; // 3-month cycle rotation
+    const paper = scholarshipPapers[monthIndex];
+    
+    document.getElementById('paperTitle').textContent = `Advanced Scholarship Assessment - ${paper.paperNum}`;
+    document.getElementById('activePaper').innerHTML = `
+        <div class="question-item"><strong>Task 1 (Critical Pedagogical Deconstruction):</strong> ${paper.q1}</div>
+        <div class="question-item" style="margin-top: 15px;"><strong>Task 2 (High-Stakes Spontaneous Articulation):</strong> ${paper.q2}</div>
+    `;
+};
+
+// ── RECORDING ENGINE ──
+let mediaRecorder, audioChunks = [], audioURL, recordedAudioBlob = null;
+
+document.getElementById('recordBtn').addEventListener('click', async () => {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        audioChunks = [];
+        mediaRecorder = new MediaRecorder(stream);
+        mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+        mediaRecorder.onstop = () => {
+            recordedAudioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+            audioURL = URL.createObjectURL(recordedAudioBlob);
+            document.getElementById('recStatus').textContent = 'Recorded ✓';
+        };
+        mediaRecorder.start();
+        document.getElementById('recStatus').textContent = '● Recording';
+    } catch (err) {
+        document.getElementById('recStatus').textContent = 'Mic error';
+    }
+});
+
+document.getElementById('stopBtn').addEventListener('click', () => {
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+        mediaRecorder.stop();
+        mediaRecorder.stream.getTracks().forEach(t => t.stop());
+    }
+});
+
+document.getElementById('playBtn').addEventListener('click', () => {
+    if (audioURL) {
+        const audio = new Audio(audioURL);
+        audio.play();
+        document.getElementById('recStatus').textContent = '▶ Playing';
+        audio.onended = () => document.getElementById('recStatus').textContent = 'Done ✓';
+    } else {
+        document.getElementById('recStatus').textContent = 'No recording';
+    }
+});
+
+// ── EVALUATION FEE & EXPENSE-DEDUCTED REFUND POLICY HANDOFF ──
+async function submitScholarshipTest() {
+    if (!recordedAudioBlob) {
+        alert("Please record your voice response before submitting.");
+        return;
+    }
+
+    const confirmTerms = confirm(
+        "BilinglishSathya Evaluation & Refund Notice:\n\n" +
+        "1. Offer validity runs strictly up to December 2027.\n" +
+        "2. Candidates must pay a mandatory processing fee of ₹10,000 INR for evaluation.\n" +
+        "3. Automated baseline scores remain locked under thresholds by default.\n" +
+        "4. Only a partial fee will be refunded after calculation and deduction of operational expenses (agent commissions, IT, server, APIs, and evaluation costs) upon panel recommendation.\n\n" +
+        "Do you wish to proceed to the ₹10,000 evaluation fee payment?"
+    );
+
+    if (!confirmTerms) {
+        document.getElementById('recStatus').textContent = 'Cancelled';
+        return;
+    }
+
+    document.getElementById('recStatus').textContent = 'Redirecting to Payment...';
+    
+    // Save recording state locally for reference
+    localStorage.setItem('evaluation_fee_pending', 'true');
+
+    // Redirect to your Razorpay/PayPal payment link for the ₹10,000 evaluation fee
+    window.location.href = 'https://rzp.io/l/your-evaluation-fee-link';
+}
+</script>
+
+</body>
+</html>
