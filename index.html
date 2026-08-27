@@ -42,7 +42,8 @@
         .goog-te-gadget span { display: none; }
         .box { background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 12px; margin: 10px 0; }
         .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
-        .gallery-card { text-align: center; background: #090d16; padding: 10px; border-radius: 6px; border: 1px solid #334155; }
+        .gallery-card { text-align: center; background: #090d16; padding: 10px; border-radius: 6px; border: 1px solid #334155; cursor: pointer; transition: all 0.3s ease; }
+        .gallery-card:hover { border-color: #a855f7; transform: translateY(-2px); box-shadow: 0 4px 8px rgba(168, 85, 247, 0.3); }
         .gallery-card img { width: 80px; height: 80px; border-radius: 4px; margin-bottom: 8px; object-fit: cover; }
         .video-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 10px 0; }
         .video-item { background: #090d16; border: 1px solid #334155; border-radius: 6px; padding: 12px; text-align: center; }
@@ -82,6 +83,10 @@
         .social-row { display: flex; gap: 8px; justify-content: center; margin-bottom: 8px; }
         .social-row a { display: inline-block; background: #334155; color: white; padding: 5px 10px; border-radius: 4px; font-size: 11px; text-decoration: none; }
         .social-row a:hover { background: #a855f7; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center; }
+        .modal.active { display: flex; }
+        .modal-img { max-width: 90%; max-height: 90%; border-radius: 8px; }
+        .modal-close { position: absolute; top: 20px; right: 20px; background: #a855f7; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -360,19 +365,19 @@
     <h2>🏆 Verified Certificates & Archives</h2>
     <h3>Degrees & Credentials</h3>
     <div class="gallery-grid">
-        <div class="gallery-card">
+        <div class="gallery-card" onclick="openGallery('phd.jpg')">
             <img src="phd.jpg" alt="PhD">
             <p><strong>PhD Degree</strong></p>
         </div>
-        <div class="gallery-card">
+        <div class="gallery-card" onclick="openGallery('mphil.jpg')">
             <img src="mphil.jpg" alt="MPhil">
             <p><strong>MPhil Degree</strong></p>
         </div>
-        <div class="gallery-card">
+        <div class="gallery-card" onclick="openGallery('ma.jpg')">
             <img src="ma.jpg" alt="MA">
             <p><strong>MA English</strong></p>
         </div>
-        <div class="gallery-card">
+        <div class="gallery-card" onclick="openGallery('ba.jpg')">
             <img src="ba.jpg" alt="BA">
             <p><strong>BA English</strong></p>
         </div>
@@ -380,11 +385,11 @@
 
     <h3>Merit Scholarship</h3>
     <div class="gallery-grid">
-        <div class="gallery-card">
-            <img src="scholarship.jpg" alt="Scholarship">
+        <div class="gallery-card" onclick="openGallery('meritscholarship.jpg')">
+            <img src="meritscholarship.jpg" alt="Scholarship">
             <p><strong>Merit Scholarship</strong></p>
         </div>
-        <div class="gallery-card">
+        <div class="gallery-card" onclick="openGallery('brightacademy.jpg')">
             <img src="brightacademy.jpg" alt="Bright Academy">
             <p><strong>Bright Academy</strong></p>
         </div>
@@ -517,6 +522,12 @@
 
 </div>
 
+<!-- IMAGE MODAL -->
+<div id="galleryModal" class="modal">
+    <button class="modal-close" onclick="closeGallery()">✕ Close</button>
+    <img id="modalImage" class="modal-img" src="" alt="">
+</div>
+
 <footer>
     <div class="social-row">
         <a href="https://www.youtube.com/@englishsathya1" target="_blank">📺 YouTube</a>
@@ -603,6 +614,15 @@
 
     function playR() {
         if(audio) audio.play();
+    }
+
+    function openGallery(imageName) {
+        document.getElementById('modalImage').src = imageName;
+        document.getElementById('galleryModal').classList.add('active');
+    }
+
+    function closeGallery() {
+        document.getElementById('galleryModal').classList.remove('active');
     }
 </script>
 
