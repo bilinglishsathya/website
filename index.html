@@ -1,1 +1,592 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="google-site-verification" content="Z9Sd_Wc3VWFWXhSlZA6x1c_szVDPbwhpEUDwMNFZ5Gg" />
+    <title>BILINGLISHSATHYA | Dr. Sathyalakshmi Thottempadi</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f172a; color: #f8fafc; line-height: 1.6; font-size: 14px; }
+        .logo-area { text-align: center; padding: 20px 15px 10px; background: #0f172a; }
+        .logo-area img { max-width: 180px; width: 100%; height: auto; }
+        header { background: #1e293b; color: white; padding: 20px 15px; text-align: center; border-bottom: 4px solid #a855f7; }
+        header h1 { font-size: 20px; letter-spacing: 1px; font-weight: bold; text-transform: uppercase; }
+        header p { font-size: 12px; color: #94a3b8; margin-top: 3px; font-style: italic; }
+        .nav-bar { display: flex; flex-wrap: wrap; background: #090d16; justify-content: center; padding: 8px; border-bottom: 1px solid #1e293b; }
+        .nav-link { color: #cbd5e1; text-decoration: none; padding: 5px 8px; font-size: 10px; text-transform: uppercase; font-weight: bold; transition: color 0.2s; }
+        .nav-link:hover { color: #c084fc; }
+        .controls-bar { background: #1e293b; padding: 12px 15px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid #334155; }
+        .translate-container { display: flex; justify-content: center; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .translate-label { font-weight: bold; color: #c084fc; font-size: 12px; }
+        #languageSelect { padding: 8px 12px; border-radius: 6px; border: 2px solid #a855f7; background: white; color: #4a0072; font-weight: bold; cursor: pointer; font-size: 12px; max-width: 180px; }
+        #languageSelect:hover { background: #f0e6ff; }
+        #languageSelect:focus { outline: none; box-shadow: 0 0 0 3px rgba(74, 0, 114, 0.2); }
+        .voice-controls { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .btn-listen { background: #0f172a; color: white; border: 1px solid #334155; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 12px; width: 100%; max-width: 320px; }
+        .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; max-width: 320px; }
+        .btn { padding: 10px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 12px; color: white; text-align: center; }
+        .btn-r { background: #ef4444; }
+        .btn-s { background: #f57c00; display: none; }
+        .btn-p { background: #3b82f6; display: none; }
+        .container { max-width: 600px; margin: 0 auto; padding: 15px; }
+        section { background: #1e293b; border-radius: 8px; padding: 15px; margin-bottom: 15px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); border: 1px solid #334155; }
+        h2 { font-size: 14px; color: #c084fc; text-transform: uppercase; margin-bottom: 10px; border-left: 4px solid #a855f7; padding-left: 8px; }
+        h3 { font-size: 13px; color: #f8fafc; margin: 12px 0 8px 0; border-bottom: 1px solid #334155; padding-bottom: 4px; }
+        p { margin-bottom: 10px; text-align: justify; color: #cbd5e1; font-size: 12.5px; line-height: 1.5; }
+        a { color: #0284c7; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        #google_translate_element { display: none; }
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        .goog-te-gadget { font-family: sans-serif !important; color: transparent !important; }
+        .goog-te-gadget span { display: none; }
+        .box { background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 12px; margin: 10px 0; }
+        .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+        .gallery-card { text-align: center; background: #090d16; padding: 10px; border-radius: 6px; border: 1px solid #334155; }
+        .gallery-card img { width: 80px; height: 80px; border-radius: 4px; margin-bottom: 8px; object-fit: cover; }
+        .video-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 10px 0; }
+        .video-item { background: #090d16; border: 1px solid #334155; border-radius: 6px; padding: 12px; text-align: center; }
+        .video-item img { max-width: 100%; height: auto; border-radius: 4px; margin-bottom: 8px; }
+        .video-item a { display: inline-block; margin-top: 8px; background: #334155; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; }
+        .link-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 10px 0; }
+        .hub-link { background: #090d16; color: #f8fafc; text-decoration: none; padding: 10px; border-radius: 6px; font-size: 11px; font-weight: bold; text-align: center; border: 1px solid #334155; display: block; }
+        .hub-link:hover { background: #1a1a3e; border-color: #a855f7; }
+        .pricing-zone { background: #1a1705; border: 2px dashed #f59e0b; border-radius: 8px; padding: 15px; text-align: center; margin: 10px 0; }
+        .price-tag { font-size: 16px; font-weight: bold; color: #fbbf24; margin-bottom: 10px; }
+        .pay-btn { display: block; width: 100%; max-width: 240px; margin: 8px auto; padding: 10px; border-radius: 6px; font-weight: bold; font-size: 12px; text-decoration: none; text-transform: uppercase; text-align: center; color: white; background: #0284c7; }
+        .pay-btn:hover { background: #1d9fd9; }
+        .workflow-box { background: #0f172a; border: 2px solid #a855f7; border-radius: 8px; padding: 12px; margin: 10px 0; text-align: center; font-size: 12px; }
+        .workflow-step { display: inline-block; margin: 0 4px; color: #c084fc; font-weight: bold; }
+        .workflow-arrow { display: inline-block; margin: 0 4px; color: #60a5fa; }
+        .comparison-box { background: #0f172a; border: 1px solid #334155; border-radius: 6px; padding: 12px; margin: 10px 0; font-size: 12px; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+        .comparison-table tr { border-bottom: 1px solid #334155; }
+        .comparison-table td { padding: 8px 4px; text-align: left; font-size: 11px; }
+        .comparison-table th { background: #1a1a3e; color: #c084fc; padding: 8px 4px; text-align: left; font-size: 11px; font-weight: bold; }
+        .enrollment-highlight { background: linear-gradient(135deg, #1a3e4c, #0f2d3d); border: 2px solid #0284c7; border-radius: 8px; padding: 12px; margin: 10px 0; }
+        .enrollment-highlight strong { color: #60a5fa; }
+        .scholarship-box { background: linear-gradient(135deg, #272108, #3d3005); border: 2px solid #f59e0b; border-radius: 8px; padding: 12px; margin: 10px 0; text-align: center; }
+        .scholarship-box h3 { color: #fde047; border: none; font-size: 13px; }
+        .scholarship-box p { color: #fde047; text-align: center; font-size: 12px; }
+        .timeline { list-style: none; margin: 10px 0; padding-left: 5px; }
+        .timeline-item { position: relative; padding-left: 12px; margin-bottom: 8px; border-left: 2px solid #a855f7; font-size: 12px; color: #cbd5e1; }
+        .timeline-item strong { color: #f8fafc; }
+        .apps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+        .app-box { background: #0f172a; border: 2px solid #334155; border-radius: 6px; padding: 12px; text-align: center; }
+        .app-box img { width: 60px; height: 60px; border-radius: 4px; margin-bottom: 8px; object-fit: cover; }
+        .app-box h4 { font-size: 12px; color: #f8fafc; margin-bottom: 6px; }
+        .app-box p { font-size: 11px; color: #94a3b8; margin-bottom: 8px; text-align: left; }
+        .app-box a { display: inline-block; background: #334155; color: white; padding: 5px 10px; border-radius: 4px; font-size: 10px; }
+        .app-box a:hover { background: #a855f7; }
+        footer { background: #090d16; color: #94a3b8; text-align: center; padding: 12px; font-size: 11px; margin-top: 20px; border-top: 2px solid #a855f7; }
+        .social-row { display: flex; gap: 8px; justify-content: center; margin-bottom: 8px; }
+        .social-row a { display: inline-block; background: #334155; color: white; padding: 5px 10px; border-radius: 4px; font-size: 11px; text-decoration: none; }
+        .social-row a:hover { background: #a855f7; }
+    </style>
+</head>
+<body>
+
+<div class="logo-area">
+    <img src="1786962721896.png" alt="BilinglishSathya Logo">
+</div>
+
+<header>
+    <h1>BILINGLISHSATHYA</h1>
+    <p>Spoken English via Mother Tongue — Authentic PhD Methodology</p>
+</header>
+
+<div class="nav-bar">
+    <a href="https://bilinglishsathya.github.io/website" class="nav-link" target="_blank">Website</a>
+    <a href="#about" class="nav-link">Director</a>
+    <a href="#apps" class="nav-link">Course Systems</a>
+    <a href="#gallery" class="nav-link">Gallery</a>
+    <a href="#videos" class="nav-link">Videos</a>
+    <a href="#contact" class="nav-link">Contact</a>
+    <a href="#enroll" class="nav-link">Enroll Now</a>
+</div>
+
+<div class="controls-bar">
+    <div class="translate-container">
+        <label class="translate-label">🌐 Translate:</label>
+        <select id="languageSelect">
+            <option value="">Select Language</option>
+            <option value="af">Afrikaans</option>
+            <option value="sq">Albanian</option>
+            <option value="am">Amharic</option>
+            <option value="ar">Arabic</option>
+            <option value="hy">Armenian</option>
+            <option value="az">Azerbaijani</option>
+            <option value="eu">Basque</option>
+            <option value="be">Belarusian</option>
+            <option value="bn">Bengali</option>
+            <option value="bs">Bosnian</option>
+            <option value="bg">Bulgarian</option>
+            <option value="ca">Catalan</option>
+            <option value="ceb">Cebuano</option>
+            <option value="ny">Chichewa</option>
+            <option value="zh-CN">Chinese (Simplified)</option>
+            <option value="zh-TW">Chinese (Traditional)</option>
+            <option value="co">Corsican</option>
+            <option value="hr">Croatian</option>
+            <option value="cs">Czech</option>
+            <option value="da">Danish</option>
+            <option value="nl">Dutch</option>
+            <option value="en">English</option>
+            <option value="eo">Esperanto</option>
+            <option value="et">Estonian</option>
+            <option value="tl">Filipino</option>
+            <option value="fi">Finnish</option>
+            <option value="fr">French</option>
+            <option value="fy">Frisian</option>
+            <option value="gl">Galician</option>
+            <option value="ka">Georgian</option>
+            <option value="de">German</option>
+            <option value="el">Greek</option>
+            <option value="gu">Gujarati</option>
+            <option value="ht">Haitian Creole</option>
+            <option value="ha">Hausa</option>
+            <option value="haw">Hawaiian</option>
+            <option value="he">Hebrew</option>
+            <option value="hi">Hindi</option>
+            <option value="hmn">Hmong</option>
+            <option value="hu">Hungarian</option>
+            <option value="is">Icelandic</option>
+            <option value="ig">Igbo</option>
+            <option value="id">Indonesian</option>
+            <option value="ga">Irish</option>
+            <option value="it">Italian</option>
+            <option value="ja">Japanese</option>
+            <option value="jv">Javanese</option>
+            <option value="kn">Kannada</option>
+            <option value="kk">Kazakh</option>
+            <option value="km">Khmer</option>
+            <option value="ko">Korean</option>
+            <option value="ku">Kurdish</option>
+            <option value="ky">Kyrgyz</option>
+            <option value="lo">Lao</option>
+            <option value="la">Latin</option>
+            <option value="lv">Latvian</option>
+            <option value="lt">Lithuanian</option>
+            <option value="lb">Luxembourgish</option>
+            <option value="mk">Macedonian</option>
+            <option value="mg">Malagasy</option>
+            <option value="ms">Malay</option>
+            <option value="ml">Malayalam</option>
+            <option value="mt">Maltese</option>
+            <option value="mi">Maori</option>
+            <option value="mr">Marathi</option>
+            <option value="mn">Mongolian</option>
+            <option value="my">Myanmar (Burmese)</option>
+            <option value="ne">Nepali</option>
+            <option value="no">Norwegian</option>
+            <option value="or">Odia</option>
+            <option value="ps">Pashto</option>
+            <option value="fa">Persian</option>
+            <option value="pl">Polish</option>
+            <option value="pt">Portuguese</option>
+            <option value="pa">Punjabi</option>
+            <option value="ro">Romanian</option>
+            <option value="ru">Russian</option>
+            <option value="sm">Samoan</option>
+            <option value="gd">Scottish Gaelic</option>
+            <option value="sr">Serbian</option>
+            <option value="st">Sesotho</option>
+            <option value="sn">Shona</option>
+            <option value="sd">Sindhi</option>
+            <option value="si">Sinhala</option>
+            <option value="sk">Slovak</option>
+            <option value="sl">Slovenian</option>
+            <option value="so">Somali</option>
+            <option value="es">Spanish</option>
+            <option value="su">Sundanese</option>
+            <option value="sw">Swahili</option>
+            <option value="sv">Swedish</option>
+            <option value="tg">Tajik</option>
+            <option value="ta">Tamil</option>
+            <option value="te">Telugu</option>
+            <option value="th">Thai</option>
+            <option value="tr">Turkish</option>
+            <option value="tk">Turkmen</option>
+            <option value="uk">Ukrainian</option>
+            <option value="ur">Urdu</option>
+            <option value="ug">Uyghur</option>
+            <option value="uz">Uzbek</option>
+            <option value="vi">Vietnamese</option>
+            <option value="cy">Welsh</option>
+            <option value="xh">Xhosa</option>
+            <option value="yi">Yiddish</option>
+            <option value="yo">Yoruba</option>
+            <option value="zu">Zulu</option>
+        </select>
+    </div>
+
+    <div class="voice-controls">
+        <button class="btn-listen" onclick="speak()">🔊 Listen to This Page</button>
+        <div class="btn-group">
+            <button id="rBtn" class="btn btn-r" onclick="startR()">🎤 Record Voice</button>
+            <button id="sBtn" class="btn btn-s" onclick="stopR()">⏹ Stop</button>
+            <button id="pBtn" class="btn btn-p" onclick="playR()">▶ Play</button>
+        </div>
+    </div>
+</div>
+
+<div id="google_translate_element"></div>
+
+<div class="container" id="page-content">
+
+<!-- WEBSITE MAIN BOX -->
+<section>
+    <h2>🌐 Website Main Box</h2>
+    <div class="box">
+        <a href="https://bilinglishsathya.github.io/website" target="_blank" style="display: block; color: #60a5fa; font-weight: bold; text-align: center; margin-bottom: 10px;">Dr. Sathyalakshmi Thottempadi's Complete Educational Ecosystem</a>
+        <p>BILINGLISHSATHYA is created and organized by <strong>Dr. Sathyalakshmi Thottempadi</strong>, a premier school educational leader with exceptional credentials and expertise.</p>
+    </div>
+</section>
+
+<!-- 3 APPS GRID (NOW 4 WITH HUMOUR) -->
+<section id="apps">
+    <h2>📱 Course Systems & Apps</h2>
+    <p>Four integrated apps for complete career and personal development:</p>
+    
+    <div class="apps-grid">
+        <!-- Spoken English -->
+        <div class="app-box" style="border-color: #60a5fa;">
+            <img src="Screenshot_20260813-155928.png" alt="Spoken English">
+            <h4 style="color: #60a5fa;">SPOKEN ENGLISH</h4>
+            <p>Master authentic spoken English via mother tongue methodology — PhD structured program</p>
+            <a href="https://thottempadi.vercel.app/demo.html" target="_blank">Explore</a>
+        </div>
+
+        <!-- Interview Skills -->
+        <div class="app-box" style="border-color: #f472b6;">
+            <img src="1786717457653.png" alt="Interview Skills">
+            <h4 style="color: #f472b6;">INTERVIEW SKILLS</h4>
+            <p>Master soft skills for every career — Military, Police, Admin, Software, Business & more</p>
+            <a href="https://interview-skills-liard.vercel.app/demo.html" target="_blank">Explore</a>
+        </div>
+
+        <!-- Personality Development -->
+        <div class="app-box" style="border-color: #34d399;">
+            <img src="1000050790.png" alt="Personality Development">
+            <h4 style="color: #34d399;">PERSONALITY DEVELOPMENT</h4>
+            <p>Bridge thoughts & expression — Build confidence through mindset, communication & growth</p>
+            <a href="https://personality-development-skills.vercel.app" target="_blank">Explore</a>
+        </div>
+
+        <!-- Humour in Life -->
+        <div class="app-box" style="border-color: #f87171;">
+            <img src="humour-logo.jpg" alt="Humour in Life">
+            <h4 style="color: #f87171;">HUMOUR-IN-LIFE</h4>
+            <p>Smart integration of wit & lightheartedness into social & professional conversations</p>
+            <a href="https://humour-in-life.vercel.app" target="_blank">Explore</a>
+        </div>
+    </div>
+</section>
+
+<!-- COMPARISON BOX -->
+<section>
+    <h2>📊 Course vs Subscription Comparison</h2>
+    <div class="comparison-box">
+        <table class="comparison-table">
+            <tr>
+                <th>Feature</th>
+                <th>Subscription Apps</th>
+                <th>BILINGLISHSATHYA App</th>
+            </tr>
+            <tr>
+                <td><strong>Payment</strong></td>
+                <td>Recurring (monthly/yearly)</td>
+                <td>One-time course fee</td>
+            </tr>
+            <tr>
+                <td><strong>Content</strong></td>
+                <td>Open-ended, casual practice</td>
+                <td>Structured 50-day spoken English program</td>
+            </tr>
+            <tr>
+                <td><strong>Outcome</strong></td>
+                <td>No defined completion</td>
+                <td>Certificate + scholarship eligibility</td>
+            </tr>
+            <tr>
+                <td><strong>Career Potential</strong></td>
+                <td>Personal practice only</td>
+                <td>Trained to teach, coach, or consult others</td>
+            </tr>
+            <tr>
+                <td><strong>Access</strong></td>
+                <td>Ongoing, indefinite</td>
+                <td>Lifetime access & 6K months to complete</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="box">
+        <h3 style="text-align: center; color: #fbbf24;">Use our Accent Practice Panel unlimitedly</h3>
+        <ul class="timeline">
+            <li>1. Listen to your own voice</li>
+            <li>2. Identify mistakes</li>
+            <li>3. Correct instantly</li>
+            <li>4. Repeat until confident</li>
+        </ul>
+    </div>
+</section>
+
+<!-- SYSTEM TAGLINE -->
+<section>
+    <h2>💪 Why This System Succeeds Where Others Fail</h2>
+    <p><strong>Before your voice is heard by the world, you must get used to your own voice.</strong> No Teacher > No Judgement > No Fear</p>
+    <p><strong>You are the best critic of yourself.</strong></p>
+</section>
+
+<!-- COURSE MODULE HUB LINKS -->
+<section id="app">
+    <h2>📚 Course Module Hub Links</h2>
+    <div class="link-grid">
+        <a href="demo.html" class="hub-link" target="_blank">🚀 Demo</a>
+        <a href="https://interview-skills-liard.vercel.app/test.html" class="hub-link" target="_blank">📝 Interview</a>
+        <a href="https://thottempadi.vercel.app/test.html" class="hub-link" target="_blank">📝 Final Proficiency Test</a>
+        <a href="https://personality-development-skills.vercel.app" class="hub-link" target="_blank">⭐ Personality Dev</a>
+        <a href="https://thottempadi.vercel.app/certificate.html" class="hub-link" target="_blank">📜 Sample Certificate Engine</a>
+        <a href="reviews.html" class="hub-link" target="_blank">⭐ Verified Student Reviews</a>
+        <a href="scope-extension.html" class="hub-link" target="_blank">📊 Scope of Development</a>
+        <a href="agreement.html" class="hub-link" target="_blank">⚖️ Model Sales Agreement</a>
+        <a href="instructions.html" class="hub-link" target="_blank">📋 How To Use Course</a>
+    </div>
+</section>
+
+<!-- GALLERY SECTION -->
+<section id="gallery">
+    <h2>🏆 Verified Certificates & Archives</h2>
+    <h3>Degrees & Credentials</h3>
+    <div class="gallery-grid">
+        <div class="gallery-card">
+            <img src="phd.jpg" alt="PhD">
+            <p><strong>PhD Degree</strong></p>
+        </div>
+        <div class="gallery-card">
+            <img src="mphil.jpg" alt="MPhil">
+            <p><strong>MPhil Degree</strong></p>
+        </div>
+        <div class="gallery-card">
+            <img src="ma.jpg" alt="MA">
+            <p><strong>MA English</strong></p>
+        </div>
+        <div class="gallery-card">
+            <img src="ba.jpg" alt="BA">
+            <p><strong>BA English</strong></p>
+        </div>
+    </div>
+
+    <h3>Merit Scholarship</h3>
+    <div class="gallery-grid">
+        <div class="gallery-card">
+            <img src="scholarship.jpg" alt="Scholarship">
+            <p><strong>Merit Scholarship</strong></p>
+        </div>
+        <div class="gallery-card">
+            <img src="brightacademy.jpg" alt="Bright Academy">
+            <p><strong>Bright Academy</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- VIDEOS SECTION -->
+<section id="videos">
+    <h2>🎬 Video Demonstrations</h2>
+    <h3>Mother Tongue Influence on Second Language</h3>
+    <div class="video-grid">
+        <div class="video-item">
+            <a href="https://youtu.be/f-_pZmRciY" target="_blank">
+                <img src="https://img.youtube.com/vi/f-_pZmRciY/mqdefault.jpg" alt="Mother Tongue Influence on Second Language">
+            </a>
+            <p>Mother Tongue Influence on Second Language/p>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about">
+    <h2>👨‍🎓 Academic Leadership Profile</h2>
+    <p><strong>BILINGLISHSATHYA is created and organized by Dr. Sathyalakshmi Thottempadi</strong>, a premier school educational leader with exceptional credentials and expertise.</p>
+    
+    <div style="display: flex; gap: 10px; justify-content: center; margin: 12px 0;">
+        <a href="https://www.youtube.com/@englishsathya1" class="social-row" style="display: inline-block; margin: 0;">📺 YouTube</a>
+        <a href="https://www.linkedin.com/in/sathyalakshmi-thottempudi-17046b14a" class="social-row" style="display: inline-block; margin: 0;">🔗 LinkedIn</a>
+    </div>
+
+    <h3>Timeline of Achievements</h3>
+    <ul class="timeline">
+        <li><strong>2009:</strong> Doctoral Registration - Acharya Nagarjuna University</li>
+        <li><strong>1981 - 1983:</strong> BA in English - Madras University</li>
+        <li><strong>1981 - 1983:</strong> MA in English - Madras University</li>
+        <li><strong>1984 - 2026:</strong> 48 Years of active service as Professor of English</li>
+        <li><strong>1988 - 2000:</strong> Founder & Director of Bright Academy of English</li>
+        <li><strong>PhD Core Foundation:</strong> Designer of the trademarked "Bilinglish" pattern loops for engineering placement bootcamps</li>
+    </ul>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+    <h2>📞 Official Contact Information</h2>
+    <div class="box">
+        <p style="text-align: center;">
+            <a href="mailto:englishsathya@gmail.com" style="font-size: 13px; font-weight: bold;">📧 englishsathya@gmail.com</a>
+        </p>
+    </div>
+</section>
+
+<!-- ENROLLMENT & PAYMENT SECTION -->
+<section id="enroll">
+    <h2>🔐 Secure Enrollment Pipeline</h2>
+
+    <!-- STUDENT WORKFLOW -->
+    <div class="workflow-box">
+        <h3 style="color: #60a5fa; border: none; text-transform: none; font-size: 13px;">📊 Universal Student Workflow for All Apps</h3>
+        <div style="margin-top: 10px; line-height: 1.8;">
+            <span class="workflow-step">📺 DEMO</span>
+            <span class="workflow-arrow">→</span>
+            <span class="workflow-step">💳 PAYMENT</span>
+            <span class="workflow-arrow">→</span>
+            <span class="workflow-step">🔑 PASSWORD/KEY</span>
+            <span class="workflow-arrow">→</span>
+            <span class="workflow-step">📚 ACCESS CONTENT</span>
+            <span class="workflow-arrow">→</span>
+            <span class="workflow-step">✍️ TEST</span>
+            <span class="workflow-arrow">→</span>
+            <span class="workflow-step">🎓 CERTIFICATE</span>
+        </div>
+    </div>
+
+    <!-- FLEXIBLE ENROLLMENT OPTIONS -->
+    <div class="enrollment-highlight">
+        <h3 style="border: none; text-transform: none; font-size: 13px; color: #60a5fa; margin-bottom: 8px;">💰 Flexible Enrollment Options</h3>
+        <p>
+            <strong>Complete Package:</strong> All 4 apps (Spoken English + Interview Skills + Personality Development + Humour-in-Life) for comprehensive professional transformation.
+        </p>
+        <p style="margin-top: 8px;">
+            <strong>Individual Apps:</strong> Purchase any single app separately at competitive pricing tailored to your needs.
+        </p>
+        <p style="margin-top: 8px; color: #94a3b8; font-size: 11px;">
+            Both options include lifetime access, full course content, testing, and certificate upon completion.
+        </p>
+    </div>
+
+    <!-- SPOKEN ENGLISH PAYMENT -->
+    <h3 style="text-align: center; color: #60a5fa;">Secure Enrollment for Spoken English Course</h3>
+    <div class="pricing-zone">
+        <div class="price-tag">₹1,00,000 INR / $1,000 USD</div>
+        <p style="font-size: 11px; color: #fde047; margin-bottom: 10px;">Full lifetime access to complete 50-day Spoken English course with accent training and certification</p>
+        
+        <form style="margin-bottom: 10px;">
+            <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_TJILbXCU6Il0N8" async></script>
+        </form>
+
+        <a href="https://www.paypal.com/ncp/payment/LFQLKU9HJW58N" target="_blank" rel="noopener noreferrer" class="pay-btn">🌐 PayPal (International)</a>
+    </div>
+
+    <!-- SCHOLARSHIP CHALLENGE -->
+    <div class="scholarship-box">
+        <h3>💰 Global Scholarship Challenge</h3>
+        <p>Complete your course test in 90-100 days post-enrollment to qualify for partial fee refunds, subject to rigorous testing verification and genuine progress review.</p>
+        <p style="margin-top: 8px;"><a href="refund-test.html" style="color: #fde047; text-decoration: underline;">View Policy Details</a></p>
+    </div>
+</section>
+
+</div>
+
+<footer>
+    <div class="social-row">
+        <a href="https://www.youtube.com/@englishsathya1" target="_blank">📺 YouTube</a>
+        <a href="https://www.linkedin.com/in/sathyalakshmi-thottempudi-17046b14a" target="_blank">🔗 LinkedIn</a>
+    </div>
+    <p><strong>BILINGLISHSATHYA</strong> © 2026<br>Founder: Dr. Sathyalakshmi Thottempadi</p>
+</footer>
+
+<!-- TRANSLATE DROPDOWN SCRIPT -->
+<script>
+    const languageSelect = document.getElementById('languageSelect');
+    let googleTranslateReady = false;
+
+    function checkGoogleTranslate() {
+        if (typeof google !== 'undefined' && google.translate) {
+            googleTranslateReady = true;
+        } else {
+            setTimeout(checkGoogleTranslate, 100);
+        }
+    }
+    checkGoogleTranslate();
+
+    languageSelect.addEventListener('change', function() {
+        if (!googleTranslateReady) {
+            alert('Translation service is loading. Please try again in a moment.');
+            return;
+        }
+
+        const langCode = this.value;
+        if (langCode === '') {
+            location.reload();
+            return;
+        }
+
+        const iframe = document.querySelector('.goog-te-combo');
+        if (iframe) {
+            iframe.value = langCode;
+            iframe.dispatchEvent(new Event('change'));
+        }
+    });
+</script>
+
+<!-- GOOGLE TRANSLATE -->
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<!-- VOICE RECORD & PLAY -->
+<script>
+    let rec; let chunks = []; let audio;
+    
+    function speak() {
+        window.speechSynthesis.cancel();
+        const text = document.getElementById('page-content').innerText;
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.rate = 0.85;
+        window.speechSynthesis.speak(msg);
+    }
+
+    async function startR() {
+        try {
+            const s = await navigator.mediaDevices.getUserMedia({ audio: true });
+            rec = new MediaRecorder(s);
+            rec.ondataavailable = e => chunks.push(e.data);
+            rec.onstop = () => {
+                const b = new Blob(chunks, { type: 'audio/wav' });
+                audio = new Audio(URL.createObjectURL(b));
+                document.getElementById('pBtn').style.display = 'block';
+            };
+            rec.start(); chunks = [];
+            document.getElementById('rBtn').style.display = 'none';
+            document.getElementById('sBtn').style.display = 'block';
+        } catch(e) { alert("Microphone required for recording."); }
+    }
+
+    function stopR() {
+        rec.stop();
+        document.getElementById('sBtn').style.display = 'none';
+        document.getElementById('rBtn').style.display = 'block';
+    }
+
+    function playR() {
+        if(audio) audio.play();
+    }
+</script>
+
+<!-- ACCENT.JS -->
+<script src="accent.js"></script>
+
+</body>
+</html>
